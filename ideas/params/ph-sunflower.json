@@ -1,0 +1,18 @@
+{
+  "n_dots_final": 1600,
+  "dot_radius": 4,
+  "fps": 30,
+  "steps": 300,
+  "scale": 0.44,
+  "offset_angle": 0.0,
+  "anim_mode": "grow",
+  "bg_color": [5, 3, 12],
+  "palette": [
+    [0.0,  [255, 220, 60]],
+    [0.3,  [255, 150, 30]],
+    [0.6,  [220,  60, 80]],
+    [1.0,  [140,   0, 180]]
+  ],
+  "glow": true,
+  "glow_boost": 2.0
+}

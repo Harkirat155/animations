@@ -1,0 +1,18 @@
+{
+  "func": "exp_z",
+  "re_min": -3.0,
+  "re_max":  3.0,
+  "im_min": -3.0,
+  "im_max":  3.0,
+  "n_start": 1.0,
+  "n_end":   1.0,
+  "zoom_end": 0.4,
+  "zoom_cr":  0.0,
+  "zoom_ci":  0.0,
+  "ring_strength": 0.55,
+  "saturation": 1.0,
+  "phase_shift": 0.0,
+  "steps": 240,
+  "fps": 30,
+  "size": 512
+}

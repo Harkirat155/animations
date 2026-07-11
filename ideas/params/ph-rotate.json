@@ -1,0 +1,18 @@
+{
+  "n_dots_final": 1200,
+  "dot_radius": 3,
+  "fps": 30,
+  "steps": 360,
+  "scale": 0.44,
+  "offset_angle": 0.0,
+  "anim_mode": "rotate",
+  "bg_color": [4, 8, 20],
+  "palette": [
+    [0.0,  [0,   220, 200]],
+    [0.3,  [0,   150, 255]],
+    [0.6,  [100,  60, 255]],
+    [1.0,  [200,   0, 255]]
+  ],
+  "glow": false,
+  "glow_boost": 1.0
+}

@@ -1,0 +1,13 @@
+{
+  "fps": 30,
+  "steps": 240,
+  "seed": 42,
+  "n_seeds": 20,
+  "orbit_amp": 0.25,
+  "orbit_speed": 0.016,
+  "hue_cycle": 0.5,
+  "saturation": 0.90,
+  "value": 0.95,
+  "border_width": 2.5,
+  "border_bright": 3.0
+}

@@ -1,0 +1,9118 @@
+{
+  "version": 1,
+  "count": 127,
+  "looks": [
+    {
+      "id": "rd-aurora",
+      "label": "Aurora",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-aurora.jpg",
+      "params": {
+        "feed": 0.0545,
+        "kill": 0.062,
+        "v_max": 0.4,
+        "seed_pattern": "center",
+        "n_spots": 1,
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              5,
+              25
+            ]
+          ],
+          [
+            0.3,
+            [
+              0,
+              55,
+              90
+            ]
+          ],
+          [
+            0.55,
+            [
+              20,
+              190,
+              150
+            ]
+          ],
+          [
+            0.75,
+            [
+              100,
+              255,
+              180
+            ]
+          ],
+          [
+            1.0,
+            [
+              200,
+              255,
+              235
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-circuit",
+      "label": "Circuit",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-circuit.jpg",
+      "params": {
+        "feed": 0.042,
+        "kill": 0.059,
+        "n_spots": 20,
+        "v_max": 0.42,
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              8,
+              6
+            ]
+          ],
+          [
+            0.3,
+            [
+              5,
+              60,
+              40
+            ]
+          ],
+          [
+            0.5,
+            [
+              15,
+              180,
+              100
+            ]
+          ],
+          [
+            0.7,
+            [
+              60,
+              240,
+              160
+            ]
+          ],
+          [
+            0.9,
+            [
+              180,
+              255,
+              220
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-coral",
+      "label": "Coral",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-coral.jpg",
+      "params": {
+        "feed": 0.0545,
+        "kill": 0.062,
+        "v_max": 0.4,
+        "seed_pattern": "center",
+        "palette": [
+          [
+            0.0,
+            [
+              12,
+              2,
+              18
+            ]
+          ],
+          [
+            0.45,
+            [
+              120,
+              20,
+              80
+            ]
+          ],
+          [
+            0.7,
+            [
+              230,
+              90,
+              60
+            ]
+          ],
+          [
+            0.85,
+            [
+              250,
+              190,
+              90
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              248,
+              220
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-forest",
+      "label": "Forest",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-forest.jpg",
+      "params": {
+        "feed": 0.0545,
+        "kill": 0.062,
+        "v_max": 0.4,
+        "seed_pattern": "center",
+        "n_spots": 1,
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              8,
+              3
+            ]
+          ],
+          [
+            0.3,
+            [
+              15,
+              50,
+              20
+            ]
+          ],
+          [
+            0.55,
+            [
+              50,
+              130,
+              60
+            ]
+          ],
+          [
+            0.75,
+            [
+              130,
+              210,
+              80
+            ]
+          ],
+          [
+            1.0,
+            [
+              220,
+              255,
+              180
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-golden-hour",
+      "label": "Golden Hour",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-golden-hour.jpg",
+      "params": {
+        "feed": 0.0367,
+        "kill": 0.0649,
+        "v_max": 0.38,
+        "seed_pattern": "random",
+        "n_spots": 120,
+        "palette": [
+          [
+            0.0,
+            [
+              10,
+              4,
+              2
+            ]
+          ],
+          [
+            0.25,
+            [
+              90,
+              30,
+              5
+            ]
+          ],
+          [
+            0.5,
+            [
+              200,
+              90,
+              15
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              160,
+              60
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              230,
+              180
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-jellyfish",
+      "label": "Jellyfish",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-jellyfish.jpg",
+      "params": {
+        "feed": 0.0148,
+        "kill": 0.052,
+        "n_spots": 8,
+        "v_max": 0.38,
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              5,
+              20
+            ]
+          ],
+          [
+            0.3,
+            [
+              10,
+              40,
+              100
+            ]
+          ],
+          [
+            0.5,
+            [
+              20,
+              120,
+              200
+            ]
+          ],
+          [
+            0.7,
+            [
+              80,
+              200,
+              240
+            ]
+          ],
+          [
+            0.9,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-leopard",
+      "label": "Leopard",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-leopard.jpg",
+      "params": {
+        "feed": 0.03,
+        "kill": 0.06,
+        "n_spots": 25,
+        "v_max": 0.4,
+        "palette": [
+          [
+            0.0,
+            [
+              200,
+              170,
+              110
+            ]
+          ],
+          [
+            0.3,
+            [
+              170,
+              140,
+              80
+            ]
+          ],
+          [
+            0.5,
+            [
+              90,
+              70,
+              30
+            ]
+          ],
+          [
+            0.7,
+            [
+              40,
+              30,
+              10
+            ]
+          ],
+          [
+            0.9,
+            [
+              15,
+              10,
+              3
+            ]
+          ],
+          [
+            1.0,
+            [
+              5,
+              3,
+              0
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-maze-gold",
+      "label": "Maze Gold",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-maze-gold.jpg",
+      "params": {
+        "feed": 0.029,
+        "kill": 0.057,
+        "v_max": 0.35,
+        "seed_pattern": "random",
+        "n_spots": 90,
+        "palette": [
+          [
+            0.0,
+            [
+              10,
+              7,
+              2
+            ]
+          ],
+          [
+            0.3,
+            [
+              80,
+              50,
+              10
+            ]
+          ],
+          [
+            0.55,
+            [
+              190,
+              140,
+              30
+            ]
+          ],
+          [
+            0.75,
+            [
+              240,
+              200,
+              80
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              245,
+              200
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-maze-ink",
+      "label": "Maze Ink",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-maze-ink.jpg",
+      "params": {
+        "feed": 0.029,
+        "kill": 0.057,
+        "v_max": 0.35,
+        "seed_pattern": "random",
+        "n_spots": 90,
+        "palette": [
+          [
+            0.0,
+            [
+              240,
+              235,
+              225
+            ]
+          ],
+          [
+            0.3,
+            [
+              200,
+              190,
+              175
+            ]
+          ],
+          [
+            0.55,
+            [
+              100,
+              90,
+              80
+            ]
+          ],
+          [
+            0.75,
+            [
+              40,
+              30,
+              20
+            ]
+          ],
+          [
+            1.0,
+            [
+              8,
+              5,
+              3
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-mitosis",
+      "label": "Mitosis",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-mitosis.jpg",
+      "params": {
+        "feed": 0.0367,
+        "kill": 0.0649,
+        "v_max": 0.38,
+        "seed_pattern": "random",
+        "n_spots": 140,
+        "palette": [
+          [
+            0.0,
+            [
+              4,
+              8,
+              28
+            ]
+          ],
+          [
+            0.4,
+            [
+              10,
+              60,
+              120
+            ]
+          ],
+          [
+            0.6,
+            [
+              30,
+              160,
+              200
+            ]
+          ],
+          [
+            0.8,
+            [
+              180,
+              230,
+              240
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-neon-tokyo",
+      "label": "Neon Tokyo",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-neon-tokyo.jpg",
+      "params": {
+        "feed": 0.0367,
+        "kill": 0.0649,
+        "v_max": 0.39,
+        "seed_pattern": "random",
+        "n_spots": 130,
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              0,
+              12
+            ]
+          ],
+          [
+            0.3,
+            [
+              70,
+              0,
+              120
+            ]
+          ],
+          [
+            0.55,
+            [
+              200,
+              0,
+              210
+            ]
+          ],
+          [
+            0.75,
+            [
+              0,
+              200,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-rose-quartz",
+      "label": "Rose Quartz",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-rose-quartz.jpg",
+      "params": {
+        "feed": 0.025,
+        "kill": 0.06,
+        "v_max": 0.36,
+        "seed_pattern": "random",
+        "n_spots": 100,
+        "palette": [
+          [
+            0.0,
+            [
+              20,
+              5,
+              15
+            ]
+          ],
+          [
+            0.3,
+            [
+              110,
+              45,
+              75
+            ]
+          ],
+          [
+            0.55,
+            [
+              210,
+              115,
+              150
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              190,
+              210
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              245
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "rd-waves",
+      "label": "Waves",
+      "template": "reaction-diffusion",
+      "templateLabel": "Reaction-Diffusion",
+      "series": "Chemical gardens",
+      "blurb": "Gray-Scott chemistry \u2014 coral, spots, mazes and mitosis-like organic growth.",
+      "thumb": "looks/thumbs/rd-waves.jpg",
+      "params": {
+        "feed": 0.014,
+        "kill": 0.045,
+        "v_max": 0.28,
+        "seed_pattern": "random",
+        "n_spots": 8,
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              5,
+              30
+            ]
+          ],
+          [
+            0.3,
+            [
+              0,
+              60,
+              140
+            ]
+          ],
+          [
+            0.55,
+            [
+              0,
+              150,
+              220
+            ]
+          ],
+          [
+            0.75,
+            [
+              80,
+              220,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              200,
+              245,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "dc-blaschke-bloom",
+      "label": "Blaschke Bloom",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-blaschke-bloom.jpg",
+      "params": {
+        "func": "blaschke",
+        "c_re_start": 0.0,
+        "c_im_start": 0.0,
+        "mag_rings": true,
+        "ring_strength": 0.35,
+        "saturation": 0.95,
+        "phase_shift": 0.0
+      }
+    },
+    {
+      "id": "dc-exp-aurora",
+      "label": "Exp Aurora",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-exp-aurora.jpg",
+      "params": {
+        "func": "exp_z",
+        "n_start": 1.0,
+        "ring_strength": 0.55,
+        "saturation": 1.0,
+        "phase_shift": 0.0
+      }
+    },
+    {
+      "id": "dc-joukowski-wing",
+      "label": "Joukowski Wing",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-joukowski-wing.jpg",
+      "params": {
+        "func": "joukowski",
+        "n_start": 1.0,
+        "ring_strength": 0.5,
+        "saturation": 0.95,
+        "phase_shift": 0.0
+      }
+    },
+    {
+      "id": "dc-newton-5",
+      "label": "Newton 5",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-newton-5.jpg",
+      "params": {
+        "func": "newton",
+        "n_start": 5.0,
+        "ring_strength": 0.4,
+        "saturation": 0.95,
+        "phase_shift": 0.2
+      }
+    },
+    {
+      "id": "dc-power-sweep",
+      "label": "Power Sweep",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-power-sweep.jpg",
+      "params": {
+        "func": "z_pow",
+        "n_start": 2.0,
+        "mag_rings": true,
+        "ring_strength": 0.4,
+        "saturation": 0.95,
+        "phase_shift": 0.0
+      }
+    },
+    {
+      "id": "dc-rational-whirl",
+      "label": "Rational Whirl",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-rational-whirl.jpg",
+      "params": {
+        "func": "rational",
+        "p_start": 3.0,
+        "q_start": 2.0,
+        "c_re_start": 0.3,
+        "c_im_start": 0.0,
+        "mag_rings": true,
+        "ring_strength": 0.35,
+        "saturation": 0.92,
+        "phase_shift": 0.12
+      }
+    },
+    {
+      "id": "dc-trig-landscape",
+      "label": "Trig Landscape",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-trig-landscape.jpg",
+      "params": {
+        "func": "trig_cos",
+        "n_start": 2.0,
+        "mag_rings": true,
+        "ring_strength": 0.45,
+        "saturation": 0.92,
+        "phase_shift": 0.15
+      }
+    },
+    {
+      "id": "dc-trig-spiral",
+      "label": "Trig Spiral",
+      "template": "domain-coloring",
+      "templateLabel": "Domain Coloring",
+      "series": "Complex plane",
+      "blurb": "Complex-function phase portraits \u2014 color reveals the math itself.",
+      "thumb": "looks/thumbs/dc-trig-spiral.jpg",
+      "params": {
+        "func": "trig_sin",
+        "n_start": 1.0,
+        "c_re_start": 0.0,
+        "c_im_start": 0.0,
+        "mag_rings": true,
+        "ring_strength": 0.3,
+        "saturation": 0.88,
+        "phase_shift": 0.0
+      }
+    },
+    {
+      "id": "ff-aurora",
+      "label": "Aurora",
+      "template": "flow-field",
+      "templateLabel": "Flow Field",
+      "series": "Field notes",
+      "blurb": "Thousands of particles drifting through a smooth noise field, leaving glowing trails.",
+      "thumb": "looks/thumbs/ff-aurora.jpg",
+      "params": {
+        "seed": 19,
+        "n_particles": 2500,
+        "noise_scale": 120.0,
+        "noise_octaves": 4,
+        "step_size": 1.5,
+        "trail_alpha": 0.01,
+        "fade_alpha": 0.999,
+        "bg_color": [
+          2,
+          4,
+          18
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              150,
+              80
+            ]
+          ],
+          [
+            0.33,
+            [
+              0,
+              220,
+              180
+            ]
+          ],
+          [
+            0.66,
+            [
+              80,
+              60,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              160,
+              255,
+              200
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ff-desert",
+      "label": "Desert",
+      "template": "flow-field",
+      "templateLabel": "Flow Field",
+      "series": "Field notes",
+      "blurb": "Thousands of particles drifting through a smooth noise field, leaving glowing trails.",
+      "thumb": "looks/thumbs/ff-desert.jpg",
+      "params": {
+        "seed": 33,
+        "n_particles": 2000,
+        "noise_scale": 100.0,
+        "noise_octaves": 3,
+        "step_size": 1.6,
+        "trail_alpha": 0.01,
+        "fade_alpha": 0.998,
+        "bg_color": [
+          14,
+          8,
+          4
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              80,
+              40,
+              10
+            ]
+          ],
+          [
+            0.3,
+            [
+              180,
+              120,
+              40
+            ]
+          ],
+          [
+            0.6,
+            [
+              230,
+              190,
+              90
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              180
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ff-electric",
+      "label": "Electric",
+      "template": "flow-field",
+      "templateLabel": "Flow Field",
+      "series": "Field notes",
+      "blurb": "Thousands of particles drifting through a smooth noise field, leaving glowing trails.",
+      "thumb": "looks/thumbs/ff-electric.jpg",
+      "params": {
+        "seed": 7,
+        "n_particles": 3000,
+        "noise_scale": 90.0,
+        "noise_octaves": 3,
+        "step_size": 2.0,
+        "trail_alpha": 0.014,
+        "fade_alpha": 0.997,
+        "bg_color": [
+          4,
+          4,
+          14
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              180,
+              255
+            ]
+          ],
+          [
+            0.33,
+            [
+              100,
+              0,
+              240
+            ]
+          ],
+          [
+            0.66,
+            [
+              240,
+              0,
+              160
+            ]
+          ],
+          [
+            1.0,
+            [
+              0,
+              220,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ff-electric-bright",
+      "label": "Electric Bright",
+      "template": "flow-field",
+      "templateLabel": "Flow Field",
+      "series": "Field notes",
+      "blurb": "Thousands of particles drifting through a smooth noise field, leaving glowing trails.",
+      "thumb": "looks/thumbs/ff-electric-bright.jpg",
+      "params": {
+        "seed": 7,
+        "n_particles": 5000,
+        "noise_scale": 90.0,
+        "noise_octaves": 3,
+        "step_size": 2.0,
+        "trail_alpha": 0.025,
+        "fade_alpha": 0.994,
+        "bg_color": [
+          4,
+          4,
+          14
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              200,
+              255
+            ]
+          ],
+          [
+            0.25,
+            [
+              80,
+              0,
+              255
+            ]
+          ],
+          [
+            0.5,
+            [
+              255,
+              0,
+              180
+            ]
+          ],
+          [
+            0.75,
+            [
+              0,
+              230,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ff-ink",
+      "label": "Ink",
+      "template": "flow-field",
+      "templateLabel": "Flow Field",
+      "series": "Field notes",
+      "blurb": "Thousands of particles drifting through a smooth noise field, leaving glowing trails.",
+      "thumb": "looks/thumbs/ff-ink.jpg",
+      "params": {
+        "seed": 55,
+        "n_particles": 4000,
+        "noise_scale": 70.0,
+        "noise_octaves": 4,
+        "step_size": 1.2,
+        "trail_alpha": 0.008,
+        "fade_alpha": 1.0,
+        "bg_color": [
+          245,
+          240,
+          228
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              20,
+              12,
+              5
+            ]
+          ],
+          [
+            0.5,
+            [
+              50,
+              35,
+              20
+            ]
+          ],
+          [
+            1.0,
+            [
+              80,
+              60,
+              40
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ff-neon-lines",
+      "label": "Neon Lines",
+      "template": "flow-field",
+      "templateLabel": "Flow Field",
+      "series": "Field notes",
+      "blurb": "Thousands of particles drifting through a smooth noise field, leaving glowing trails.",
+      "thumb": "looks/thumbs/ff-neon-lines.jpg",
+      "params": {
+        "seed": 72,
+        "n_particles": 2500,
+        "noise_scale": 55.0,
+        "noise_octaves": 3,
+        "step_size": 3.0,
+        "trail_alpha": 0.04,
+        "fade_alpha": 1.0,
+        "bg_color": [
+          3,
+          3,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              255,
+              255,
+              200
+            ]
+          ],
+          [
+            0.25,
+            [
+              255,
+              200,
+              50
+            ]
+          ],
+          [
+            0.5,
+            [
+              255,
+              80,
+              0
+            ]
+          ],
+          [
+            0.75,
+            [
+              200,
+              0,
+              100
+            ]
+          ],
+          [
+            1.0,
+            [
+              100,
+              0,
+              200
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ff-storm",
+      "label": "Storm",
+      "template": "flow-field",
+      "templateLabel": "Flow Field",
+      "series": "Field notes",
+      "blurb": "Thousands of particles drifting through a smooth noise field, leaving glowing trails.",
+      "thumb": "looks/thumbs/ff-storm.jpg",
+      "params": {
+        "seed": 91,
+        "n_particles": 4000,
+        "noise_scale": 200.0,
+        "noise_octaves": 2,
+        "step_size": 2.5,
+        "trail_alpha": 0.018,
+        "fade_alpha": 0.996,
+        "bg_color": [
+          3,
+          4,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              200,
+              230,
+              255
+            ]
+          ],
+          [
+            0.4,
+            [
+              120,
+              160,
+              240
+            ]
+          ],
+          [
+            0.7,
+            [
+              60,
+              80,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              20,
+              40,
+              120
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "jl-cauliflower",
+      "label": "Cauliflower",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-cauliflower.jpg",
+      "params": {
+        "c_radius": 0.25,
+        "c_theta_start": -0.15,
+        "zoom_start": 2.2,
+        "max_iter": 300,
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              8,
+              1
+            ]
+          ],
+          [
+            0.2,
+            [
+              15,
+              60,
+              8
+            ]
+          ],
+          [
+            0.45,
+            [
+              50,
+              180,
+              30
+            ]
+          ],
+          [
+            0.65,
+            [
+              140,
+              240,
+              100
+            ]
+          ],
+          [
+            0.82,
+            [
+              220,
+              255,
+              180
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "jl-cauliflower-zoom",
+      "label": "Cauliflower Zoom",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-cauliflower-zoom.jpg",
+      "params": {
+        "c_radius": 0.25,
+        "c_theta_start": -0.05,
+        "view_cx": 0.42,
+        "view_cy": 0.0,
+        "zoom_start": 0.8,
+        "max_iter": 400,
+        "cycle_len": 16.0,
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              6,
+              1
+            ]
+          ],
+          [
+            0.15,
+            [
+              8,
+              40,
+              5
+            ]
+          ],
+          [
+            0.35,
+            [
+              25,
+              140,
+              20
+            ]
+          ],
+          [
+            0.6,
+            [
+              80,
+              220,
+              70
+            ]
+          ],
+          [
+            0.82,
+            [
+              180,
+              255,
+              150
+            ]
+          ],
+          [
+            0.95,
+            [
+              230,
+              255,
+              210
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "jl-classic",
+      "label": "Classic",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-classic.jpg",
+      "params": {
+        "c_radius": 0.7885,
+        "c_theta_start": 0.0,
+        "zoom_start": 1.5,
+        "max_iter": 256,
+        "cycle_len": 48.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.12,
+            [
+              20,
+              0,
+              80
+            ]
+          ],
+          [
+            0.28,
+            [
+              0,
+              80,
+              200
+            ]
+          ],
+          [
+            0.45,
+            [
+              0,
+              200,
+              220
+            ]
+          ],
+          [
+            0.6,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              200,
+              60
+            ]
+          ],
+          [
+            0.88,
+            [
+              255,
+              80,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "jl-dendrite",
+      "label": "Dendrite",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-dendrite.jpg",
+      "params": {
+        "c_radius": 0.7885,
+        "c_theta_start": 1.5708,
+        "view_cx": 0.0,
+        "view_cy": 0.0,
+        "zoom_start": 1.5,
+        "max_iter": 300,
+        "cycle_len": 20.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              5
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              15,
+              60
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              80,
+              180
+            ]
+          ],
+          [
+            0.42,
+            [
+              0,
+              200,
+              255
+            ]
+          ],
+          [
+            0.58,
+            [
+              100,
+              255,
+              200
+            ]
+          ],
+          [
+            0.72,
+            [
+              255,
+              240,
+              80
+            ]
+          ],
+          [
+            0.85,
+            [
+              255,
+              100,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          5
+        ]
+      }
+    },
+    {
+      "id": "jl-magma",
+      "label": "Magma",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-magma.jpg",
+      "params": {
+        "c_radius": 0.82,
+        "c_theta_start": 1.0,
+        "zoom_start": 1.45,
+        "max_iter": 280,
+        "cycle_len": 22.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              30,
+              0,
+              0
+            ]
+          ],
+          [
+            0.25,
+            [
+              120,
+              0,
+              20
+            ]
+          ],
+          [
+            0.42,
+            [
+              220,
+              40,
+              0
+            ]
+          ],
+          [
+            0.58,
+            [
+              255,
+              140,
+              0
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              220,
+              60
+            ]
+          ],
+          [
+            0.88,
+            [
+              255,
+              255,
+              180
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "jl-neon",
+      "label": "Neon",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-neon.jpg",
+      "params": {
+        "c_radius": 0.755,
+        "c_theta_start": 0.4,
+        "zoom_start": 1.4,
+        "max_iter": 320,
+        "cycle_len": 18.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              20,
+              80
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              100,
+              200
+            ]
+          ],
+          [
+            0.42,
+            [
+              0,
+              220,
+              255
+            ]
+          ],
+          [
+            0.58,
+            [
+              100,
+              255,
+              200
+            ]
+          ],
+          [
+            0.72,
+            [
+              200,
+              255,
+              80
+            ]
+          ],
+          [
+            0.85,
+            [
+              255,
+              160,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          5
+        ]
+      }
+    },
+    {
+      "id": "jl-rabbit",
+      "label": "Rabbit",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-rabbit.jpg",
+      "params": {
+        "c_radius": 0.7551,
+        "c_theta_start": 1.7344,
+        "view_cx": 0.0,
+        "view_cy": 0.0,
+        "zoom_start": 1.5,
+        "max_iter": 256,
+        "cycle_len": 16.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.08,
+            [
+              10,
+              0,
+              60
+            ]
+          ],
+          [
+            0.2,
+            [
+              0,
+              30,
+              180
+            ]
+          ],
+          [
+            0.38,
+            [
+              0,
+              140,
+              255
+            ]
+          ],
+          [
+            0.55,
+            [
+              80,
+              220,
+              255
+            ]
+          ],
+          [
+            0.72,
+            [
+              255,
+              200,
+              40
+            ]
+          ],
+          [
+            0.86,
+            [
+              255,
+              60,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "jl-san-marco",
+      "label": "San Marco",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-san-marco.jpg",
+      "params": {
+        "c_radius": 0.75,
+        "c_theta_start": 2.94159,
+        "zoom_start": 2.0,
+        "max_iter": 200,
+        "palette": [
+          [
+            0.0,
+            [
+              10,
+              0,
+              20
+            ]
+          ],
+          [
+            0.2,
+            [
+              80,
+              0,
+              120
+            ]
+          ],
+          [
+            0.45,
+            [
+              200,
+              60,
+              180
+            ]
+          ],
+          [
+            0.65,
+            [
+              255,
+              140,
+              200
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              220,
+              240
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "jl-siegel",
+      "label": "Siegel",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-siegel.jpg",
+      "params": {
+        "c_radius": 0.8,
+        "c_theta_start": 1.5708,
+        "view_cx": 0.0,
+        "view_cy": 0.0,
+        "zoom_start": 1.5,
+        "max_iter": 256,
+        "cycle_len": 20.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.08,
+            [
+              20,
+              0,
+              40
+            ]
+          ],
+          [
+            0.2,
+            [
+              100,
+              0,
+              160
+            ]
+          ],
+          [
+            0.38,
+            [
+              220,
+              40,
+              255
+            ]
+          ],
+          [
+            0.55,
+            [
+              255,
+              120,
+              255
+            ]
+          ],
+          [
+            0.72,
+            [
+              255,
+              220,
+              255
+            ]
+          ],
+          [
+            0.88,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          5,
+          0,
+          10
+        ]
+      }
+    },
+    {
+      "id": "jl-spiral-zoom",
+      "label": "Spiral Zoom",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-spiral-zoom.jpg",
+      "params": {
+        "c_radius": 0.7211,
+        "c_theta_start": 2.159,
+        "view_cx": 0.0,
+        "view_cy": 0.55,
+        "zoom_start": 0.22,
+        "max_iter": 280,
+        "cycle_len": 10.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              15,
+              50
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              80,
+              180
+            ]
+          ],
+          [
+            0.42,
+            [
+              0,
+              200,
+              240
+            ]
+          ],
+          [
+            0.58,
+            [
+              160,
+              240,
+              255
+            ]
+          ],
+          [
+            0.72,
+            [
+              255,
+              210,
+              60
+            ]
+          ],
+          [
+            0.86,
+            [
+              255,
+              60,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "jl-sweep-purple",
+      "label": "Sweep Purple",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-sweep-purple.jpg",
+      "params": {
+        "c_radius": 0.82,
+        "c_theta_start": 3.14159,
+        "zoom_start": 1.5,
+        "max_iter": 256,
+        "cycle_len": 24.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.12,
+            [
+              15,
+              0,
+              60
+            ]
+          ],
+          [
+            0.28,
+            [
+              80,
+              0,
+              160
+            ]
+          ],
+          [
+            0.45,
+            [
+              180,
+              40,
+              255
+            ]
+          ],
+          [
+            0.62,
+            [
+              255,
+              120,
+              255
+            ]
+          ],
+          [
+            0.78,
+            [
+              255,
+              220,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "jl-zoom",
+      "label": "Zoom",
+      "template": "julia",
+      "templateLabel": "Julia Set",
+      "series": "Fractals",
+      "blurb": "Escape-time fractal \u2014 c traces a circle, producing an endless family of shapes.",
+      "thumb": "looks/thumbs/jl-zoom.jpg",
+      "params": {
+        "c_radius": 0.7211,
+        "c_theta_start": 2.159,
+        "view_cx": 0.0,
+        "view_cy": 0.55,
+        "zoom_start": 1.4,
+        "max_iter": 400,
+        "cycle_len": 14.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              20,
+              0,
+              60
+            ]
+          ],
+          [
+            0.22,
+            [
+              0,
+              60,
+              180
+            ]
+          ],
+          [
+            0.38,
+            [
+              0,
+              180,
+              220
+            ]
+          ],
+          [
+            0.55,
+            [
+              180,
+              240,
+              255
+            ]
+          ],
+          [
+            0.7,
+            [
+              255,
+              200,
+              50
+            ]
+          ],
+          [
+            0.85,
+            [
+              255,
+              60,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "ly-markus-lyapunov",
+      "label": "Markus Lyapunov",
+      "template": "lyapunov",
+      "templateLabel": "Lyapunov Fractal",
+      "series": "Fractals",
+      "blurb": "Parameter-space map of order vs. chaos in the logistic map \u2014 stable blues, chaotic golds.",
+      "thumb": "looks/thumbs/ly-markus-lyapunov.jpg",
+      "params": {
+        "a_min": 3.4,
+        "a_max": 4.0,
+        "b_min": 2.5,
+        "b_max": 3.5,
+        "sequence": "AABB",
+        "warmup_iters": 150,
+        "n_iters": 300,
+        "stable_peak": -5.0,
+        "chaos_peak": 1.5,
+        "palette_stable": [
+          [
+            0.0,
+            [
+              4,
+              8,
+              20
+            ]
+          ],
+          [
+            0.3,
+            [
+              10,
+              60,
+              80
+            ]
+          ],
+          [
+            0.6,
+            [
+              20,
+              160,
+              130
+            ]
+          ],
+          [
+            1.0,
+            [
+              100,
+              240,
+              200
+            ]
+          ]
+        ],
+        "palette_chaos": [
+          [
+            0.0,
+            [
+              4,
+              8,
+              20
+            ]
+          ],
+          [
+            0.25,
+            [
+              80,
+              15,
+              60
+            ]
+          ],
+          [
+            0.55,
+            [
+              200,
+              50,
+              150
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              160,
+              220
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ly-zircon-zity",
+      "label": "Zircon Zity",
+      "template": "lyapunov",
+      "templateLabel": "Lyapunov Fractal",
+      "series": "Fractals",
+      "blurb": "Parameter-space map of order vs. chaos in the logistic map \u2014 stable blues, chaotic golds.",
+      "thumb": "looks/thumbs/ly-zircon-zity.jpg",
+      "params": {
+        "a_min": 2.5,
+        "a_max": 4.0,
+        "b_min": 2.5,
+        "b_max": 4.0,
+        "sequence": "AB",
+        "warmup_iters": 150,
+        "n_iters": 300,
+        "stable_peak": -4.0,
+        "chaos_peak": 2.0,
+        "palette_stable": [
+          [
+            0.0,
+            [
+              5,
+              5,
+              20
+            ]
+          ],
+          [
+            0.25,
+            [
+              10,
+              35,
+              110
+            ]
+          ],
+          [
+            0.55,
+            [
+              15,
+              90,
+              200
+            ]
+          ],
+          [
+            0.82,
+            [
+              60,
+              170,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              160,
+              230,
+              255
+            ]
+          ]
+        ],
+        "palette_chaos": [
+          [
+            0.0,
+            [
+              5,
+              5,
+              20
+            ]
+          ],
+          [
+            0.2,
+            [
+              70,
+              20,
+              5
+            ]
+          ],
+          [
+            0.48,
+            [
+              210,
+              80,
+              10
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              165,
+              20
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              100
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mb-burning-ship",
+      "label": "Burning Ship",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-burning-ship.jpg",
+      "params": {
+        "fractal": "burning_ship",
+        "mode": "zoom",
+        "zoom_cx": -0.45,
+        "zoom_cy": -0.6,
+        "zoom_start": 1.8,
+        "max_iter": 500,
+        "cycle_len": 28.0,
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              2,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              40,
+              8,
+              0
+            ]
+          ],
+          [
+            0.25,
+            [
+              150,
+              40,
+              0
+            ]
+          ],
+          [
+            0.45,
+            [
+              255,
+              90,
+              0
+            ]
+          ],
+          [
+            0.65,
+            [
+              255,
+              180,
+              40
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              240,
+              160
+            ]
+          ],
+          [
+            0.93,
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              200,
+              220,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mb-crystal-basin",
+      "label": "Crystal Basin",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-crystal-basin.jpg",
+      "params": {
+        "mode": "zoom",
+        "zoom_cx": -0.235125,
+        "zoom_cy": 0.827215,
+        "zoom_start": 0.3,
+        "max_iter": 700,
+        "cycle_len": 20.0,
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              0,
+              10
+            ]
+          ],
+          [
+            0.12,
+            [
+              40,
+              0,
+              100
+            ]
+          ],
+          [
+            0.28,
+            [
+              120,
+              40,
+              200
+            ]
+          ],
+          [
+            0.45,
+            [
+              200,
+              100,
+              255
+            ]
+          ],
+          [
+            0.65,
+            [
+              255,
+              180,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              240,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mb-deep-purple",
+      "label": "Deep Purple",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-deep-purple.jpg",
+      "params": {
+        "mode": "zoom",
+        "zoom_cx": -1.25066,
+        "zoom_cy": 0.02012,
+        "zoom_start": 0.3,
+        "max_iter": 512,
+        "cycle_len": 22.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              10,
+              0,
+              40
+            ]
+          ],
+          [
+            0.22,
+            [
+              60,
+              0,
+              140
+            ]
+          ],
+          [
+            0.38,
+            [
+              160,
+              40,
+              255
+            ]
+          ],
+          [
+            0.55,
+            [
+              220,
+              120,
+              255
+            ]
+          ],
+          [
+            0.7,
+            [
+              255,
+              200,
+              255
+            ]
+          ],
+          [
+            0.84,
+            [
+              255,
+              255,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "mb-elephant",
+      "label": "Elephant",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-elephant.jpg",
+      "params": {
+        "mode": "zoom",
+        "zoom_cx": 0.3245,
+        "zoom_cy": 0.0483,
+        "zoom_start": 0.4,
+        "max_iter": 512,
+        "cycle_len": 20.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              20,
+              60
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              100,
+              200
+            ]
+          ],
+          [
+            0.42,
+            [
+              0,
+              220,
+              180
+            ]
+          ],
+          [
+            0.58,
+            [
+              120,
+              255,
+              160
+            ]
+          ],
+          [
+            0.72,
+            [
+              255,
+              220,
+              40
+            ]
+          ],
+          [
+            0.86,
+            [
+              255,
+              60,
+              20
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "mb-hue-spin",
+      "label": "Hue Spin",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-hue-spin.jpg",
+      "params": {
+        "mode": "hue",
+        "zoom_cx": -0.5,
+        "zoom_cy": 0.0,
+        "zoom_start": 1.35,
+        "max_iter": 256,
+        "cycle_len": 24.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.08,
+            [
+              10,
+              0,
+              40
+            ]
+          ],
+          [
+            0.18,
+            [
+              0,
+              40,
+              160
+            ]
+          ],
+          [
+            0.32,
+            [
+              0,
+              160,
+              220
+            ]
+          ],
+          [
+            0.48,
+            [
+              100,
+              240,
+              255
+            ]
+          ],
+          [
+            0.62,
+            [
+              255,
+              220,
+              40
+            ]
+          ],
+          [
+            0.76,
+            [
+              255,
+              60,
+              0
+            ]
+          ],
+          [
+            0.88,
+            [
+              200,
+              0,
+              100
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "mb-lightning",
+      "label": "Lightning",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-lightning.jpg",
+      "params": {
+        "mode": "zoom",
+        "zoom_cx": -0.16,
+        "zoom_cy": 1.0397,
+        "zoom_start": 0.5,
+        "max_iter": 512,
+        "cycle_len": 18.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              20,
+              80
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              100,
+              220
+            ]
+          ],
+          [
+            0.42,
+            [
+              60,
+              200,
+              255
+            ]
+          ],
+          [
+            0.58,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            0.72,
+            [
+              255,
+              220,
+              80
+            ]
+          ],
+          [
+            0.86,
+            [
+              255,
+              80,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "mb-seahorse",
+      "label": "Seahorse",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-seahorse.jpg",
+      "params": {
+        "mode": "zoom",
+        "zoom_cx": -0.7269,
+        "zoom_cy": 0.1889,
+        "zoom_start": 1.5,
+        "max_iter": 512,
+        "cycle_len": 28.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.08,
+            [
+              0,
+              10,
+              50
+            ]
+          ],
+          [
+            0.2,
+            [
+              0,
+              60,
+              180
+            ]
+          ],
+          [
+            0.38,
+            [
+              0,
+              180,
+              220
+            ]
+          ],
+          [
+            0.55,
+            [
+              180,
+              240,
+              255
+            ]
+          ],
+          [
+            0.7,
+            [
+              255,
+              200,
+              60
+            ]
+          ],
+          [
+            0.84,
+            [
+              255,
+              40,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "interior_color": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "mb-tricorn",
+      "label": "Tricorn",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-tricorn.jpg",
+      "params": {
+        "fractal": "tricorn",
+        "mode": "zoom",
+        "zoom_cx": 0.0,
+        "zoom_cy": 0.0,
+        "zoom_start": 2.0,
+        "max_iter": 400,
+        "cycle_len": 24.0,
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              5,
+              12
+            ]
+          ],
+          [
+            0.12,
+            [
+              10,
+              30,
+              100
+            ]
+          ],
+          [
+            0.28,
+            [
+              20,
+              100,
+              220
+            ]
+          ],
+          [
+            0.45,
+            [
+              80,
+              200,
+              255
+            ]
+          ],
+          [
+            0.65,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              200,
+              180
+            ]
+          ],
+          [
+            0.93,
+            [
+              255,
+              100,
+              60
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mb-vortex",
+      "label": "Vortex",
+      "template": "mandelbrot",
+      "templateLabel": "Mandelbrot",
+      "series": "Fractals",
+      "blurb": "The classic escape-time fractal, with Burning Ship and Tricorn variants.",
+      "thumb": "looks/thumbs/mb-vortex.jpg",
+      "params": {
+        "mode": "zoom",
+        "zoom_cx": -0.7453,
+        "zoom_cy": 0.1127,
+        "zoom_start": 0.15,
+        "max_iter": 600,
+        "cycle_len": 24.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              5
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              10,
+              60
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              80,
+              200
+            ]
+          ],
+          [
+            0.45,
+            [
+              0,
+              200,
+              240
+            ]
+          ],
+          [
+            0.65,
+            [
+              180,
+              240,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              200,
+              40
+            ]
+          ],
+          [
+            0.92,
+            [
+              255,
+              60,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nw-hexa-crystal",
+      "label": "Hexa Crystal",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-hexa-crystal.jpg",
+      "params": {
+        "n": 6,
+        "max_iter": 90,
+        "zoom_start": 1.55,
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              5,
+              20
+            ]
+          ],
+          [
+            0.07,
+            [
+              0,
+              80,
+              180
+            ]
+          ],
+          [
+            0.14,
+            [
+              120,
+              200,
+              255
+            ]
+          ],
+          [
+            0.165,
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          [
+            0.167,
+            [
+              5,
+              20,
+              5
+            ]
+          ],
+          [
+            0.24,
+            [
+              0,
+              140,
+              40
+            ]
+          ],
+          [
+            0.31,
+            [
+              120,
+              255,
+              140
+            ]
+          ],
+          [
+            0.33,
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          [
+            0.334,
+            [
+              20,
+              5,
+              0
+            ]
+          ],
+          [
+            0.41,
+            [
+              160,
+              30,
+              0
+            ]
+          ],
+          [
+            0.48,
+            [
+              255,
+              130,
+              20
+            ]
+          ],
+          [
+            0.496,
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          [
+            0.5,
+            [
+              20,
+              0,
+              20
+            ]
+          ],
+          [
+            0.57,
+            [
+              130,
+              0,
+              180
+            ]
+          ],
+          [
+            0.64,
+            [
+              240,
+              80,
+              255
+            ]
+          ],
+          [
+            0.66,
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          [
+            0.667,
+            [
+              5,
+              15,
+              15
+            ]
+          ],
+          [
+            0.74,
+            [
+              0,
+              120,
+              120
+            ]
+          ],
+          [
+            0.81,
+            [
+              80,
+              240,
+              240
+            ]
+          ],
+          [
+            0.826,
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          [
+            0.834,
+            [
+              15,
+              10,
+              0
+            ]
+          ],
+          [
+            0.9,
+            [
+              160,
+              120,
+              0
+            ]
+          ],
+          [
+            0.96,
+            [
+              255,
+              220,
+              60
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nw-octic-fire",
+      "label": "Octic Fire",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-octic-fire.jpg",
+      "params": {
+        "n": 8,
+        "zoom_start": 2.2,
+        "palette": [
+          [
+            0.0,
+            [
+              8,
+              2,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              60,
+              10,
+              0
+            ]
+          ],
+          [
+            0.3,
+            [
+              180,
+              40,
+              0
+            ]
+          ],
+          [
+            0.45,
+            [
+              255,
+              100,
+              10
+            ]
+          ],
+          [
+            0.6,
+            [
+              255,
+              200,
+              30
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              250,
+              120
+            ]
+          ],
+          [
+            0.88,
+            [
+              255,
+              255,
+              220
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "max_iter": 60
+      }
+    },
+    {
+      "id": "nw-penta-rainbow",
+      "label": "Penta Rainbow",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-penta-rainbow.jpg",
+      "params": {
+        "n": 5,
+        "max_iter": 100,
+        "zoom_start": 1.55,
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              0,
+              15
+            ]
+          ],
+          [
+            0.06,
+            [
+              80,
+              0,
+              180
+            ]
+          ],
+          [
+            0.16,
+            [
+              0,
+              50,
+              255
+            ]
+          ],
+          [
+            0.19,
+            [
+              200,
+              230,
+              255
+            ]
+          ],
+          [
+            0.2,
+            [
+              0,
+              10,
+              5
+            ]
+          ],
+          [
+            0.27,
+            [
+              0,
+              100,
+              30
+            ]
+          ],
+          [
+            0.37,
+            [
+              40,
+              220,
+              80
+            ]
+          ],
+          [
+            0.39,
+            [
+              200,
+              255,
+              220
+            ]
+          ],
+          [
+            0.4,
+            [
+              20,
+              5,
+              0
+            ]
+          ],
+          [
+            0.48,
+            [
+              180,
+              40,
+              0
+            ]
+          ],
+          [
+            0.58,
+            [
+              255,
+              130,
+              20
+            ]
+          ],
+          [
+            0.59,
+            [
+              255,
+              240,
+              180
+            ]
+          ],
+          [
+            0.6,
+            [
+              20,
+              0,
+              10
+            ]
+          ],
+          [
+            0.68,
+            [
+              180,
+              0,
+              60
+            ]
+          ],
+          [
+            0.78,
+            [
+              255,
+              60,
+              140
+            ]
+          ],
+          [
+            0.79,
+            [
+              255,
+              200,
+              230
+            ]
+          ],
+          [
+            0.8,
+            [
+              5,
+              5,
+              0
+            ]
+          ],
+          [
+            0.88,
+            [
+              120,
+              100,
+              0
+            ]
+          ],
+          [
+            0.96,
+            [
+              230,
+              220,
+              40
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nw-quad-gold",
+      "label": "Quad Gold",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-quad-gold.jpg",
+      "params": {
+        "n": 4,
+        "max_iter": 90,
+        "zoom_start": 1.5,
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              2,
+              0
+            ]
+          ],
+          [
+            0.08,
+            [
+              80,
+              20,
+              0
+            ]
+          ],
+          [
+            0.18,
+            [
+              220,
+              100,
+              0
+            ]
+          ],
+          [
+            0.24,
+            [
+              255,
+              230,
+              180
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              5,
+              20
+            ]
+          ],
+          [
+            0.34,
+            [
+              0,
+              60,
+              160
+            ]
+          ],
+          [
+            0.44,
+            [
+              40,
+              180,
+              255
+            ]
+          ],
+          [
+            0.49,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            0.5,
+            [
+              20,
+              0,
+              20
+            ]
+          ],
+          [
+            0.6,
+            [
+              140,
+              0,
+              180
+            ]
+          ],
+          [
+            0.7,
+            [
+              240,
+              60,
+              255
+            ]
+          ],
+          [
+            0.74,
+            [
+              255,
+              210,
+              255
+            ]
+          ],
+          [
+            0.75,
+            [
+              0,
+              20,
+              5
+            ]
+          ],
+          [
+            0.84,
+            [
+              0,
+              140,
+              40
+            ]
+          ],
+          [
+            0.92,
+            [
+              60,
+              240,
+              100
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nw-quintic-ice",
+      "label": "Quintic Ice",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-quintic-ice.jpg",
+      "params": {
+        "n": 5,
+        "zoom_start": 2.0,
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              5,
+              15
+            ]
+          ],
+          [
+            0.15,
+            [
+              8,
+              30,
+              100
+            ]
+          ],
+          [
+            0.3,
+            [
+              25,
+              100,
+              200
+            ]
+          ],
+          [
+            0.5,
+            [
+              80,
+              180,
+              255
+            ]
+          ],
+          [
+            0.7,
+            [
+              180,
+              230,
+              255
+            ]
+          ],
+          [
+            0.85,
+            [
+              230,
+              245,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "max_iter": 60
+      }
+    },
+    {
+      "id": "nw-septic-rainbow",
+      "label": "Septic Rainbow",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-septic-rainbow.jpg",
+      "params": {
+        "n": 7,
+        "max_iter": 60,
+        "theta_start": 0.0,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.1,
+            [
+              80,
+              0,
+              20
+            ]
+          ],
+          [
+            0.24,
+            [
+              200,
+              20,
+              60
+            ]
+          ],
+          [
+            0.38,
+            [
+              255,
+              100,
+              0
+            ]
+          ],
+          [
+            0.52,
+            [
+              255,
+              220,
+              0
+            ]
+          ],
+          [
+            0.66,
+            [
+              60,
+              220,
+              60
+            ]
+          ],
+          [
+            0.8,
+            [
+              0,
+              180,
+              255
+            ]
+          ],
+          [
+            0.9,
+            [
+              100,
+              60,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nw-tri-spin",
+      "label": "Tri Spin",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-tri-spin.jpg",
+      "params": {
+        "n": 3,
+        "max_iter": 80,
+        "zoom_start": 1.6,
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              0,
+              20
+            ]
+          ],
+          [
+            0.08,
+            [
+              40,
+              0,
+              140
+            ]
+          ],
+          [
+            0.18,
+            [
+              0,
+              40,
+              240
+            ]
+          ],
+          [
+            0.27,
+            [
+              200,
+              220,
+              255
+            ]
+          ],
+          [
+            0.33,
+            [
+              0,
+              20,
+              5
+            ]
+          ],
+          [
+            0.42,
+            [
+              0,
+              120,
+              20
+            ]
+          ],
+          [
+            0.52,
+            [
+              40,
+              230,
+              80
+            ]
+          ],
+          [
+            0.62,
+            [
+              200,
+              255,
+              220
+            ]
+          ],
+          [
+            0.66,
+            [
+              30,
+              5,
+              0
+            ]
+          ],
+          [
+            0.76,
+            [
+              180,
+              30,
+              0
+            ]
+          ],
+          [
+            0.88,
+            [
+              255,
+              160,
+              20
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nw-tri-vivid",
+      "label": "Tri Vivid",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-tri-vivid.jpg",
+      "params": {
+        "n": 3,
+        "max_iter": 80,
+        "zoom_start": 1.6,
+        "palette": [
+          [
+            0.0,
+            [
+              30,
+              20,
+              120
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              100,
+              230
+            ]
+          ],
+          [
+            0.2,
+            [
+              100,
+              200,
+              255
+            ]
+          ],
+          [
+            0.3,
+            [
+              220,
+              245,
+              255
+            ]
+          ],
+          [
+            0.33,
+            [
+              10,
+              60,
+              10
+            ]
+          ],
+          [
+            0.44,
+            [
+              20,
+              180,
+              40
+            ]
+          ],
+          [
+            0.54,
+            [
+              120,
+              240,
+              120
+            ]
+          ],
+          [
+            0.62,
+            [
+              220,
+              255,
+              220
+            ]
+          ],
+          [
+            0.66,
+            [
+              100,
+              15,
+              5
+            ]
+          ],
+          [
+            0.78,
+            [
+              240,
+              60,
+              0
+            ]
+          ],
+          [
+            0.9,
+            [
+              255,
+              200,
+              60
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "nw-tri-zoom",
+      "label": "Tri Zoom",
+      "template": "newton",
+      "templateLabel": "Newton Fractal",
+      "series": "Fractals",
+      "blurb": "Root-finding basins for z\u207f \u2212 1 \u2014 each root gets its own color band.",
+      "thumb": "looks/thumbs/nw-tri-zoom.jpg",
+      "params": {
+        "n": 3,
+        "max_iter": 120,
+        "view_cx": 0.0,
+        "view_cy": 0.0,
+        "zoom_start": 0.5,
+        "palette": [
+          [
+            0.0,
+            [
+              30,
+              20,
+              120
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              100,
+              230
+            ]
+          ],
+          [
+            0.2,
+            [
+              100,
+              200,
+              255
+            ]
+          ],
+          [
+            0.3,
+            [
+              220,
+              245,
+              255
+            ]
+          ],
+          [
+            0.33,
+            [
+              10,
+              60,
+              10
+            ]
+          ],
+          [
+            0.44,
+            [
+              20,
+              180,
+              40
+            ]
+          ],
+          [
+            0.54,
+            [
+              120,
+              240,
+              120
+            ]
+          ],
+          [
+            0.62,
+            [
+              220,
+              255,
+              220
+            ]
+          ],
+          [
+            0.66,
+            [
+              100,
+              15,
+              5
+            ]
+          ],
+          [
+            0.78,
+            [
+              240,
+              60,
+              0
+            ]
+          ],
+          [
+            0.9,
+            [
+              255,
+              200,
+              60
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ch-fire-resonance",
+      "label": "Fire Resonance",
+      "template": "chladni",
+      "templateLabel": "Chladni Figures",
+      "series": "Sacred geometry",
+      "blurb": "Nodal-line mandalas from vibrating-plate resonance modes.",
+      "thumb": "looks/thumbs/ch-fire-resonance.jpg",
+      "params": {
+        "m_start": 3.0,
+        "n_start": 5.0,
+        "m_end": 8.0,
+        "n_end": 11.0,
+        "line_width": 0.06,
+        "inner_glow": true,
+        "bg_color": [
+          6,
+          1,
+          0
+        ],
+        "line_color": [
+          [
+            0.0,
+            [
+              6,
+              1,
+              0
+            ]
+          ],
+          [
+            0.2,
+            [
+              80,
+              15,
+              0
+            ]
+          ],
+          [
+            0.48,
+            [
+              220,
+              70,
+              10
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              180,
+              30
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              160
+            ]
+          ]
+        ],
+        "pos_tint": [
+          40,
+          15,
+          0
+        ],
+        "neg_tint": [
+          20,
+          5,
+          0
+        ],
+        "tint_strength": 0.05
+      }
+    },
+    {
+      "id": "ch-golden-ratio",
+      "label": "Golden Ratio",
+      "template": "chladni",
+      "templateLabel": "Chladni Figures",
+      "series": "Sacred geometry",
+      "blurb": "Nodal-line mandalas from vibrating-plate resonance modes.",
+      "thumb": "looks/thumbs/ch-golden-ratio.jpg",
+      "params": {
+        "m_start": 3.0,
+        "n_start": 5.0,
+        "m_end": 8.0,
+        "n_end": 13.0,
+        "line_width": 0.065,
+        "inner_glow": true,
+        "bg_color": [
+          5,
+          3,
+          0
+        ],
+        "line_color": [
+          [
+            0.0,
+            [
+              5,
+              3,
+              0
+            ]
+          ],
+          [
+            0.22,
+            [
+              60,
+              30,
+              0
+            ]
+          ],
+          [
+            0.5,
+            [
+              180,
+              120,
+              10
+            ]
+          ],
+          [
+            0.75,
+            [
+              240,
+              200,
+              40
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              245,
+              160
+            ]
+          ]
+        ],
+        "pos_tint": [
+          35,
+          20,
+          0
+        ],
+        "neg_tint": [
+          15,
+          8,
+          0
+        ],
+        "tint_strength": 0.07
+      }
+    },
+    {
+      "id": "ch-neon-grid",
+      "label": "Neon Grid",
+      "template": "chladni",
+      "templateLabel": "Chladni Figures",
+      "series": "Sacred geometry",
+      "blurb": "Nodal-line mandalas from vibrating-plate resonance modes.",
+      "thumb": "looks/thumbs/ch-neon-grid.jpg",
+      "params": {
+        "m_start": 1.0,
+        "n_start": 4.0,
+        "m_end": 5.0,
+        "n_end": 12.0,
+        "line_width": 0.05,
+        "inner_glow": true,
+        "bg_color": [
+          2,
+          0,
+          6
+        ],
+        "line_color": [
+          [
+            0.0,
+            [
+              2,
+              0,
+              6
+            ]
+          ],
+          [
+            0.2,
+            [
+              40,
+              0,
+              120
+            ]
+          ],
+          [
+            0.5,
+            [
+              160,
+              0,
+              255
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              60,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              200,
+              255
+            ]
+          ]
+        ],
+        "pos_tint": [
+          20,
+          0,
+          40
+        ],
+        "neg_tint": [
+          10,
+          0,
+          30
+        ],
+        "tint_strength": 0.05
+      }
+    },
+    {
+      "id": "ch-teal-symphony",
+      "label": "Teal Symphony",
+      "template": "chladni",
+      "templateLabel": "Chladni Figures",
+      "series": "Sacred geometry",
+      "blurb": "Nodal-line mandalas from vibrating-plate resonance modes.",
+      "thumb": "looks/thumbs/ch-teal-symphony.jpg",
+      "params": {
+        "m_start": 1.0,
+        "n_start": 2.0,
+        "m_end": 6.0,
+        "n_end": 9.0,
+        "line_width": 0.07,
+        "inner_glow": true,
+        "bg_color": [
+          0,
+          4,
+          8
+        ],
+        "line_color": [
+          [
+            0.0,
+            [
+              0,
+              4,
+              8
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              40,
+              80
+            ]
+          ],
+          [
+            0.55,
+            [
+              0,
+              140,
+              180
+            ]
+          ],
+          [
+            0.8,
+            [
+              60,
+              220,
+              240
+            ]
+          ],
+          [
+            1.0,
+            [
+              200,
+              255,
+              255
+            ]
+          ]
+        ],
+        "pos_tint": [
+          0,
+          30,
+          40
+        ],
+        "neg_tint": [
+          0,
+          15,
+          30
+        ],
+        "tint_strength": 0.06
+      }
+    },
+    {
+      "id": "ch-violet-mandala",
+      "label": "Violet Mandala",
+      "template": "chladni",
+      "templateLabel": "Chladni Figures",
+      "series": "Sacred geometry",
+      "blurb": "Nodal-line mandalas from vibrating-plate resonance modes.",
+      "thumb": "looks/thumbs/ch-violet-mandala.jpg",
+      "params": {
+        "m_start": 2.0,
+        "n_start": 3.0,
+        "m_end": 7.0,
+        "n_end": 8.0,
+        "line_width": 0.08,
+        "inner_glow": true,
+        "bg_color": [
+          2,
+          2,
+          10
+        ],
+        "line_color": [
+          [
+            0.0,
+            [
+              2,
+              2,
+              10
+            ]
+          ],
+          [
+            0.25,
+            [
+              20,
+              10,
+              80
+            ]
+          ],
+          [
+            0.55,
+            [
+              80,
+              40,
+              200
+            ]
+          ],
+          [
+            0.8,
+            [
+              180,
+              100,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              220,
+              255
+            ]
+          ]
+        ],
+        "pos_tint": [
+          30,
+          10,
+          50
+        ],
+        "neg_tint": [
+          10,
+          25,
+          40
+        ],
+        "tint_strength": 0.06
+      }
+    },
+    {
+      "id": "hg-cosmic-silk",
+      "label": "Cosmic Silk",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": "looks/thumbs/hg-cosmic-silk.jpg",
+      "params": {
+        "t_max": 80.0,
+        "freq_x1": 3.0,
+        "freq_x2": 2.0,
+        "freq_y1": 2.0,
+        "freq_y2": 3.0,
+        "damping": 0.002,
+        "amp_x1": 1.0,
+        "amp_x2": 0.6,
+        "amp_y1": 1.0,
+        "amp_y2": 0.6,
+        "bg_color": [
+          2,
+          3,
+          10
+        ],
+        "line_color": [
+          0,
+          200,
+          255
+        ],
+        "glow_color": [
+          200,
+          100,
+          255
+        ],
+        "intensity": 0.006,
+        "glow_boost": 3.0
+      }
+    },
+    {
+      "id": "hg-dense-violet",
+      "label": "Dense Violet",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": "looks/thumbs/hg-dense-violet.jpg",
+      "params": {
+        "t_max": 40.0,
+        "freq_x1": 3.0,
+        "freq_x2": 4.0,
+        "freq_y1": 4.0,
+        "freq_y2": 3.0,
+        "damping": 0.001,
+        "amp_x1": 1.0,
+        "amp_x2": 0.6,
+        "amp_y1": 1.0,
+        "amp_y2": 0.6,
+        "bg_color": [
+          4,
+          2,
+          8
+        ],
+        "line_color": [
+          160,
+          40,
+          240
+        ],
+        "glow_color": [
+          220,
+          100,
+          255
+        ],
+        "intensity": 0.014,
+        "glow_boost": 4.0
+      }
+    },
+    {
+      "id": "hg-ember-spiral",
+      "label": "Ember Spiral",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": "looks/thumbs/hg-ember-spiral.jpg",
+      "params": {
+        "t_max": 80.0,
+        "freq_x1": 5.0,
+        "freq_x2": 4.0,
+        "freq_y1": 4.0,
+        "freq_y2": 5.0,
+        "damping": 0.0015,
+        "amp_x1": 1.0,
+        "amp_x2": 0.65,
+        "amp_y1": 1.0,
+        "amp_y2": 0.65,
+        "bg_color": [
+          5,
+          2,
+          0
+        ],
+        "line_color": [
+          255,
+          120,
+          0
+        ],
+        "glow_color": [
+          255,
+          220,
+          80
+        ],
+        "intensity": 0.006,
+        "glow_boost": 3.0
+      }
+    },
+    {
+      "id": "hg-gold",
+      "label": "Gold",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": "looks/thumbs/hg-gold.jpg",
+      "params": {
+        "t_max": 60.0,
+        "freq_x1": 2.0,
+        "freq_x2": 3.0,
+        "freq_y1": 2.0,
+        "freq_y2": 3.0,
+        "damping": 0.006,
+        "amp_x1": 1.0,
+        "amp_x2": 0.7,
+        "amp_y1": 1.0,
+        "amp_y2": 0.7,
+        "bg_color": [
+          8,
+          5,
+          20
+        ],
+        "line_color": [
+          220,
+          180,
+          80
+        ],
+        "glow_color": [
+          255,
+          220,
+          120
+        ],
+        "intensity": 0.004,
+        "glow_boost": 2.0
+      }
+    },
+    {
+      "id": "hg-neon",
+      "label": "Neon",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": "looks/thumbs/hg-neon.jpg",
+      "params": {
+        "t_max": 60.0,
+        "freq_x1": 3.0,
+        "freq_x2": 5.0,
+        "freq_y1": 2.0,
+        "freq_y2": 4.0,
+        "damping": 0.003,
+        "amp_x1": 1.0,
+        "amp_x2": 0.5,
+        "amp_y1": 1.0,
+        "amp_y2": 0.5,
+        "bg_color": [
+          3,
+          0,
+          12
+        ],
+        "line_color": [
+          0,
+          255,
+          200
+        ],
+        "glow_color": [
+          200,
+          0,
+          255
+        ],
+        "intensity": 0.009,
+        "glow_boost": 5.0
+      }
+    },
+    {
+      "id": "hg-rainbow-spiral",
+      "label": "Rainbow Spiral",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": null,
+      "params": {
+        "t_max": 80.0,
+        "freq_x1": 3.0,
+        "freq_x2": 4.0,
+        "freq_y1": 2.0,
+        "freq_y2": 5.0,
+        "damping": 0.004,
+        "amp_x1": 1.0,
+        "amp_x2": 0.6,
+        "amp_y1": 1.0,
+        "amp_y2": 0.6,
+        "bg_color": [
+          4,
+          4,
+          10
+        ],
+        "line_color": [
+          255,
+          200,
+          0
+        ],
+        "glow_color": [
+          255,
+          255,
+          100
+        ],
+        "intensity": 0.006,
+        "glow_boost": 3.0
+      }
+    },
+    {
+      "id": "hg-rose-web",
+      "label": "Rose Web",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": "looks/thumbs/hg-rose-web.jpg",
+      "params": {
+        "t_max": 80.0,
+        "freq_x1": 5.0,
+        "freq_x2": 3.0,
+        "freq_y1": 7.0,
+        "freq_y2": 4.0,
+        "damping": 0.002,
+        "amp_x1": 1.0,
+        "amp_x2": 0.55,
+        "amp_y1": 1.0,
+        "amp_y2": 0.55,
+        "bg_color": [
+          5,
+          2,
+          8
+        ],
+        "line_color": [
+          200,
+          50,
+          220
+        ],
+        "glow_color": [
+          255,
+          100,
+          200
+        ],
+        "intensity": 0.006,
+        "glow_boost": 3.0
+      }
+    },
+    {
+      "id": "hg-silver",
+      "label": "Silver",
+      "template": "harmonograph",
+      "templateLabel": "Harmonograph",
+      "series": "Sacred geometry",
+      "blurb": "A twin-pendulum curve \u2014 elegant damped Lissajous rosettes.",
+      "thumb": "looks/thumbs/hg-silver.jpg",
+      "params": {
+        "t_max": 80.0,
+        "freq_x1": 3.0,
+        "freq_x2": 4.0,
+        "freq_y1": 3.0,
+        "freq_y2": 4.0,
+        "damping": 0.003,
+        "amp_x1": 1.0,
+        "amp_x2": 0.8,
+        "amp_y1": 1.0,
+        "amp_y2": 0.8,
+        "bg_color": [
+          5,
+          10,
+          25
+        ],
+        "line_color": [
+          180,
+          200,
+          240
+        ],
+        "glow_color": [
+          220,
+          235,
+          255
+        ],
+        "intensity": 0.003,
+        "glow_boost": 2.5
+      }
+    },
+    {
+      "id": "ks-dodeca",
+      "label": "Dodeca",
+      "template": "kaleidoscope",
+      "templateLabel": "Kaleidoscope",
+      "series": "Sacred geometry",
+      "blurb": "N-fold mirror-symmetric plasma \u2014 psychedelic, richly textured mandalas.",
+      "thumb": "looks/thumbs/ks-dodeca.jpg",
+      "params": {
+        "n_fold": 12,
+        "scale1": 24.0,
+        "scale2": 20.0,
+        "scale3": 16.0,
+        "scale4": 28.0,
+        "rate1": 0.9,
+        "rate2": 1.2,
+        "rate3": 0.7,
+        "rate4": 1.5,
+        "field_rate": 0.01,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              5
+            ]
+          ],
+          [
+            0.12,
+            [
+              0,
+              20,
+              80
+            ]
+          ],
+          [
+            0.28,
+            [
+              0,
+              100,
+              200
+            ]
+          ],
+          [
+            0.44,
+            [
+              0,
+              220,
+              180
+            ]
+          ],
+          [
+            0.6,
+            [
+              120,
+              255,
+              160
+            ]
+          ],
+          [
+            0.76,
+            [
+              255,
+              220,
+              40
+            ]
+          ],
+          [
+            0.88,
+            [
+              255,
+              80,
+              80
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ks-fire-tri",
+      "label": "Fire Tri",
+      "template": "kaleidoscope",
+      "templateLabel": "Kaleidoscope",
+      "series": "Sacred geometry",
+      "blurb": "N-fold mirror-symmetric plasma \u2014 psychedelic, richly textured mandalas.",
+      "thumb": "looks/thumbs/ks-fire-tri.jpg",
+      "params": {
+        "n_fold": 3,
+        "scale1": 22.0,
+        "scale2": 18.0,
+        "scale3": 30.0,
+        "scale4": 25.0,
+        "rate1": 1.6,
+        "rate2": 1.2,
+        "rate3": 0.9,
+        "rate4": 1.4,
+        "field_rate": 0.02,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              40,
+              0,
+              0
+            ]
+          ],
+          [
+            0.3,
+            [
+              150,
+              20,
+              0
+            ]
+          ],
+          [
+            0.48,
+            [
+              255,
+              80,
+              0
+            ]
+          ],
+          [
+            0.65,
+            [
+              255,
+              180,
+              20
+            ]
+          ],
+          [
+            0.8,
+            [
+              255,
+              240,
+              120
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ks-hex",
+      "label": "Hex",
+      "template": "kaleidoscope",
+      "templateLabel": "Kaleidoscope",
+      "series": "Sacred geometry",
+      "blurb": "N-fold mirror-symmetric plasma \u2014 psychedelic, richly textured mandalas.",
+      "thumb": "looks/thumbs/ks-hex.jpg",
+      "params": {
+        "n_fold": 6,
+        "scale1": 28.0,
+        "scale2": 22.0,
+        "scale3": 18.0,
+        "scale4": 32.0,
+        "rate1": 1.0,
+        "rate2": 0.73,
+        "rate3": 1.31,
+        "rate4": 0.57,
+        "field_rate": 0.015,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              0
+            ]
+          ],
+          [
+            0.18,
+            [
+              30,
+              0,
+              80
+            ]
+          ],
+          [
+            0.35,
+            [
+              0,
+              80,
+              200
+            ]
+          ],
+          [
+            0.52,
+            [
+              0,
+              200,
+              200
+            ]
+          ],
+          [
+            0.68,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              200,
+              60
+            ]
+          ],
+          [
+            0.92,
+            [
+              255,
+              60,
+              0
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "ks-octa",
+      "label": "Octa",
+      "template": "kaleidoscope",
+      "templateLabel": "Kaleidoscope",
+      "series": "Sacred geometry",
+      "blurb": "N-fold mirror-symmetric plasma \u2014 psychedelic, richly textured mandalas.",
+      "thumb": "looks/thumbs/ks-octa.jpg",
+      "params": {
+        "n_fold": 8,
+        "scale1": 48.0,
+        "scale2": 40.0,
+        "scale3": 55.0,
+        "scale4": 65.0,
+        "rate1": 0.8,
+        "rate2": 1.1,
+        "rate3": 1.5,
+        "rate4": 0.6,
+        "field_rate": 0.012,
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              10
+            ]
+          ],
+          [
+            0.15,
+            [
+              0,
+              20,
+              100
+            ]
+          ],
+          [
+            0.32,
+            [
+              80,
+              0,
+              180
+            ]
+          ],
+          [
+            0.5,
+            [
+              200,
+              40,
+              255
+            ]
+          ],
+          [
+            0.68,
+            [
+              255,
+              160,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              240,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vo-dark-cells",
+      "label": "Dark Cells",
+      "template": "voronoi",
+      "templateLabel": "Voronoi Cells",
+      "series": "Sacred geometry",
+      "blurb": "Orbiting seed points carve an iridescent cellular mosaic.",
+      "thumb": "looks/thumbs/vo-dark-cells.jpg",
+      "params": {
+        "seed": 17,
+        "n_seeds": 32,
+        "orbit_amp": 0.2,
+        "orbit_speed": 0.012,
+        "saturation": 0.7,
+        "value": 0.65,
+        "border_width": 4.0,
+        "border_bright": 4.0
+      }
+    },
+    {
+      "id": "vo-iridescent",
+      "label": "Iridescent",
+      "template": "voronoi",
+      "templateLabel": "Voronoi Cells",
+      "series": "Sacred geometry",
+      "blurb": "Orbiting seed points carve an iridescent cellular mosaic.",
+      "thumb": "looks/thumbs/vo-iridescent.jpg",
+      "params": {
+        "seed": 42,
+        "n_seeds": 20,
+        "orbit_amp": 0.25,
+        "orbit_speed": 0.016,
+        "saturation": 0.9,
+        "value": 0.95,
+        "border_width": 2.5,
+        "border_bright": 3.0
+      }
+    },
+    {
+      "id": "vo-neon-soap",
+      "label": "Neon Soap",
+      "template": "voronoi",
+      "templateLabel": "Voronoi Cells",
+      "series": "Sacred geometry",
+      "blurb": "Orbiting seed points carve an iridescent cellular mosaic.",
+      "thumb": "looks/thumbs/vo-neon-soap.jpg",
+      "params": {
+        "seed": 99,
+        "n_seeds": 14,
+        "orbit_amp": 0.35,
+        "orbit_speed": 0.022,
+        "saturation": 1.0,
+        "value": 1.0,
+        "border_width": 1.5,
+        "border_bright": 2.0
+      }
+    },
+    {
+      "id": "sa-aizawa-gold",
+      "label": "Aizawa Gold",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-aizawa-gold.jpg",
+      "params": {
+        "type": "aizawa",
+        "n_chains": 5000,
+        "params_start.a": 0.85,
+        "params_start.b": 0.6,
+        "params_start.c": 0.7,
+        "params_start.d": 0.0,
+        "bg_color": [
+          6,
+          3,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              6,
+              3,
+              0
+            ]
+          ],
+          [
+            0.18,
+            [
+              60,
+              20,
+              0
+            ]
+          ],
+          [
+            0.4,
+            [
+              180,
+              80,
+              10
+            ]
+          ],
+          [
+            0.62,
+            [
+              255,
+              170,
+              20
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              230,
+              90
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              200
+            ]
+          ]
+        ],
+        "gamma": 0.42
+      }
+    },
+    {
+      "id": "sa-aizawa-teal",
+      "label": "Aizawa Teal",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-aizawa-teal.jpg",
+      "params": {
+        "type": "aizawa",
+        "n_chains": 5000,
+        "params_start.a": 0.95,
+        "params_start.b": 0.7,
+        "params_start.c": 0.6,
+        "params_start.d": 0.0,
+        "bg_color": [
+          2,
+          5,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              5,
+              8
+            ]
+          ],
+          [
+            0.18,
+            [
+              8,
+              40,
+              80
+            ]
+          ],
+          [
+            0.4,
+            [
+              20,
+              130,
+              180
+            ]
+          ],
+          [
+            0.62,
+            [
+              60,
+              210,
+              230
+            ]
+          ],
+          [
+            0.82,
+            [
+              160,
+              255,
+              250
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.42
+      }
+    },
+    {
+      "id": "sa-bedhead-alien",
+      "label": "Bedhead Alien",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-bedhead-alien.jpg",
+      "params": {
+        "type": "bedhead",
+        "n_chains": 1200,
+        "params_start.a": -0.81,
+        "params_start.b": 80.0,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          0,
+          6,
+          4
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              6,
+              4
+            ]
+          ],
+          [
+            0.15,
+            [
+              0,
+              50,
+              30
+            ]
+          ],
+          [
+            0.35,
+            [
+              0,
+              160,
+              80
+            ]
+          ],
+          [
+            0.6,
+            [
+              40,
+              240,
+              130
+            ]
+          ],
+          [
+            0.82,
+            [
+              160,
+              255,
+              200
+            ]
+          ],
+          [
+            0.95,
+            [
+              220,
+              255,
+              240
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-bedhead-fire",
+      "label": "Bedhead Fire",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-bedhead-fire.jpg",
+      "params": {
+        "type": "bedhead",
+        "n_chains": 1200,
+        "params_start.a": -0.81,
+        "params_start.b": 70.0,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          6,
+          2,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              6,
+              2,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              50,
+              12,
+              0
+            ]
+          ],
+          [
+            0.35,
+            [
+              170,
+              50,
+              0
+            ]
+          ],
+          [
+            0.6,
+            [
+              255,
+              120,
+              15
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              220,
+              80
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              250,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-clifford-ember",
+      "label": "Clifford Ember",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": null,
+      "params": {
+        "type": "clifford",
+        "n_chains": 900,
+        "params_start.a": -1.7,
+        "params_start.b": 1.3,
+        "params_start.c": 0.9,
+        "params_start.d": -1.4,
+        "bg_color": [
+          10,
+          2,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              40,
+              8,
+              0
+            ]
+          ],
+          [
+            0.25,
+            [
+              160,
+              30,
+              0
+            ]
+          ],
+          [
+            0.5,
+            [
+              255,
+              90,
+              5
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              200,
+              40
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              250,
+              200
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-clifford-emerald",
+      "label": "Clifford Emerald",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-clifford-emerald.jpg",
+      "params": {
+        "type": "clifford",
+        "n_chains": 8000,
+        "params_start.a": -1.3,
+        "params_start.b": -1.8,
+        "params_start.c": 0.5,
+        "params_start.d": 1.5,
+        "bg_color": [
+          2,
+          8,
+          4
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              8,
+              4
+            ]
+          ],
+          [
+            0.15,
+            [
+              5,
+              50,
+              25
+            ]
+          ],
+          [
+            0.35,
+            [
+              10,
+              140,
+              70
+            ]
+          ],
+          [
+            0.55,
+            [
+              30,
+              220,
+              120
+            ]
+          ],
+          [
+            0.75,
+            [
+              130,
+              255,
+              180
+            ]
+          ],
+          [
+            0.9,
+            [
+              210,
+              255,
+              230
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-clifford-galaxy",
+      "label": "Clifford Galaxy",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-clifford-galaxy.jpg",
+      "params": {
+        "type": "clifford",
+        "n_chains": 1500,
+        "params_start.a": 1.5,
+        "params_start.b": -1.8,
+        "params_start.c": 1.6,
+        "params_start.d": 0.9,
+        "bg_color": [
+          3,
+          3,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              5,
+              40
+            ]
+          ],
+          [
+            0.2,
+            [
+              20,
+              10,
+              100
+            ]
+          ],
+          [
+            0.45,
+            [
+              60,
+              30,
+              180
+            ]
+          ],
+          [
+            0.65,
+            [
+              140,
+              80,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              220,
+              160,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.5
+      }
+    },
+    {
+      "id": "sa-clifford-ice",
+      "label": "Clifford Ice",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-clifford-ice.jpg",
+      "params": {
+        "type": "clifford",
+        "n_chains": 1500,
+        "params_start.a": -1.4,
+        "params_start.b": 1.6,
+        "params_start.c": 1.0,
+        "params_start.d": 0.7,
+        "bg_color": [
+          0,
+          3,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              3,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              2,
+              15,
+              60
+            ]
+          ],
+          [
+            0.35,
+            [
+              8,
+              60,
+              180
+            ]
+          ],
+          [
+            0.58,
+            [
+              40,
+              160,
+              255
+            ]
+          ],
+          [
+            0.8,
+            [
+              160,
+              220,
+              255
+            ]
+          ],
+          [
+            0.93,
+            [
+              230,
+              248,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "sa-clifford-mint",
+      "label": "Clifford Mint",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": null,
+      "params": {
+        "type": "clifford",
+        "n_chains": 800,
+        "params_start.a": -2.0,
+        "params_start.b": 1.5,
+        "params_start.c": 0.2,
+        "params_start.d": -1.7,
+        "bg_color": [
+          2,
+          12,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              40,
+              30
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              140,
+              100
+            ]
+          ],
+          [
+            0.5,
+            [
+              0,
+              220,
+              160
+            ]
+          ],
+          [
+            0.75,
+            [
+              120,
+              255,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              220,
+              255,
+              240
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "sa-clifford-solar",
+      "label": "Clifford Solar",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-clifford-solar.jpg",
+      "params": {
+        "type": "clifford",
+        "n_chains": 1500,
+        "params_start.a": 1.5,
+        "params_start.b": -1.8,
+        "params_start.c": 1.6,
+        "params_start.d": 0.9,
+        "bg_color": [
+          8,
+          3,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              8,
+              3,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              60,
+              15,
+              0
+            ]
+          ],
+          [
+            0.35,
+            [
+              180,
+              50,
+              0
+            ]
+          ],
+          [
+            0.58,
+            [
+              255,
+              140,
+              20
+            ]
+          ],
+          [
+            0.8,
+            [
+              255,
+              230,
+              80
+            ]
+          ],
+          [
+            0.93,
+            [
+              255,
+              255,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "sa-clifford-sunset",
+      "label": "Clifford Sunset",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-clifford-sunset.jpg",
+      "params": {
+        "type": "clifford",
+        "n_chains": 8000,
+        "params_start.a": -1.7,
+        "params_start.b": 1.5,
+        "params_start.c": 1.0,
+        "params_start.d": 0.9,
+        "bg_color": [
+          5,
+          2,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              2,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              80,
+              10,
+              30
+            ]
+          ],
+          [
+            0.35,
+            [
+              200,
+              60,
+              10
+            ]
+          ],
+          [
+            0.55,
+            [
+              255,
+              140,
+              20
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              210,
+              80
+            ]
+          ],
+          [
+            0.9,
+            [
+              255,
+              240,
+              180
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-clifford-violet",
+      "label": "Clifford Violet",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": null,
+      "params": {
+        "type": "clifford",
+        "n_chains": 800,
+        "params_start.a": -1.7,
+        "params_start.b": 1.3,
+        "params_start.c": -0.1,
+        "params_start.d": -1.2,
+        "bg_color": [
+          4,
+          3,
+          14
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              10,
+              5,
+              60
+            ]
+          ],
+          [
+            0.2,
+            [
+              60,
+              0,
+              180
+            ]
+          ],
+          [
+            0.5,
+            [
+              180,
+              0,
+              220
+            ]
+          ],
+          [
+            0.75,
+            [
+              220,
+              100,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.45
+      }
+    },
+    {
+      "id": "sa-dejong-amber",
+      "label": "Dejong Amber",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-amber.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 1500,
+        "params_start.a": 2.01,
+        "params_start.b": -2.53,
+        "params_start.c": 1.61,
+        "params_start.d": -0.33,
+        "bg_color": [
+          6,
+          4,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              6,
+              4,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              50,
+              30,
+              0
+            ]
+          ],
+          [
+            0.35,
+            [
+              160,
+              90,
+              10
+            ]
+          ],
+          [
+            0.58,
+            [
+              240,
+              170,
+              40
+            ]
+          ],
+          [
+            0.8,
+            [
+              255,
+              230,
+              130
+            ]
+          ],
+          [
+            0.93,
+            [
+              255,
+              250,
+              220
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "sa-dejong-blue",
+      "label": "Dejong Blue",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-blue.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 1200,
+        "params_start.a": 1.4,
+        "params_start.b": -2.3,
+        "params_start.c": 2.4,
+        "params_start.d": -2.1,
+        "bg_color": [
+          3,
+          3,
+          12
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              0,
+              20
+            ]
+          ],
+          [
+            0.2,
+            [
+              0,
+              40,
+              140
+            ]
+          ],
+          [
+            0.45,
+            [
+              0,
+              140,
+              220
+            ]
+          ],
+          [
+            0.65,
+            [
+              80,
+              200,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.45
+      }
+    },
+    {
+      "id": "sa-dejong-emerald",
+      "label": "Dejong Emerald",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-emerald.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 1200,
+        "params_start.a": -2.0,
+        "params_start.b": 2.0,
+        "params_start.c": -1.9,
+        "params_start.d": 2.0,
+        "bg_color": [
+          0,
+          4,
+          2
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              4,
+              2
+            ]
+          ],
+          [
+            0.18,
+            [
+              0,
+              60,
+              20
+            ]
+          ],
+          [
+            0.38,
+            [
+              0,
+              170,
+              60
+            ]
+          ],
+          [
+            0.56,
+            [
+              40,
+              240,
+              120
+            ]
+          ],
+          [
+            0.74,
+            [
+              160,
+              255,
+              180
+            ]
+          ],
+          [
+            0.9,
+            [
+              220,
+              255,
+              230
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.44
+      }
+    },
+    {
+      "id": "sa-dejong-fire",
+      "label": "Dejong Fire",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-fire.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 1200,
+        "params_start.a": -1.8,
+        "params_start.b": -2.0,
+        "params_start.c": -0.5,
+        "params_start.d": -2.6,
+        "bg_color": [
+          5,
+          2,
+          2
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              0,
+              0
+            ]
+          ],
+          [
+            0.2,
+            [
+              80,
+              10,
+              0
+            ]
+          ],
+          [
+            0.45,
+            [
+              220,
+              60,
+              0
+            ]
+          ],
+          [
+            0.65,
+            [
+              255,
+              160,
+              20
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              240,
+              100
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.45
+      }
+    },
+    {
+      "id": "sa-dejong-midnight",
+      "label": "Dejong Midnight",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-midnight.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 8000,
+        "params_start.a": 2.01,
+        "params_start.b": -1.5,
+        "params_start.c": -0.9,
+        "params_start.d": 1.5,
+        "bg_color": [
+          2,
+          3,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              3,
+              10
+            ]
+          ],
+          [
+            0.15,
+            [
+              8,
+              15,
+              60
+            ]
+          ],
+          [
+            0.35,
+            [
+              20,
+              60,
+              160
+            ]
+          ],
+          [
+            0.55,
+            [
+              50,
+              130,
+              255
+            ]
+          ],
+          [
+            0.75,
+            [
+              140,
+              200,
+              255
+            ]
+          ],
+          [
+            0.9,
+            [
+              210,
+              235,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-dejong-rose",
+      "label": "Dejong Rose",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-rose.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 800,
+        "params_start.a": 2.4,
+        "params_start.b": -2.1,
+        "params_start.c": 1.3,
+        "params_start.d": -1.8,
+        "bg_color": [
+          14,
+          4,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              60,
+              10,
+              25
+            ]
+          ],
+          [
+            0.25,
+            [
+              180,
+              50,
+              80
+            ]
+          ],
+          [
+            0.5,
+            [
+              240,
+              120,
+              140
+            ]
+          ],
+          [
+            0.75,
+            [
+              255,
+              190,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              245
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "sa-dejong-rose-gold",
+      "label": "Dejong Rose Gold",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-rose-gold.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 1500,
+        "params_start.a": -2.7,
+        "params_start.b": -0.09,
+        "params_start.c": -0.86,
+        "params_start.d": -2.2,
+        "bg_color": [
+          8,
+          3,
+          4
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              8,
+              3,
+              4
+            ]
+          ],
+          [
+            0.15,
+            [
+              60,
+              20,
+              30
+            ]
+          ],
+          [
+            0.35,
+            [
+              180,
+              60,
+              80
+            ]
+          ],
+          [
+            0.58,
+            [
+              255,
+              130,
+              120
+            ]
+          ],
+          [
+            0.8,
+            [
+              255,
+              200,
+              180
+            ]
+          ],
+          [
+            0.93,
+            [
+              255,
+              240,
+              230
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-dejong-teal",
+      "label": "Dejong Teal",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": null,
+      "params": {
+        "type": "dejong",
+        "n_chains": 800,
+        "params_start.a": 1.7,
+        "params_start.b": -0.4,
+        "params_start.c": 2.0,
+        "params_start.d": -2.4,
+        "bg_color": [
+          2,
+          6,
+          14
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              20,
+              50
+            ]
+          ],
+          [
+            0.3,
+            [
+              0,
+              100,
+              130
+            ]
+          ],
+          [
+            0.6,
+            [
+              0,
+              200,
+              190
+            ]
+          ],
+          [
+            0.85,
+            [
+              100,
+              255,
+              230
+            ]
+          ],
+          [
+            1.0,
+            [
+              220,
+              255,
+              250
+            ]
+          ]
+        ],
+        "gamma": 0.42
+      }
+    },
+    {
+      "id": "sa-dejong-violet",
+      "label": "Dejong Violet",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-dejong-violet.jpg",
+      "params": {
+        "type": "dejong",
+        "n_chains": 8000,
+        "params_start.a": -2.0,
+        "params_start.b": -2.2,
+        "params_start.c": 1.2,
+        "params_start.d": 2.2,
+        "bg_color": [
+          4,
+          2,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              4,
+              2,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              35,
+              10,
+              80
+            ]
+          ],
+          [
+            0.35,
+            [
+              100,
+              30,
+              200
+            ]
+          ],
+          [
+            0.55,
+            [
+              180,
+              80,
+              255
+            ]
+          ],
+          [
+            0.75,
+            [
+              230,
+              160,
+              255
+            ]
+          ],
+          [
+            0.9,
+            [
+              255,
+              220,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-halvorsen-aurora",
+      "label": "Halvorsen Aurora",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-halvorsen-aurora.jpg",
+      "params": {
+        "type": "halvorsen",
+        "n_chains": 25000,
+        "params_start.a": 1.89,
+        "params_start.b": 1.89,
+        "params_start.c": 1.89,
+        "params_start.d": 0.0,
+        "bg_color": [
+          2,
+          5,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              5,
+              10
+            ]
+          ],
+          [
+            0.18,
+            [
+              8,
+              40,
+              80
+            ]
+          ],
+          [
+            0.4,
+            [
+              20,
+              130,
+              180
+            ]
+          ],
+          [
+            0.62,
+            [
+              60,
+              210,
+              230
+            ]
+          ],
+          [
+            0.82,
+            [
+              160,
+              255,
+              250
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.35
+      }
+    },
+    {
+      "id": "sa-halvorsen-fire",
+      "label": "Halvorsen Fire",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-halvorsen-fire.jpg",
+      "params": {
+        "type": "halvorsen",
+        "n_chains": 25000,
+        "params_start.a": 1.89,
+        "params_start.b": 1.89,
+        "params_start.c": 1.89,
+        "params_start.d": 0.0,
+        "bg_color": [
+          8,
+          2,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              8,
+              2,
+              0
+            ]
+          ],
+          [
+            0.2,
+            [
+              80,
+              10,
+              0
+            ]
+          ],
+          [
+            0.42,
+            [
+              210,
+              60,
+              10
+            ]
+          ],
+          [
+            0.65,
+            [
+              255,
+              150,
+              20
+            ]
+          ],
+          [
+            0.85,
+            [
+              255,
+              230,
+              80
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              200
+            ]
+          ]
+        ],
+        "gamma": 0.35
+      }
+    },
+    {
+      "id": "sa-henon-classic",
+      "label": "Henon Classic",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-henon-classic.jpg",
+      "params": {
+        "type": "henon",
+        "n_chains": 2000,
+        "params_start.a": 1.4,
+        "params_start.b": 0.3,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          3,
+          3,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              3,
+              10
+            ]
+          ],
+          [
+            0.15,
+            [
+              15,
+              10,
+              80
+            ]
+          ],
+          [
+            0.35,
+            [
+              40,
+              40,
+              200
+            ]
+          ],
+          [
+            0.6,
+            [
+              100,
+              120,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              200,
+              210,
+              255
+            ]
+          ],
+          [
+            0.95,
+            [
+              240,
+              245,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.3
+      }
+    },
+    {
+      "id": "sa-henon-dense-blue",
+      "label": "Henon Dense Blue",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-henon-dense-blue.jpg",
+      "params": {
+        "type": "henon",
+        "n_chains": 6000,
+        "params_start.a": 1.4,
+        "params_start.b": 0.3,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          2,
+          2,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              2,
+              10
+            ]
+          ],
+          [
+            0.12,
+            [
+              8,
+              10,
+              70
+            ]
+          ],
+          [
+            0.3,
+            [
+              25,
+              40,
+              180
+            ]
+          ],
+          [
+            0.55,
+            [
+              70,
+              120,
+              255
+            ]
+          ],
+          [
+            0.78,
+            [
+              170,
+              200,
+              255
+            ]
+          ],
+          [
+            0.92,
+            [
+              230,
+              242,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.22
+      }
+    },
+    {
+      "id": "sa-henon-fire",
+      "label": "Henon Fire",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-henon-fire.jpg",
+      "params": {
+        "type": "henon",
+        "n_chains": 2000,
+        "params_start.a": 1.4,
+        "params_start.b": 0.3,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          6,
+          2,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              6,
+              2,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              50,
+              15,
+              0
+            ]
+          ],
+          [
+            0.35,
+            [
+              170,
+              55,
+              0
+            ]
+          ],
+          [
+            0.6,
+            [
+              255,
+              130,
+              10
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              225,
+              80
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              252,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.3
+      }
+    },
+    {
+      "id": "sa-hopalong-cluster",
+      "label": "Hopalong Cluster",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-hopalong-cluster.jpg",
+      "params": {
+        "type": "hopalong",
+        "n_chains": 1200,
+        "params_start.a": 2.879,
+        "params_start.b": 0.765,
+        "params_start.c": 0.744,
+        "params_start.d": 0.0,
+        "bg_color": [
+          0,
+          5,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              5,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              0,
+              40,
+              80
+            ]
+          ],
+          [
+            0.35,
+            [
+              0,
+              130,
+              160
+            ]
+          ],
+          [
+            0.6,
+            [
+              0,
+              220,
+              200
+            ]
+          ],
+          [
+            0.82,
+            [
+              120,
+              255,
+              230
+            ]
+          ],
+          [
+            0.95,
+            [
+              220,
+              255,
+              250
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-hopalong-ember",
+      "label": "Hopalong Ember",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-hopalong-ember.jpg",
+      "params": {
+        "type": "hopalong",
+        "n_chains": 1200,
+        "params_start.a": 1.1,
+        "params_start.b": 0.5,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          6,
+          2,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              6,
+              2,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              50,
+              15,
+              0
+            ]
+          ],
+          [
+            0.35,
+            [
+              160,
+              50,
+              0
+            ]
+          ],
+          [
+            0.6,
+            [
+              240,
+              110,
+              10
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              210,
+              60
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              248,
+              200
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-hopalong-galaxy",
+      "label": "Hopalong Galaxy",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-hopalong-galaxy.jpg",
+      "params": {
+        "type": "hopalong",
+        "n_chains": 1200,
+        "params_start.a": -0.38,
+        "params_start.b": 0.9,
+        "params_start.c": -0.3,
+        "params_start.d": 0.0,
+        "bg_color": [
+          3,
+          2,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              2,
+              10
+            ]
+          ],
+          [
+            0.15,
+            [
+              25,
+              8,
+              60
+            ]
+          ],
+          [
+            0.35,
+            [
+              80,
+              20,
+              160
+            ]
+          ],
+          [
+            0.6,
+            [
+              180,
+              60,
+              220
+            ]
+          ],
+          [
+            0.82,
+            [
+              240,
+              150,
+              255
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              220,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-hopalong-rings",
+      "label": "Hopalong Rings",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-hopalong-rings.jpg",
+      "params": {
+        "type": "hopalong",
+        "n_chains": 1200,
+        "params_start.a": 0.4,
+        "params_start.b": 1.0,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          2,
+          5,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              5,
+              10
+            ]
+          ],
+          [
+            0.15,
+            [
+              5,
+              30,
+              80
+            ]
+          ],
+          [
+            0.35,
+            [
+              0,
+              100,
+              200
+            ]
+          ],
+          [
+            0.6,
+            [
+              50,
+              190,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              160,
+              230,
+              255
+            ]
+          ],
+          [
+            0.95,
+            [
+              220,
+              248,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-hopalong-rose",
+      "label": "Hopalong Rose",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-hopalong-rose.jpg",
+      "params": {
+        "type": "hopalong",
+        "n_chains": 1200,
+        "params_start.a": 0.2,
+        "params_start.b": 1.0,
+        "params_start.c": 0.0,
+        "params_start.d": 0.0,
+        "bg_color": [
+          8,
+          2,
+          4
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              8,
+              2,
+              4
+            ]
+          ],
+          [
+            0.15,
+            [
+              60,
+              5,
+              20
+            ]
+          ],
+          [
+            0.35,
+            [
+              180,
+              20,
+              60
+            ]
+          ],
+          [
+            0.6,
+            [
+              255,
+              80,
+              120
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              180,
+              200
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              230,
+              240
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-hopalong-starburst",
+      "label": "Hopalong Starburst",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-hopalong-starburst.jpg",
+      "params": {
+        "type": "hopalong",
+        "n_chains": 1200,
+        "params_start.a": 5.0,
+        "params_start.b": 1.0,
+        "params_start.c": 0.8,
+        "params_start.d": 0.0,
+        "bg_color": [
+          3,
+          3,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              3,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              20,
+              10,
+              80
+            ]
+          ],
+          [
+            0.35,
+            [
+              60,
+              40,
+              200
+            ]
+          ],
+          [
+            0.6,
+            [
+              140,
+              100,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              220,
+              180,
+              255
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              240,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-hopalong-twin",
+      "label": "Hopalong Twin",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-hopalong-twin.jpg",
+      "params": {
+        "type": "hopalong",
+        "n_chains": 1200,
+        "params_start.a": -1.5,
+        "params_start.b": 0.5,
+        "params_start.c": 0.3,
+        "params_start.d": 0.0,
+        "bg_color": [
+          2,
+          6,
+          6
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              6,
+              6
+            ]
+          ],
+          [
+            0.15,
+            [
+              5,
+              45,
+              45
+            ]
+          ],
+          [
+            0.35,
+            [
+              10,
+              140,
+              140
+            ]
+          ],
+          [
+            0.6,
+            [
+              40,
+              220,
+              220
+            ]
+          ],
+          [
+            0.82,
+            [
+              160,
+              250,
+              250
+            ]
+          ],
+          [
+            0.95,
+            [
+              220,
+              255,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-lorenz-butterfly",
+      "label": "Lorenz Butterfly",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-lorenz-butterfly.jpg",
+      "params": {
+        "type": "lorenz",
+        "n_chains": 500,
+        "params_start.a": 10.0,
+        "params_start.b": 28.0,
+        "params_start.c": 2.667,
+        "params_start.d": 0.0,
+        "bg_color": [
+          2,
+          4,
+          12
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              5,
+              30
+            ]
+          ],
+          [
+            0.18,
+            [
+              0,
+              50,
+              160
+            ]
+          ],
+          [
+            0.38,
+            [
+              0,
+              160,
+              230
+            ]
+          ],
+          [
+            0.58,
+            [
+              80,
+              220,
+              255
+            ]
+          ],
+          [
+            0.78,
+            [
+              200,
+              240,
+              255
+            ]
+          ],
+          [
+            0.92,
+            [
+              255,
+              255,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.42
+      }
+    },
+    {
+      "id": "sa-lorenz-inferno",
+      "label": "Lorenz Inferno",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-lorenz-inferno.jpg",
+      "params": {
+        "type": "lorenz",
+        "n_chains": 500,
+        "params_start.a": 10.0,
+        "params_start.b": 28.0,
+        "params_start.c": 2.667,
+        "params_start.d": 0.8,
+        "bg_color": [
+          8,
+          2,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              8,
+              2,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              80,
+              8,
+              0
+            ]
+          ],
+          [
+            0.32,
+            [
+              200,
+              30,
+              0
+            ]
+          ],
+          [
+            0.5,
+            [
+              255,
+              110,
+              0
+            ]
+          ],
+          [
+            0.68,
+            [
+              255,
+              200,
+              20
+            ]
+          ],
+          [
+            0.84,
+            [
+              255,
+              250,
+              180
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "sa-lorenz-nebula",
+      "label": "Lorenz Nebula",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-lorenz-nebula.jpg",
+      "params": {
+        "type": "lorenz",
+        "n_chains": 500,
+        "params_start.a": 10.0,
+        "params_start.b": 28.0,
+        "params_start.c": 2.667,
+        "params_start.d": 1.8,
+        "bg_color": [
+          3,
+          0,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              0,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              40,
+              0,
+              80
+            ]
+          ],
+          [
+            0.32,
+            [
+              100,
+              0,
+              200
+            ]
+          ],
+          [
+            0.52,
+            [
+              220,
+              60,
+              255
+            ]
+          ],
+          [
+            0.68,
+            [
+              255,
+              160,
+              255
+            ]
+          ],
+          [
+            0.84,
+            [
+              255,
+              220,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.42
+      }
+    },
+    {
+      "id": "sa-rossler-violet",
+      "label": "Rossler Violet",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-rossler-violet.jpg",
+      "params": {
+        "type": "rossler",
+        "n_chains": 6000,
+        "params_start.a": 0.2,
+        "params_start.b": 0.2,
+        "params_start.c": 5.7,
+        "params_start.d": 0.0,
+        "bg_color": [
+          4,
+          2,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              4,
+              2,
+              8
+            ]
+          ],
+          [
+            0.18,
+            [
+              40,
+              8,
+              80
+            ]
+          ],
+          [
+            0.4,
+            [
+              120,
+              30,
+              200
+            ]
+          ],
+          [
+            0.62,
+            [
+              200,
+              90,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              240,
+              170,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "sa-tinkerbell-aurora",
+      "label": "Tinkerbell Aurora",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-tinkerbell-aurora.jpg",
+      "params": {
+        "type": "tinkerbell",
+        "n_chains": 2000,
+        "params_start.a": 0.9,
+        "params_start.b": -0.6013,
+        "params_start.c": 2.0,
+        "params_start.d": 0.5,
+        "bg_color": [
+          2,
+          8,
+          6
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              8,
+              6
+            ]
+          ],
+          [
+            0.15,
+            [
+              5,
+              50,
+              40
+            ]
+          ],
+          [
+            0.35,
+            [
+              20,
+              150,
+              120
+            ]
+          ],
+          [
+            0.6,
+            [
+              80,
+              230,
+              180
+            ]
+          ],
+          [
+            0.82,
+            [
+              180,
+              255,
+              220
+            ]
+          ],
+          [
+            0.95,
+            [
+              230,
+              255,
+              245
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.35
+      }
+    },
+    {
+      "id": "sa-tinkerbell-cosmic",
+      "label": "Tinkerbell Cosmic",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-tinkerbell-cosmic.jpg",
+      "params": {
+        "type": "tinkerbell",
+        "n_chains": 1200,
+        "params_start.a": 0.9,
+        "params_start.b": -0.6013,
+        "params_start.c": 2.0,
+        "params_start.d": 0.5,
+        "bg_color": [
+          3,
+          2,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              2,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              20,
+              8,
+              60
+            ]
+          ],
+          [
+            0.35,
+            [
+              60,
+              30,
+              180
+            ]
+          ],
+          [
+            0.6,
+            [
+              140,
+              80,
+              255
+            ]
+          ],
+          [
+            0.82,
+            [
+              220,
+              170,
+              255
+            ]
+          ],
+          [
+            0.95,
+            [
+              250,
+              230,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "sa-tinkerbell-gold",
+      "label": "Tinkerbell Gold",
+      "template": "strange-attractor",
+      "templateLabel": "Strange Attractor",
+      "series": "Strange forms",
+      "blurb": "Clifford, De Jong, Lorenz and 7 more chaotic point-cloud attractors.",
+      "thumb": "looks/thumbs/sa-tinkerbell-gold.jpg",
+      "params": {
+        "type": "tinkerbell",
+        "n_chains": 1200,
+        "params_start.a": 0.9,
+        "params_start.b": -0.6013,
+        "params_start.c": 2.0,
+        "params_start.d": 0.5,
+        "bg_color": [
+          5,
+          3,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              3,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              50,
+              20,
+              0
+            ]
+          ],
+          [
+            0.35,
+            [
+              160,
+              70,
+              0
+            ]
+          ],
+          [
+            0.6,
+            [
+              240,
+              150,
+              20
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              230,
+              100
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              252,
+              220
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.38
+      }
+    },
+    {
+      "id": "to-horn-magenta",
+      "label": "Horn Magenta",
+      "template": "torus",
+      "templateLabel": "Torus",
+      "series": "Strange forms",
+      "blurb": "A glowing 3D donut, rendered as a rotating point cloud with depth fog.",
+      "thumb": "looks/thumbs/to-horn-magenta.jpg",
+      "params": {
+        "n_u": 1400,
+        "n_v": 700,
+        "R": 0.35,
+        "r": 0.33,
+        "tilt_x": 0.35,
+        "tilt_y": 0.2,
+        "ry_rate": 0.026,
+        "rx_rate": 0.008,
+        "fog_amount": 0.45,
+        "bg_color": [
+          5,
+          2,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              2,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              50,
+              5,
+              60
+            ]
+          ],
+          [
+            0.35,
+            [
+              160,
+              20,
+              180
+            ]
+          ],
+          [
+            0.6,
+            [
+              240,
+              80,
+              240
+            ]
+          ],
+          [
+            0.82,
+            [
+              255,
+              180,
+              255
+            ]
+          ],
+          [
+            0.95,
+            [
+              255,
+              230,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.4
+      }
+    },
+    {
+      "id": "to-ice-blue",
+      "label": "Ice Blue",
+      "template": "torus",
+      "templateLabel": "Torus",
+      "series": "Strange forms",
+      "blurb": "A glowing 3D donut, rendered as a rotating point cloud with depth fog.",
+      "thumb": "looks/thumbs/to-ice-blue.jpg",
+      "params": {
+        "R": 0.55,
+        "r": 0.21,
+        "n_u": 1400,
+        "n_v": 700,
+        "tilt_x": 1.1,
+        "ry_rate": 0.025,
+        "rx_rate": 0.006,
+        "fog_amount": 0.6,
+        "gamma": 0.38,
+        "bg_color": [
+          2,
+          3,
+          12
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              3,
+              12
+            ]
+          ],
+          [
+            0.1,
+            [
+              0,
+              25,
+              100
+            ]
+          ],
+          [
+            0.25,
+            [
+              0,
+              90,
+              210
+            ]
+          ],
+          [
+            0.44,
+            [
+              0,
+              175,
+              255
+            ]
+          ],
+          [
+            0.63,
+            [
+              80,
+              225,
+              255
+            ]
+          ],
+          [
+            0.8,
+            [
+              190,
+              245,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "to-magma",
+      "label": "Magma",
+      "template": "torus",
+      "templateLabel": "Torus",
+      "series": "Strange forms",
+      "blurb": "A glowing 3D donut, rendered as a rotating point cloud with depth fog.",
+      "thumb": "looks/thumbs/to-magma.jpg",
+      "params": {
+        "R": 0.58,
+        "r": 0.19,
+        "n_u": 1400,
+        "n_v": 700,
+        "tilt_x": 1.05,
+        "tilt_y": 0.2,
+        "ry_rate": 0.022,
+        "rx_rate": 0.012,
+        "fog_amount": 0.5,
+        "gamma": 0.4,
+        "bg_color": [
+          5,
+          1,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              5,
+              1,
+              0
+            ]
+          ],
+          [
+            0.12,
+            [
+              50,
+              8,
+              0
+            ]
+          ],
+          [
+            0.28,
+            [
+              160,
+              25,
+              0
+            ]
+          ],
+          [
+            0.46,
+            [
+              255,
+              80,
+              0
+            ]
+          ],
+          [
+            0.62,
+            [
+              255,
+              170,
+              20
+            ]
+          ],
+          [
+            0.78,
+            [
+              255,
+              240,
+              100
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "to-neon-ring",
+      "label": "Neon Ring",
+      "template": "torus",
+      "templateLabel": "Torus",
+      "series": "Strange forms",
+      "blurb": "A glowing 3D donut, rendered as a rotating point cloud with depth fog.",
+      "thumb": "looks/thumbs/to-neon-ring.jpg",
+      "params": {
+        "R": 0.56,
+        "r": 0.17,
+        "n_u": 1400,
+        "n_v": 700,
+        "tilt_x": 0.42,
+        "tilt_y": 0.15,
+        "ry_rate": 0.02,
+        "rx_rate": 0.005,
+        "fog_amount": 0.65,
+        "gamma": 0.36,
+        "bg_color": [
+          0,
+          2,
+          6
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              0,
+              2,
+              6
+            ]
+          ],
+          [
+            0.12,
+            [
+              10,
+              0,
+              60
+            ]
+          ],
+          [
+            0.26,
+            [
+              80,
+              0,
+              200
+            ]
+          ],
+          [
+            0.44,
+            [
+              180,
+              20,
+              255
+            ]
+          ],
+          [
+            0.62,
+            [
+              255,
+              80,
+              255
+            ]
+          ],
+          [
+            0.78,
+            [
+              255,
+              180,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "to-saturn",
+      "label": "Saturn",
+      "template": "torus",
+      "templateLabel": "Torus",
+      "series": "Strange forms",
+      "blurb": "A glowing 3D donut, rendered as a rotating point cloud with depth fog.",
+      "thumb": "looks/thumbs/to-saturn.jpg",
+      "params": {
+        "R": 0.65,
+        "r": 0.08,
+        "n_u": 2000,
+        "n_v": 400,
+        "tilt_x": 0.32,
+        "tilt_y": 0.0,
+        "ry_rate": 0.018,
+        "rx_rate": 0.003,
+        "fog_amount": 0.7,
+        "gamma": 0.35,
+        "bg_color": [
+          2,
+          3,
+          10
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              2,
+              3,
+              10
+            ]
+          ],
+          [
+            0.08,
+            [
+              10,
+              30,
+              80
+            ]
+          ],
+          [
+            0.2,
+            [
+              20,
+              90,
+              180
+            ]
+          ],
+          [
+            0.38,
+            [
+              60,
+              160,
+              240
+            ]
+          ],
+          [
+            0.58,
+            [
+              160,
+              210,
+              255
+            ]
+          ],
+          [
+            0.78,
+            [
+              220,
+              240,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              255
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "id": "vr-classic-zoom",
+      "label": "Classic Zoom",
+      "template": "verhulst",
+      "templateLabel": "Verhulst Bifurcation",
+      "series": "Strange forms",
+      "blurb": "The logistic map's period-doubling cascade into chaos, as a density-glow diagram.",
+      "thumb": "looks/thumbs/vr-classic-zoom.jpg",
+      "params": {
+        "r_min": 2.8,
+        "r_max": 4.0,
+        "x_min": 0.0,
+        "x_max": 1.0,
+        "warmup_iters": 500,
+        "n_iters": 2000,
+        "bg_color": [
+          3,
+          2,
+          8
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              3,
+              2,
+              8
+            ]
+          ],
+          [
+            0.15,
+            [
+              20,
+              10,
+              60
+            ]
+          ],
+          [
+            0.35,
+            [
+              80,
+              20,
+              180
+            ]
+          ],
+          [
+            0.58,
+            [
+              180,
+              60,
+              255
+            ]
+          ],
+          [
+            0.8,
+            [
+              240,
+              150,
+              255
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              240,
+              255
+            ]
+          ]
+        ],
+        "gamma": 0.5
+      }
+    },
+    {
+      "id": "vr-gold-feigenbaum",
+      "label": "Gold Feigenbaum",
+      "template": "verhulst",
+      "templateLabel": "Verhulst Bifurcation",
+      "series": "Strange forms",
+      "blurb": "The logistic map's period-doubling cascade into chaos, as a density-glow diagram.",
+      "thumb": "looks/thumbs/vr-gold-feigenbaum.jpg",
+      "params": {
+        "r_min": 3.4,
+        "r_max": 4.0,
+        "x_min": 0.0,
+        "x_max": 1.0,
+        "warmup_iters": 500,
+        "n_iters": 2000,
+        "bg_color": [
+          6,
+          3,
+          0
+        ],
+        "palette": [
+          [
+            0.0,
+            [
+              6,
+              3,
+              0
+            ]
+          ],
+          [
+            0.15,
+            [
+              60,
+              20,
+              0
+            ]
+          ],
+          [
+            0.35,
+            [
+              160,
+              70,
+              0
+            ]
+          ],
+          [
+            0.58,
+            [
+              240,
+              160,
+              20
+            ]
+          ],
+          [
+            0.8,
+            [
+              255,
+              220,
+              80
+            ]
+          ],
+          [
+            1.0,
+            [
+              255,
+              255,
+              200
+            ]
+          ]
+        ],
+        "gamma": 0.5
+      }
+    }
+  ]
+}

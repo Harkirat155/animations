@@ -1,0 +1,30 @@
+# fly.io app config — deploy from repo root:
+#   fly launch --no-deploy   # first time, set app name
+#   fly deploy
+#
+# Set CORS for GitHub Pages after you know the origin:
+#   fly secrets set CORS_ORIGINS="https://<user>.github.io,http://localhost:5173"
+
+app = "animations-composer"
+primary_region = "bom"
+
+[build]
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [[http_service.checks]]
+    interval = "15s"
+    timeout = "5s"
+    grace_period = "20s"
+    method = "GET"
+    path = "/api/health"
+
+[[vm]]
+  size = "shared-cpu-2x"
+  memory = "2048mb"

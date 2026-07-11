@@ -1,0 +1,18 @@
+{
+  "func": "newton",
+  "re_min": -2.5,
+  "re_max":  2.5,
+  "im_min": -2.5,
+  "im_max":  2.5,
+  "n_start": 5.0,
+  "n_end":   5.0,
+  "zoom_end": 0.3,
+  "zoom_cr":  0.0,
+  "zoom_ci":  0.0,
+  "ring_strength": 0.4,
+  "saturation": 0.95,
+  "phase_shift": 0.2,
+  "steps": 240,
+  "fps": 30,
+  "size": 512
+}

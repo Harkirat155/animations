@@ -1,0 +1,18 @@
+{
+  "func": "joukowski",
+  "re_min": -3.5,
+  "re_max":  3.5,
+  "im_min": -3.5,
+  "im_max":  3.5,
+  "n_start": 1.0,
+  "n_end":   1.0,
+  "zoom_end": 0.35,
+  "zoom_cr":  0.3,
+  "zoom_ci":  0.0,
+  "ring_strength": 0.5,
+  "saturation": 0.95,
+  "phase_shift": 0.0,
+  "steps": 240,
+  "fps": 30,
+  "size": 512
+}

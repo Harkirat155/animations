@@ -1,0 +1,18 @@
+{
+  "re_min": -1.8,
+  "re_max":  1.8,
+  "im_min": -1.8,
+  "im_max":  1.8,
+  "func": "trig_cos",
+  "n_start": 2.0,
+  "n_end": 3.0,
+  "mag_rings": true,
+  "ring_strength": 0.45,
+  "saturation": 0.92,
+  "phase_shift": 0.15,
+  "zoom_end": 0.35,
+  "zoom_cr": 0.0,
+  "zoom_ci": 0.0,
+  "fps": 30,
+  "steps": 240
+}

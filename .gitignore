@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+output/
+.DS_Store
+scratch_*.json
+screenshot_*.png
+
+# composer app (frontend/)
+frontend/node_modules/
+frontend/dist/

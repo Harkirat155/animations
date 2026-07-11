@@ -1,0 +1,17 @@
+{
+  "fps": 30,
+  "steps": 240,
+  "scale1": 55.0,
+  "scale2": 50.0,
+  "scale3": 40.0,
+  "scale4": 48.0,
+  "rate1": 1.0,
+  "rate2": 0.73,
+  "rate3": 1.31,
+  "rate4": 0.57,
+  "dt": 0.07,
+  "hue_offset": 0.0,
+  "hue_range": 1.0,
+  "saturation": 1.0,
+  "value": 1.0
+}

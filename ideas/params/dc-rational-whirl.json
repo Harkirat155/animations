@@ -1,0 +1,22 @@
+{
+  "re_min": -2.5,
+  "re_max":  2.5,
+  "im_min": -2.5,
+  "im_max":  2.5,
+  "func": "rational",
+  "p_start": 3.0,
+  "p_end": 3.0,
+  "q_start": 2.0,
+  "q_end": 2.0,
+  "c_re_start": 0.3,
+  "c_re_end": 0.3,
+  "c_im_start": 0.0,
+  "c_im_end": 1.57,
+  "mag_rings": true,
+  "ring_strength": 0.35,
+  "saturation": 0.92,
+  "phase_shift": 0.12,
+  "zoom_end": 1.0,
+  "fps": 30,
+  "steps": 240
+}

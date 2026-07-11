@@ -1,0 +1,18 @@
+{
+  "re_min": -1.5,
+  "re_max":  1.5,
+  "im_min": -1.5,
+  "im_max":  1.5,
+  "func": "blaschke",
+  "c_re_start": 0.0,
+  "c_re_end": 6.28,
+  "c_im_start": 0.0,
+  "c_im_end": 0.0,
+  "mag_rings": true,
+  "ring_strength": 0.35,
+  "saturation": 0.95,
+  "phase_shift": 0.0,
+  "zoom_end": 1.0,
+  "fps": 30,
+  "steps": 240
+}

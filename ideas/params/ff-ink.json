@@ -1,0 +1,18 @@
+{
+  "seed": 55,
+  "n_particles": 4000,
+  "steps": 450,
+  "fps": 30,
+  "noise_scale": 70.0,
+  "noise_octaves": 4,
+  "step_size": 1.2,
+  "trail_alpha": 0.008,
+  "fade_alpha": 1.0,
+  "restart_prob": 0.003,
+  "bg_color": [245, 240, 228],
+  "palette": [
+    [0.0,  [20,  12,   5]],
+    [0.5,  [50,  35,  20]],
+    [1.0,  [80,  60,  40]]
+  ]
+}

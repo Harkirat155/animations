@@ -1,0 +1,7 @@
+numpy>=2.0
+pillow>=11.0
+# ffmpeg is a system dependency, not pip-installable: brew install ffmpeg
+
+# composer backend (v1: templates/schema/preview API)
+fastapi>=0.115
+uvicorn>=0.32

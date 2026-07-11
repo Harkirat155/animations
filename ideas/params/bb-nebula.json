@@ -1,0 +1,18 @@
+{
+  "steps": 120,
+  "warmup": 10,
+  "samples_per_frame": 30000,
+  "batch_size": 10000,
+  "max_iter_r": 200,
+  "max_iter_g": 500,
+  "max_iter_b": 2000,
+  "cx": -0.5,
+  "cy": 0.0,
+  "half_width": 1.6,
+  "gamma_r": 0.32,
+  "gamma_g": 0.32,
+  "gamma_b": 0.38,
+  "gain_r": 1.0,
+  "gain_g": 3.0,
+  "gain_b": 12.0
+}

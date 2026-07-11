@@ -1,0 +1,16 @@
+{
+  "fps": 30,
+  "steps": 240,
+  "layers": [
+    {"type": "linear_x", "freq": 14.0, "phase_rate":  0.10, "angle": 0.0,    "angle_rate": 0.004},
+    {"type": "linear_y", "freq": 14.0, "phase_rate": -0.08, "angle": 1.5708, "angle_rate": 0.003}
+  ],
+  "blend": "product",
+  "palette": [
+    [0.0,  [0,   5,   0]],
+    [0.25, [0,   80,  20]],
+    [0.5,  [20, 200,  80]],
+    [0.75, [180, 255, 100]],
+    [1.0,  [255, 255, 255]]
+  ]
+}
