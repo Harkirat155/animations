@@ -1,0 +1,41 @@
+/* Design DNA from harkirat155.github.io aurora — adapted for a generative studio. */
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-2: var(--accent-2);
+
+  --font-body: var(--font-body);
+  --font-display: var(--font-display);
+  --font-label: var(--font-label);
+
+  --radius-card: var(--radius-card);
+  --radius-pill: 999px;
+}
+
+:root {
+  --bg: #0b0710;
+  --bg-elevated: rgb(255 255 255 / 5%);
+  --border: rgb(255 255 255 / 8%);
+  --border-strong: rgb(255 255 255 / 22%);
+  --fg: #f5f3ff;
+  --fg-muted: #a9a3c2;
+  --accent: #d7ff3d;
+  --accent-ink: #d7ff3d;
+  --accent-2: #ff2e92;
+
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Inter", sans-serif;
+  --font-label: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-card: 24px;
+  --ease-signature: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-base: 0.55s;
+}

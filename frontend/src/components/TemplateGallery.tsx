@@ -8,21 +8,21 @@ interface Props {
 
 export default function TemplateGallery({ templates, selected, onSelect }: Props) {
   return (
-    <div data-testid="template-gallery" className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <div data-testid="template-gallery" className="flex gap-2 overflow-x-auto scroll-thin pb-1">
       {templates.map((t) => (
         <button
           key={t.name}
           type="button"
           data-testid={`template-${t.name}`}
           onClick={() => onSelect(t.name)}
-          className={`rounded-xl border p-3 text-left transition outline-none focus-visible:ring-2 focus-visible:ring-white/40 ${
+          className={`shrink-0 rounded-2xl border px-4 py-3 text-left transition outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${
             selected === t.name
-              ? 'border-violet-400 bg-violet-500/10'
-              : 'border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.06]'
+              ? 'border-[var(--accent)] bg-[var(--accent)]/10'
+              : 'border-[var(--border)] bg-black/20 hover:border-[var(--border-strong)]'
           }`}
         >
-          <div className="text-sm font-medium text-white/90">{t.label}</div>
-          <div className="mt-1 line-clamp-2 text-xs text-white/45">{t.blurb}</div>
+          <div className="text-sm font-medium text-[var(--fg)]">{t.label}</div>
+          <div className="mt-0.5 max-w-[10rem] truncate text-[11px] text-[var(--fg-muted)]">{t.blurb}</div>
         </button>
       ))}
     </div>

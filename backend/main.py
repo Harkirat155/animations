@@ -1,23 +1,18 @@
-"""Composer backend — v1: browse templates, fetch schema, render previews.
+"""Composer backend — browse templates, previews, free still export, waitlist.
 
-Public, unauthenticated, free. Preview compute runs in a bounded thread pool
-(never on the asyncio event loop) so one slow request can't stall every other
-visitor's request; a simple per-IP token bucket caps abuse — no Redis needed
-at this scale, this is a single-instance in-memory guard.
-
-Full-quality render/export (subscription-gated) is a v2 concern and doesn't
-exist yet — see the product plan for the phase boundary.
-
-Run: .venv/bin/uvicorn backend.main:app --reload --port 8000
-Deploy: fly deploy (see Dockerfile / fly.toml)
+Public preview + export stay free. Full video render remains Maker-gated
+(waitlist collects demand until Stripe + worker ship).
 """
 from __future__ import annotations
 
 import asyncio
+import json
 import os
+import re
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Request
@@ -25,13 +20,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel, Field
 
-from pipeline.preview import PreviewError, render_preview_motion, render_preview_still
+from pipeline.preview import PreviewError, render_export_still, render_preview_motion, render_preview_still
 from pipeline.schema import TEMPLATES, get, list_templates, to_json
 
-app = FastAPI(title="Animation Composer API")
+app = FastAPI(title="Lumen Composer API")
 
-# Comma-separated origins. Dev defaults include Vite; production sets
-# CORS_ORIGINS to the GitHub Pages URL via `fly secrets set`.
 _DEFAULT_ORIGINS = "http://localhost:5173,http://127.0.0.1:5173"
 _cors_raw = os.environ.get("CORS_ORIGINS", _DEFAULT_ORIGINS)
 _cors_origins = [o.strip() for o in _cors_raw.split(",") if o.strip()]
@@ -44,14 +37,16 @@ app.add_middleware(
     expose_headers=["X-Render-Seconds", "X-Motion-Frames", "X-Motion-Fps"],
 )
 
-# CPU-bound numpy work must never run on the event loop, or one slow preview
-# stalls every other visitor. Sized to CPU count so a small box isn't
-# oversubscribed.
 _POOL = ThreadPoolExecutor(max_workers=max(2, os.cpu_count() or 4))
 
 _RATE_LIMIT_WINDOW_S = 60.0
-_RATE_LIMIT_MAX_REQUESTS = 30
+_RATE_LIMIT_MAX_REQUESTS = 45
 _request_log: dict[str, list[float]] = defaultdict(list)
+
+_WAITLIST_PATH = Path(os.environ.get("WAITLIST_PATH", "/data/waitlist.jsonl"))
+# Local dev fallback when /data isn't mounted
+if not _WAITLIST_PATH.parent.exists():
+    _WAITLIST_PATH = Path("analytics/waitlist.jsonl")
 
 
 def _check_rate_limit(client_ip: str) -> None:
@@ -66,7 +61,6 @@ def _check_rate_limit(client_ip: str) -> None:
 
 
 def _client_ip(request: Request) -> str:
-    # Fly terminates TLS and sets Fly-Client-IP; fall back to peer.
     return (
         request.headers.get("fly-client-ip")
         or request.headers.get("x-forwarded-for", "").split(",")[0].strip()
@@ -83,6 +77,10 @@ class MotionPreviewRequest(BaseModel):
     template: str
     params: dict[str, Any] = Field(default_factory=dict)
     n_frames: int = Field(default=12, ge=2, le=24)
+
+
+class WaitlistRequest(BaseModel):
+    email: str
 
 
 @app.get("/api/templates")
@@ -124,11 +122,6 @@ async def api_preview(req: PreviewRequest, request: Request) -> Response:
 
 @app.post("/api/preview/motion")
 async def api_preview_motion(req: MotionPreviewRequest, request: Request) -> Response:
-    """Multi-frame preview as animated WebP (closed-form) or short growth strip.
-
-    Always returns image/webp when possible; falls back to a single PNG if the
-    template cannot produce multiple frames cheaply.
-    """
     if req.template not in TEMPLATES:
         raise HTTPException(status_code=404, detail=f"unknown template {req.template!r}")
 
@@ -156,10 +149,57 @@ async def api_preview_motion(req: MotionPreviewRequest, request: Request) -> Res
     )
 
 
+@app.post("/api/export/still")
+async def api_export_still(req: PreviewRequest, request: Request) -> Response:
+    """Free higher-fidelity still (no subscription) — the freemium delight."""
+    if req.template not in TEMPLATES:
+        raise HTTPException(status_code=404, detail=f"unknown template {req.template!r}")
+
+    _check_rate_limit(_client_ip(request))
+
+    loop = asyncio.get_running_loop()
+    try:
+        png_bytes, info = await loop.run_in_executor(
+            _POOL, render_export_still, req.template, req.params
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e)) from e
+    except PreviewError as e:
+        raise HTTPException(status_code=422, detail=str(e)) from e
+
+    return Response(
+        content=png_bytes,
+        media_type="image/png",
+        headers={
+            "X-Render-Seconds": str(info["render_seconds"]),
+            "Content-Disposition": f'attachment; filename="lumen-{req.template}.png"',
+        },
+    )
+
+
+@app.post("/api/waitlist")
+async def api_waitlist(req: WaitlistRequest, request: Request) -> dict:
+    email = req.email.strip().lower()
+    if not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
+        raise HTTPException(status_code=400, detail="Invalid email")
+    _check_rate_limit(_client_ip(request))
+
+    _WAITLIST_PATH.parent.mkdir(parents=True, exist_ok=True)
+    entry = {
+        "email": email,
+        "ts": time.time(),
+        "ip": _client_ip(request),
+    }
+    with _WAITLIST_PATH.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry) + "\n")
+    return {"ok": True, "message": "joined"}
+
+
 @app.get("/api/health")
 def health() -> dict:
     return {
         "status": "ok",
+        "product": "lumen",
         "templates": len(TEMPLATES),
         "cors_origins": _cors_origins,
     }

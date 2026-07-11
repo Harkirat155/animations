@@ -17,15 +17,17 @@ export default function FieldControl({ field, value, onChange }: Props) {
         <div className="flex items-center gap-3">
           <input
             type="range"
+            className="lumen-range flex-1"
             min={field.min}
             max={field.max}
             step={field.step ?? (field.kind === 'int' ? 1 : 0.01)}
             value={num}
-            onChange={(e) => onChange(field.kind === 'int' ? parseInt(e.target.value) : parseFloat(e.target.value))}
-            className="h-1.5 flex-1 cursor-pointer accent-violet-400"
+            onChange={(e) =>
+              onChange(field.kind === 'int' ? parseInt(e.target.value) : parseFloat(e.target.value))
+            }
           />
-          <span className="w-16 shrink-0 text-right font-mono text-xs text-white/70">
-            {field.kind === 'int' ? num : num.toFixed(3)}
+          <span className="font-label w-16 shrink-0 text-right text-xs text-[var(--fg-muted)]">
+            {field.kind === 'int' ? num : Number(num).toFixed(3)}
           </span>
         </div>
       )
@@ -37,11 +39,13 @@ export default function FieldControl({ field, value, onChange }: Props) {
           role="switch"
           aria-checked={value as boolean}
           onClick={() => onChange(!value)}
-          className={`h-6 w-11 rounded-full transition-colors ${value ? 'bg-violet-500' : 'bg-white/15'}`}
+          className={`h-7 w-12 rounded-full transition-colors ${
+            value ? 'bg-[var(--accent)]' : 'bg-white/15'
+          }`}
         >
           <span
-            className={`block size-4.5 rounded-full bg-white transition-transform ${
-              value ? 'translate-x-5' : 'translate-x-0.5'
+            className={`block size-5 rounded-full bg-[var(--bg)] transition-transform ${
+              value ? 'translate-x-6' : 'translate-x-1'
             }`}
           />
         </button>
@@ -51,10 +55,10 @@ export default function FieldControl({ field, value, onChange }: Props) {
         <select
           value={value as string}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-md border border-white/10 bg-white/5 px-2 py-1.5 text-sm text-white/90 focus:border-violet-400 focus:outline-none"
+          className="w-full rounded-xl border border-[var(--border)] bg-black/30 px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
         >
           {field.choices?.map((choice) => (
-            <option key={choice} value={choice} className="bg-neutral-900">
+            <option key={choice} value={choice} className="bg-[#120a18]">
               {choice}
             </option>
           ))}
@@ -69,20 +73,20 @@ export default function FieldControl({ field, value, onChange }: Props) {
           type="color"
           value={rgbToHex(rgb)}
           onChange={(e) => onChange(hexToRgb(e.target.value))}
-          className="h-8 w-14 cursor-pointer rounded border border-white/10 bg-transparent"
+          className="h-10 w-16 cursor-pointer rounded-xl border border-[var(--border)] bg-transparent"
         />
       )
     }
     case 'seed':
       return (
         <div className="flex items-center gap-2">
-          <span className="font-mono text-xs text-white/50">{String(value)}</span>
+          <span className="font-label text-xs text-[var(--fg-muted)]">{String(value)}</span>
           <button
             type="button"
             onClick={() => onChange(Math.floor(Math.random() * 1_000_000))}
-            className="rounded-md border border-white/10 px-2 py-1 text-xs hover:bg-white/10"
+            className="rounded-pill border border-[var(--border)] px-3 py-1 text-xs text-[var(--fg-muted)] hover:border-[var(--border-strong)] hover:text-[var(--fg)]"
           >
-            🎲 Randomize
+            Shuffle
           </button>
         </div>
       )

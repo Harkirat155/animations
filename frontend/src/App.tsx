@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { motion } from 'motion/react'
 import {
+  downloadBlob,
+  fetchExportStill,
   fetchLooks,
   fetchMotionPreview,
   fetchPreview,
@@ -11,23 +14,22 @@ import type { Look, Params, TemplateSchema, TemplateSummary } from './types'
 import { randomizeAll } from './randomize'
 import { mergeParams, toPresetJson } from './preset'
 import { decodeShare, tokenFromLocation, writeShareUrl } from './share'
+import {
+  applySemantic,
+  DEFAULT_SEMANTIC,
+  type SemanticState,
+} from './semantic'
 import TemplateGallery from './components/TemplateGallery'
 import LooksGallery from './components/LooksGallery'
 import ParamPanel from './components/ParamPanel'
+import PlayPanel from './components/PlayPanel'
 import PreviewPane from './components/PreviewPane'
+import WaitlistModal from './components/WaitlistModal'
 
 function defaultParams(schema: TemplateSchema): Params {
   return Object.fromEntries(schema.fields.map((f) => [f.key, f.default])) as Params
 }
 
-// schema and params must never be observable out of sync with each other —
-// a field's visibleIf check reads params keyed by the CURRENT schema's field
-// names, so if schema updated to template B while params still held template
-// A's values (or vice versa) for even one render, a visibleIf lookup against
-// a key the stale params dict doesn't have silently evaluates to false and
-// hides fields that should be visible. Keeping them in one state object
-// makes that class of bug structurally impossible instead of relying on
-// setSchema/setParams happening to batch into the same commit.
 interface View {
   schema: TemplateSchema
   params: Params
@@ -42,18 +44,22 @@ export default function App() {
   const [selected, setSelected] = useState<string | null>(null)
   const [view, setView] = useState<View | null>(null)
   const [mode, setMode] = useState<CraftMode>('play')
-  const [motion, setMotion] = useState(true)
+  const [motionOn, setMotionOn] = useState(true)
+  const [semantic, setSemantic] = useState<SemanticState>(DEFAULT_SEMANTIC)
+  const [seriesFilter, setSeriesFilter] = useState<string | null>(null)
+  const [waitlistOpen, setWaitlistOpen] = useState(false)
 
   const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  const [previewBlob, setPreviewBlob] = useState<Blob | null>(null)
   const [renderSeconds, setRenderSeconds] = useState<number | null>(null)
   const [nFrames, setNFrames] = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState<'json' | 'share' | null>(null)
   const [shareError, setShareError] = useState<string | null>(null)
+  const [exporting, setExporting] = useState(false)
   const [bootstrapped, setBootstrapped] = useState(false)
 
-  // Load catalogs once
   useEffect(() => {
     Promise.all([fetchTemplates(), fetchLooks()])
       .then(([t, l]) => {
@@ -63,7 +69,6 @@ export default function App() {
       .catch((e) => setError(String(e)))
   }, [])
 
-  // Restore share link once catalogs are ready (schema still fetched on select)
   useEffect(() => {
     if (bootstrapped || templates.length === 0) return
     const token = tokenFromLocation()
@@ -87,6 +92,7 @@ export default function App() {
           params: mergeParams(schema, state.p),
           lookId: state.look ?? null,
         })
+        setMode('craft')
       } catch (e) {
         if (!cancelled) setError(String(e))
       } finally {
@@ -98,18 +104,15 @@ export default function App() {
     }
   }, [templates, bootstrapped])
 
-  // Template switch (not from look / not from share bootstrap already setting view)
   const loadTemplate = useCallback(async (name: string, partial?: Params, lookId: string | null = null) => {
     setSelected(name)
     setView(null)
     setError(null)
     try {
       const schema = await fetchSchema(name)
-      setView({
-        schema,
-        params: partial ? mergeParams(schema, partial) : defaultParams(schema),
-        lookId,
-      })
+      const base = partial ? mergeParams(schema, partial) : defaultParams(schema)
+      setView({ schema, params: base, lookId })
+      setSemantic(DEFAULT_SEMANTIC)
     } catch (e) {
       setError(String(e))
     }
@@ -129,7 +132,24 @@ export default function App() {
     [loadTemplate],
   )
 
-  // Live, debounced preview
+  const onSemanticChange = useCallback(
+    (next: SemanticState) => {
+      setSemantic(next)
+      setView((current) => {
+        if (!current) return current
+        // Foundation: schema defaults, then any look/share params that were loaded
+        // (we keep lookId so UI can show selection, but semantic rewrites dials).
+        const foundation = defaultParams(current.schema)
+        return {
+          schema: current.schema,
+          params: applySemantic(current.schema, foundation, next),
+          lookId: current.lookId,
+        }
+      })
+    },
+    [],
+  )
+
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   useEffect(() => {
     if (!selected || !view) return
@@ -137,7 +157,7 @@ export default function App() {
     debounceRef.current = setTimeout(() => {
       setLoading(true)
       setError(null)
-      const fetcher = motion
+      const fetcher = motionOn
         ? fetchMotionPreview(selected, view.params, 6)
         : fetchPreview(selected, view.params)
       fetcher
@@ -146,16 +166,17 @@ export default function App() {
             if (prev) URL.revokeObjectURL(prev)
             return result.url
           })
+          setPreviewBlob(result.blob ?? null)
           setRenderSeconds(result.renderSeconds)
           setNFrames(result.nFrames ?? 1)
         })
         .catch((e) => setError(e instanceof PreviewApiError ? e.message : String(e)))
         .finally(() => setLoading(false))
-    }, motion ? 600 : 350)
+    }, motionOn ? 600 : 350)
     return () => {
       if (debounceRef.current) clearTimeout(debounceRef.current)
     }
-  }, [selected, view, motion])
+  }, [selected, view, motionOn])
 
   async function handleShare() {
     if (!selected || !view) return
@@ -171,79 +192,177 @@ export default function App() {
     }
   }
 
-  return (
-    <div className="min-h-screen bg-neutral-950 text-white/90">
-      <header className="border-b border-white/10 px-6 py-4">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-end justify-between gap-3">
-          <div>
-            <h1 className="text-lg font-semibold tracking-tight">Animation Composer</h1>
-            <p className="text-xs text-white/40">
-              Compose living math. Export perfect loops — full video needs a subscription.
-            </p>
-          </div>
-          <div className="flex items-center gap-2 text-xs">
-            <button
-              type="button"
-              onClick={() => setMode('play')}
-              className={`rounded-md px-2.5 py-1.5 ${
-                mode === 'play' ? 'bg-violet-500/20 text-violet-100' : 'text-white/45 hover:bg-white/5'
-              }`}
-            >
-              Play
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode('craft')}
-              className={`rounded-md px-2.5 py-1.5 ${
-                mode === 'craft' ? 'bg-violet-500/20 text-violet-100' : 'text-white/45 hover:bg-white/5'
-              }`}
-            >
-              Craft
-            </button>
-          </div>
-        </div>
-      </header>
+  async function handleDownloadPreview() {
+    if (!selected || !view) return
+    setExporting(true)
+    try {
+      if (motionOn && previewBlob) {
+        const ext = previewBlob.type.includes('webp') ? 'webp' : 'png'
+        downloadBlob(previewBlob, `lumen-${selected}-motion.${ext}`)
+      } else {
+        const blob = await fetchExportStill(selected, view.params)
+        downloadBlob(blob, `lumen-${selected}.png`)
+      }
+    } catch (e) {
+      setError(e instanceof PreviewApiError ? e.message : String(e))
+    } finally {
+      setExporting(false)
+    }
+  }
 
-      <main className="mx-auto max-w-6xl space-y-10 px-6 py-8">
-        <section>
-          <div className="mb-4 flex items-baseline justify-between gap-3">
-            <div>
-              <h2 className="text-sm font-medium text-white/80">Looks</h2>
-              <p className="text-xs text-white/35">Start from a curated composition — then make it yours.</p>
+  const hasStudio = Boolean(view)
+
+  return (
+    <div className="relative min-h-dvh text-[var(--fg)]">
+      <div aria-hidden className="aurora-field">
+        <div className="aurora-blob" />
+        <div className="aurora-blob" />
+        <div className="aurora-blob" />
+      </div>
+
+      <div className="relative z-10">
+        <header className="border-b border-[var(--border)]/80 bg-black/20 backdrop-blur-xl">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-8">
+            <div className="flex items-center gap-3">
+              <span className="live-dot size-2 rounded-full bg-[var(--accent)]" />
+              <div>
+                <div className="font-display text-lg font-bold tracking-tight">Lumen</div>
+                <div className="font-label text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
+                  Compose living math
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="flex rounded-pill border border-[var(--border)] bg-black/30 p-1">
+                <button
+                  type="button"
+                  onClick={() => setMode('play')}
+                  className={`rounded-pill px-3.5 py-1.5 text-xs font-semibold transition ${
+                    mode === 'play' ? 'bg-[var(--fg)] text-[var(--bg)]' : 'text-[var(--fg-muted)]'
+                  }`}
+                >
+                  Play
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setMode('craft')}
+                  className={`rounded-pill px-3.5 py-1.5 text-xs font-semibold transition ${
+                    mode === 'craft' ? 'bg-[var(--fg)] text-[var(--bg)]' : 'text-[var(--fg-muted)]'
+                  }`}
+                >
+                  Craft
+                </button>
+              </div>
+              <button
+                type="button"
+                onClick={() => setWaitlistOpen(true)}
+                className="rounded-pill bg-[var(--accent)] px-4 py-2 text-xs font-bold text-[#0b0710] transition hover:-translate-y-0.5"
+              >
+                Maker access
+              </button>
             </div>
           </div>
-          <LooksGallery looks={looks} selectedId={view?.lookId ?? null} onSelect={onSelectLook} />
-        </section>
+        </header>
 
-        <section>
-          <div className="mb-3">
-            <h2 className="text-sm font-medium text-white/80">Templates</h2>
-            <p className="text-xs text-white/35">Or start from a blank system with default dials.</p>
-          </div>
-          <TemplateGallery templates={templates} selected={selected} onSelect={onSelectTemplate} />
-        </section>
+        {!hasStudio && (
+          <section className="mx-auto max-w-7xl px-5 pb-10 pt-14 sm:px-8 sm:pt-20">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="max-w-3xl"
+            >
+              <p className="font-label inline-flex items-center gap-2 rounded-pill border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+                <span className="size-1.5 rounded-full bg-[var(--accent)]" />
+                Living systems studio
+              </p>
+              <h1
+                className="font-display mt-6 font-extrabold tracking-tight"
+                style={{ fontSize: 'clamp(2.6rem, 7vw, 5.5rem)', lineHeight: 0.98 }}
+              >
+                Compose organisms
+                <br />
+                <span className="text-[var(--accent)]">that move &amp; breathe.</span>
+              </h1>
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--fg-muted)]">
+                Not AI mush — deterministic mathematical systems. Pick a Look, feel the dials,
+                share a living link. Full film packs when Maker opens.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (looks[0]) onSelectLook(looks[0])
+                  }}
+                  className="rounded-xl bg-[var(--fg)] px-6 py-3 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-0.5"
+                >
+                  Start with a Look
+                </button>
+                <button
+                  type="button"
+                  onClick={() => document.getElementById('looks')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="rounded-xl border border-[var(--border-strong)] px-6 py-3 text-sm font-semibold transition hover:border-[var(--accent)]"
+                >
+                  Browse gallery
+                </button>
+              </div>
+            </motion.div>
+          </section>
+        )}
 
-        {view && (
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_380px]">
-            <div className="order-2 lg:order-1">
-              <div className="mb-5 flex items-start justify-between gap-4 border-b border-white/10 pb-4">
-                <div>
-                  <h2 className="text-base font-medium text-white/90">{view.schema.label}</h2>
-                  <p className="mt-0.5 text-xs text-white/40">{view.schema.blurb}</p>
-                  <p className="mt-1 text-[11px] text-white/30">Color: {view.schema.colorParadigm}</p>
-                </div>
-                <div className="flex shrink-0 flex-wrap justify-end gap-2">
+        <main className="mx-auto max-w-7xl space-y-10 px-5 py-8 sm:px-8">
+          <section id="looks" className="glass p-5 sm:p-7">
+            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">Gallery</p>
+                <h2 className="font-display text-2xl font-semibold tracking-tight">Looks</h2>
+              </div>
+              <p className="text-xs text-[var(--fg-muted)]">{looks.length} curated starting points</p>
+            </div>
+            <LooksGallery
+              looks={looks}
+              selectedId={view?.lookId ?? null}
+              seriesFilter={seriesFilter}
+              onSeriesFilter={setSeriesFilter}
+              onSelect={onSelectLook}
+            />
+          </section>
+
+          <section className="space-y-3">
+            <div className="flex items-end justify-between gap-3">
+              <div>
+                <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">Systems</p>
+                <h2 className="font-display text-xl font-semibold">Templates</h2>
+              </div>
+            </div>
+            <TemplateGallery templates={templates} selected={selected} onSelect={onSelectTemplate} />
+          </section>
+
+          {view && (
+            <section className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_380px]">
+              <div className="order-1 space-y-4">
+                <PreviewPane
+                  imageUrl={previewUrl}
+                  loading={loading}
+                  error={error}
+                  renderSeconds={renderSeconds}
+                  nFrames={nFrames}
+                  motionMode={motionOn}
+                  templateLabel={view.schema.label}
+                />
+
+                <div className="glass flex flex-wrap items-center justify-center gap-2 p-3">
                   <button
                     type="button"
-                    onClick={() => setMotion((m) => !m)}
-                    className={`rounded-md border px-2.5 py-1.5 text-xs ${
-                      motion
-                        ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-100/90'
-                        : 'border-white/10 hover:bg-white/10'
+                    onClick={() => setMotionOn((m) => !m)}
+                    className={`rounded-pill border px-3.5 py-2 text-xs font-semibold transition ${
+                      motionOn
+                        ? 'border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]'
+                        : 'border-[var(--border)] text-[var(--fg-muted)]'
                     }`}
-                    title="Toggle multi-frame motion preview"
                   >
-                    {motion ? '▶ Motion on' : '■ Still only'}
+                    {motionOn ? '▶ Motion' : '■ Still'}
                   </button>
                   <button
                     type="button"
@@ -254,20 +373,22 @@ export default function App() {
                         lookId: null,
                       })
                     }
-                    className="rounded-md border border-white/10 px-2.5 py-1.5 text-xs hover:bg-white/10"
-                    title="Randomize every dial"
+                    className="rounded-pill border border-[var(--border)] px-3.5 py-2 text-xs font-semibold text-[var(--fg)] hover:border-[var(--border-strong)]"
                   >
-                    🎲 Randomize
+                    🎲 Surprise
                   </button>
                   <button
                     type="button"
                     onClick={() =>
-                      setView({ schema: view.schema, params: defaultParams(view.schema), lookId: null })
+                      setView({
+                        schema: view.schema,
+                        params: defaultParams(view.schema),
+                        lookId: null,
+                      })
                     }
-                    className="rounded-md border border-white/10 px-2.5 py-1.5 text-xs hover:bg-white/10"
-                    title="Reset every dial to its default"
+                    className="rounded-pill border border-[var(--border)] px-3.5 py-2 text-xs font-semibold text-[var(--fg-muted)]"
                   >
-                    ↺ Reset
+                    Reset
                   </button>
                   <button
                     type="button"
@@ -276,70 +397,73 @@ export default function App() {
                       setCopied('json')
                       setTimeout(() => setCopied(null), 1500)
                     }}
-                    className="rounded-md border border-white/10 px-2.5 py-1.5 text-xs hover:bg-white/10"
-                    title="Copy as a preset JSON file usable with the existing CLI pipeline"
+                    className="rounded-pill border border-[var(--border)] px-3.5 py-2 text-xs font-semibold text-[var(--fg-muted)]"
                   >
-                    {copied === 'json' ? '✓ Copied' : '⧉ JSON'}
+                    {copied === 'json' ? '✓ JSON' : 'JSON'}
                   </button>
                   <button
                     type="button"
                     onClick={() => void handleShare()}
-                    className="rounded-md border border-violet-400/30 bg-violet-500/15 px-2.5 py-1.5 text-xs text-violet-100 hover:bg-violet-500/25"
-                    title="Copy a link that reloads this exact composition"
+                    className="rounded-pill border border-[var(--accent)]/35 bg-[var(--accent)]/10 px-3.5 py-2 text-xs font-bold text-[var(--accent)]"
                   >
                     {copied === 'share' ? '✓ Link copied' : '↗ Share'}
                   </button>
-                </div>
-              </div>
-              {shareError && <p className="mb-3 text-xs text-amber-300/90">{shareError}</p>}
-
-              {mode === 'craft' ? (
-                <ParamPanel
-                  schema={view.schema}
-                  params={view.params}
-                  onChange={(params) => setView({ schema: view.schema, params, lookId: null })}
-                />
-              ) : (
-                <div className="space-y-4 rounded-xl border border-white/10 bg-white/[0.02] p-5">
-                  <p className="text-sm text-white/70">
-                    You&apos;re in <span className="text-violet-200">Play</span> mode — pick a Look, toggle motion,
-                    share the link. Open <span className="text-white/90">Craft</span> for every dial.
-                  </p>
-                  <p className="text-xs text-white/40">
-                    Semantic knobs (Warmth / Chaos / Energy) land in the next pass. For now Randomize + Looks are the
-                    accessible path.
-                  </p>
                   <button
                     type="button"
-                    onClick={() => setMode('craft')}
-                    className="rounded-md border border-white/15 px-3 py-2 text-sm hover:bg-white/10"
+                    disabled={exporting || !previewUrl}
+                    onClick={() => void handleDownloadPreview()}
+                    className="rounded-pill border border-[var(--border-strong)] px-3.5 py-2 text-xs font-semibold text-[var(--fg)] disabled:opacity-40"
                   >
-                    Open Craft dials →
+                    {exporting ? '…' : '↓ Download preview'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setWaitlistOpen(true)}
+                    className="rounded-pill bg-[var(--fg)] px-3.5 py-2 text-xs font-bold text-[var(--bg)]"
+                  >
+                    🔒 Full video
                   </button>
                 </div>
-              )}
-            </div>
-            <div className="order-1 lg:order-2">
-              <PreviewPane
-                imageUrl={previewUrl}
-                loading={loading}
-                error={error}
-                renderSeconds={renderSeconds}
-                nFrames={nFrames}
-                motionMode={motion}
-              />
-              <button
-                type="button"
-                disabled
-                title="Subscriptions aren't live yet — coming soon"
-                className="mt-4 w-full cursor-not-allowed rounded-lg border border-violet-400/30 bg-violet-500/10 py-2.5 text-sm font-medium text-violet-200/60"
-              >
-                🔒 Subscribe to render full video
-              </button>
-            </div>
-          </div>
-        )}
-      </main>
+                {shareError && <p className="text-center text-xs text-amber-200">{shareError}</p>}
+              </div>
+
+              <div className="order-2">
+                <div className="glass scroll-thin max-h-[min(80dvh,900px)] overflow-y-auto p-5 sm:p-6">
+                  <div className="mb-5 border-b border-[var(--border)] pb-4">
+                    <h2 className="font-display text-lg font-semibold">{view.schema.label}</h2>
+                    <p className="mt-1 text-xs leading-relaxed text-[var(--fg-muted)]">{view.schema.blurb}</p>
+                  </div>
+                  {mode === 'play' ? (
+                    <PlayPanel
+                      state={semantic}
+                      onChange={onSemanticChange}
+                      onOpenCraft={() => setMode('craft')}
+                    />
+                  ) : (
+                    <ParamPanel
+                      schema={view.schema}
+                      params={view.params}
+                      onChange={(params) => setView({ schema: view.schema, params, lookId: null })}
+                    />
+                  )}
+                </div>
+              </div>
+            </section>
+          )}
+
+          <footer className="border-t border-[var(--border)] py-10 text-center">
+            <p className="font-display text-lg font-semibold">Lumen</p>
+            <p className="mt-2 text-sm text-[var(--fg-muted)]">
+              Deterministic generative systems · free to compose · Maker for film packs
+            </p>
+            <p className="font-label mt-4 text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
+              Built for the scroll — meant for craft
+            </p>
+          </footer>
+        </main>
+      </div>
+
+      <WaitlistModal open={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
     </div>
   )
 }

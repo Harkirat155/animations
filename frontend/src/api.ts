@@ -34,6 +34,7 @@ export interface PreviewResult {
   renderSeconds: number
   nFrames?: number
   mediaType?: string
+  blob?: Blob
 }
 
 export async function fetchPreview(template: string, params: Params): Promise<PreviewResult> {
@@ -49,6 +50,7 @@ export async function fetchPreview(template: string, params: Params): Promise<Pr
   const blob = await res.blob()
   return {
     url: URL.createObjectURL(blob),
+    blob,
     renderSeconds: Number(res.headers.get('X-Render-Seconds') ?? 0),
     nFrames: 1,
     mediaType: 'image/png',
@@ -72,9 +74,36 @@ export async function fetchMotionPreview(
   const blob = await res.blob()
   return {
     url: URL.createObjectURL(blob),
+    blob,
     renderSeconds: Number(res.headers.get('X-Render-Seconds') ?? 0),
     nFrames: Number(res.headers.get('X-Motion-Frames') ?? 1),
     mediaType: res.headers.get('Content-Type') ?? blob.type,
+  }
+}
+
+/** Higher-fidelity still for free download (no subscription). */
+export async function fetchExportStill(template: string, params: Params): Promise<Blob> {
+  const res = await fetch(apiUrl('/api/export/still'), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ template, params }),
+  })
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({ detail: res.statusText }))
+    throw new PreviewApiError(body.detail ?? 'export failed', res.status)
+  }
+  return res.blob()
+}
+
+export async function submitWaitlist(email: string): Promise<void> {
+  const res = await fetch(apiUrl('/api/waitlist'), {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email }),
+  })
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({ detail: res.statusText }))
+    throw new PreviewApiError(body.detail ?? 'waitlist failed', res.status)
   }
 }
 
@@ -85,4 +114,12 @@ export async function fetchLooks(): Promise<Look[]> {
   if (!res.ok) return []
   const data = await res.json()
   return (data.looks ?? []) as Look[]
+}
+
+export function downloadBlob(blob: Blob, filename: string) {
+  const a = document.createElement('a')
+  a.href = URL.createObjectURL(blob)
+  a.download = filename
+  a.click()
+  URL.revokeObjectURL(a.href)
 }

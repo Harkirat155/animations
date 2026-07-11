@@ -15,11 +15,6 @@ const GROUP_LABEL: Record<Field['group'], string> = {
   advanced: 'Advanced',
 }
 
-/** A field is renderable only if its `visibleIf` condition holds AND (for
- * type-dependent fields like strange-attractor's a/b/c/d) the active type
- * actually reads that parameter. Returns the field with min/max/label
- * resolved to the active type's spec — e.g. Lorenz's `a` slider must show
- * [5,15] (Sigma), not Clifford's static [-2.2,2.2] fallback range. */
 function resolveVisibleField(field: Field, schema: TemplateSchema, params: Params): Field | null {
   if (field.visibleIf && params[field.visibleIf.key] !== field.visibleIf.value) return null
   return resolveField(field, schema, params)
@@ -30,12 +25,6 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
 
   function setField(field: Field, value: Params[string]) {
     const next: Params = { ...params, [field.key]: value }
-
-    // Mirror the backend's type-dependent backfill so the UI updates
-    // instantly instead of waiting on a round trip: switching strange-
-    // attractor's `type` resets a/b/c/d to THAT type's own defaults,
-    // since the previous type's values are usually the wrong scale
-    // entirely (Clifford's ~[-2,2] vs Lorenz's sigma~10/rho~28).
     if (schema.typeDependent?.[field.key]) {
       const specs = schema.typeDependent[field.key][value as string]
       if (specs) {
@@ -52,6 +41,14 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
 
   return (
     <div className="space-y-6">
+      <div>
+        <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">Craft mode</p>
+        <h3 className="font-display mt-1 text-xl font-semibold tracking-tight">Every dial, honestly.</h3>
+        <p className="mt-2 text-sm text-[var(--fg-muted)]">
+          Schema-true controls for this system — no fake universal physics.
+        </p>
+      </div>
+
       {groups.map((group) => {
         const fields = schema.fields
           .filter((f) => f.group === group)
@@ -65,13 +62,13 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
               <button
                 type="button"
                 onClick={() => setAdvancedOpen((v) => !v)}
-                className="flex w-full items-center justify-between text-xs font-medium uppercase tracking-wide text-white/40 hover:text-white/60"
+                className="font-label flex w-full items-center justify-between text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)] hover:text-[var(--fg)]"
               >
                 {GROUP_LABEL[group]}
                 <span>{advancedOpen ? '−' : '+'}</span>
               </button>
               {advancedOpen && (
-                <div className="mt-3 space-y-4">
+                <div className="mt-4 space-y-4">
                   {fields.map((f) => (
                     <FieldRow key={f.key} field={f} value={params[f.key]} onChange={(v) => setField(f, v)} />
                   ))}
@@ -83,7 +80,7 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
 
         return (
           <div key={group}>
-            <h3 className="mb-3 text-xs font-medium uppercase tracking-wide text-white/40">
+            <h3 className="font-label mb-3 text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
               {GROUP_LABEL[group]}
             </h3>
             <div className="space-y-4">
@@ -98,14 +95,22 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
   )
 }
 
-function FieldRow({ field, value, onChange }: { field: Field; value: Params[string]; onChange: (v: Params[string]) => void }) {
+function FieldRow({
+  field,
+  value,
+  onChange,
+}: {
+  field: Field
+  value: Params[string]
+  onChange: (v: Params[string]) => void
+}) {
   return (
     <div>
-      <div className="mb-1 flex items-baseline justify-between">
-        <label className="text-sm text-white/80">{field.label}</label>
+      <div className="mb-1.5 flex items-baseline justify-between">
+        <label className="text-sm text-[var(--fg)]">{field.label}</label>
       </div>
       <FieldControl field={field} value={value} onChange={onChange} />
-      {field.help && <p className="mt-1 text-[11px] text-white/35">{field.help}</p>}
+      {field.help && <p className="mt-1.5 text-[11px] leading-relaxed text-[var(--fg-muted)]">{field.help}</p>}
     </div>
   )
 }

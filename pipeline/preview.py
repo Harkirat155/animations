@@ -50,6 +50,48 @@ class PreviewError(Exception):
     pass
 
 
+def render_export_still(template_name: str, params: dict) -> tuple[bytes, dict]:
+    """Higher-fidelity free still export (no ffmpeg). Larger than live preview
+    but still capped so a public endpoint can't melt the machine.
+    """
+    if template_name not in TEMPLATES:
+        raise PreviewError(f"unknown template {template_name!r}")
+    from pipeline.schema import build_render_params
+
+    clean = build_render_params(template_name, params)
+    # Export quality: square 640 — crisp enough for social stills / POD drafts.
+    export_params = {
+        **clean,
+        "size": min(int(clean.get("size", 640) or 640), 640),
+        "steps": 1,
+        "warmup": clean.get("warmup", 0) if template_name in _SEQUENTIAL else 0,
+        "capture_every": 1,
+    }
+    if template_name == "reaction-diffusion":
+        export_params.update({"steps": 3501, "warmup": 3500, "capture_every": 1, "size": 384})
+    elif template_name == "flow-field":
+        export_params.update({"steps": 80, "capture_every": 80, "warmup": 0, "size": 512, "n_particles": 2000})
+        # capture last frame only — but capture_every==steps only gets step 0.
+        # Use many captures then take last via generate_frames.
+        export_params["capture_every"] = 1
+        export_params["steps"] = 60
+
+    module = load_template(template_name)
+    t0 = time.perf_counter()
+    with tempfile.TemporaryDirectory() as tmp:
+        info = module.generate_frames(export_params, tmp)
+        frames = sorted(Path(tmp).glob("frame_*.png"))
+        if not frames:
+            raise PreviewError(f"{template_name} produced 0 frames for export")
+        png_bytes = frames[-1].read_bytes()
+    return png_bytes, {
+        "render_seconds": round(time.perf_counter() - t0, 3),
+        "width": info["width"],
+        "height": info["height"],
+        "media_type": "image/png",
+    }
+
+
 def render_preview_still(template_name: str, params: dict) -> tuple[bytes, dict]:
     """Render one representative frame for `template_name` with `params`
     (already the user's raw, unvalidated slider values).
