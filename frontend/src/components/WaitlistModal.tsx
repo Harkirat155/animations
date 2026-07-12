@@ -1,5 +1,7 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import { submitWaitlist } from '../api'
+
+const STORAGE_KEY = 'lumen_waitlist_email'
 
 interface Props {
   open: boolean
@@ -8,8 +10,23 @@ interface Props {
 
 export default function WaitlistModal({ open, onClose }: Props) {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'error'>('idle')
+  const [name, setName] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'ok' | 'already' | 'error'>('idle')
   const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    if (!open) return
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (saved) {
+        setEmail(saved)
+        setStatus('already')
+        setMessage("You're already on the Maker waitlist.")
+      }
+    } catch {
+      /* ignore */
+    }
+  }, [open])
 
   if (!open) return null
 
@@ -17,14 +34,29 @@ export default function WaitlistModal({ open, onClose }: Props) {
     e.preventDefault()
     setStatus('loading')
     try {
-      await submitWaitlist(email.trim())
-      setStatus('ok')
-      setMessage("You're on the list — we'll open Maker renders soon.")
+      const result = await submitWaitlist(email.trim(), {
+        name: name.trim() || undefined,
+        source: 'composer',
+      })
+      try {
+        localStorage.setItem(STORAGE_KEY, result.email)
+      } catch {
+        /* ignore */
+      }
+      if (result.status === 'already') {
+        setStatus('already')
+        setMessage("You're already on the list — we'll email when Maker opens.")
+      } else {
+        setStatus('ok')
+        setMessage("You're in. We'll notify you when full video exports open.")
+      }
     } catch (err) {
       setStatus('error')
       setMessage(err instanceof Error ? err.message : 'Something went wrong')
     }
   }
+
+  const done = status === 'ok' || status === 'already'
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -35,25 +67,52 @@ export default function WaitlistModal({ open, onClose }: Props) {
         onClick={onClose}
       />
       <div className="glass-strong relative z-10 w-full max-w-md p-6 sm:p-8">
-        <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]">Maker plan</p>
-        <h2 className="font-display mt-2 text-2xl font-bold tracking-tight">Full video exports are almost here</h2>
+        <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]">
+          Maker waitlist
+        </p>
+        <h2 className="font-display mt-2 text-2xl font-bold tracking-tight">
+          {done ? 'You\'re on the list' : 'Get early Maker access'}
+        </h2>
         <p className="mt-3 text-sm leading-relaxed text-[var(--fg-muted)]">
-          Free forever: compose, motion preview, share links, and download the live preview.
-          Maker unlocks film-quality 9:16 / 1:1 packs with generative audio — join the waitlist.
+          Free forever: compose, motion preview, share links, download previews.
+          Maker unlocks film-quality 9:16 / 1:1 packs with generative audio — no payment yet,
+          just reserve your spot.
         </p>
 
-        {status === 'ok' ? (
-          <p className="mt-6 text-sm text-[var(--accent)]">{message}</p>
+        {done ? (
+          <div className="mt-6 space-y-3">
+            <p className="text-sm text-[var(--accent)]">{message}</p>
+            <p className="font-label text-[11px] text-[var(--fg-muted)]">{email}</p>
+          </div>
         ) : (
           <form onSubmit={submit} className="mt-6 space-y-3">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@studio.com"
-              className="w-full rounded-xl border border-[var(--border)] bg-black/40 px-4 py-3 text-sm text-[var(--fg)] placeholder:text-[var(--fg-muted)] focus:border-[var(--accent)] focus:outline-none"
-            />
+            <div>
+              <label className="font-label mb-1.5 block text-[10px] uppercase tracking-[0.14em] text-[var(--fg-muted)]">
+                Email
+              </label>
+              <input
+                type="email"
+                required
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@studio.com"
+                className="w-full rounded-xl border border-[var(--border)] bg-black/40 px-4 py-3 text-sm text-[var(--fg)] placeholder:text-[var(--fg-muted)] focus:border-[var(--accent)] focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="font-label mb-1.5 block text-[10px] uppercase tracking-[0.14em] text-[var(--fg-muted)]">
+                Name <span className="opacity-60">(optional)</span>
+              </label>
+              <input
+                type="text"
+                autoComplete="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="How should we say hi?"
+                className="w-full rounded-xl border border-[var(--border)] bg-black/40 px-4 py-3 text-sm text-[var(--fg)] placeholder:text-[var(--fg-muted)] focus:border-[var(--accent)] focus:outline-none"
+              />
+            </div>
             {status === 'error' && <p className="text-xs text-rose-300">{message}</p>}
             <button
               type="submit"
@@ -62,6 +121,9 @@ export default function WaitlistModal({ open, onClose }: Props) {
             >
               {status === 'loading' ? 'Joining…' : 'Join waitlist'}
             </button>
+            <p className="text-center text-[11px] text-[var(--fg-muted)]">
+              No spam. One email when Maker ships.
+            </p>
           </form>
         )}
 

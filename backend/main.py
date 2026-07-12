@@ -1,18 +1,16 @@
 """Composer backend — browse templates, previews, free still export, waitlist.
 
-Public preview + export stay free. Full video render remains Maker-gated
-(waitlist collects demand until Stripe + worker ship).
+Public preview + export stay free. Maker waitlist is the demand gate until
+Stripe + full render land. Waitlist signups persist to Cloudflare R2 when
+configured, else local JSONL for dev.
 """
 from __future__ import annotations
 
 import asyncio
-import json
 import os
-import re
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
-from pathlib import Path
 from typing import Any
 
 from fastapi import FastAPI, HTTPException, Request
@@ -20,6 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel, Field
 
+from backend import r2
 from pipeline.preview import PreviewError, render_export_still, render_preview_motion, render_preview_still
 from pipeline.schema import TEMPLATES, get, list_templates, to_json
 
@@ -41,23 +40,20 @@ _POOL = ThreadPoolExecutor(max_workers=max(2, os.cpu_count() or 4))
 
 _RATE_LIMIT_WINDOW_S = 60.0
 _RATE_LIMIT_MAX_REQUESTS = 45
+_WAITLIST_RATE_MAX = 8  # tighter — form spam
 _request_log: dict[str, list[float]] = defaultdict(list)
-
-_WAITLIST_PATH = Path(os.environ.get("WAITLIST_PATH", "/data/waitlist.jsonl"))
-# Local dev fallback when /data isn't mounted
-if not _WAITLIST_PATH.parent.exists():
-    _WAITLIST_PATH = Path("analytics/waitlist.jsonl")
+_waitlist_log: dict[str, list[float]] = defaultdict(list)
 
 
-def _check_rate_limit(client_ip: str) -> None:
+def _check_rate_limit(client_ip: str, log: dict[str, list[float]], max_req: int) -> None:
     now = time.monotonic()
-    log = _request_log[client_ip]
+    bucket = log[client_ip]
     cutoff = now - _RATE_LIMIT_WINDOW_S
-    while log and log[0] < cutoff:
-        log.pop(0)
-    if len(log) >= _RATE_LIMIT_MAX_REQUESTS:
-        raise HTTPException(status_code=429, detail="Too many preview requests — slow down.")
-    log.append(now)
+    while bucket and bucket[0] < cutoff:
+        bucket.pop(0)
+    if len(bucket) >= max_req:
+        raise HTTPException(status_code=429, detail="Too many requests — slow down.")
+    bucket.append(now)
 
 
 def _client_ip(request: Request) -> str:
@@ -81,6 +77,8 @@ class MotionPreviewRequest(BaseModel):
 
 class WaitlistRequest(BaseModel):
     email: str
+    name: str | None = None
+    source: str | None = "composer"
 
 
 @app.get("/api/templates")
@@ -101,7 +99,7 @@ async def api_preview(req: PreviewRequest, request: Request) -> Response:
     if req.template not in TEMPLATES:
         raise HTTPException(status_code=404, detail=f"unknown template {req.template!r}")
 
-    _check_rate_limit(_client_ip(request))
+    _check_rate_limit(_client_ip(request), _request_log, _RATE_LIMIT_MAX_REQUESTS)
 
     loop = asyncio.get_running_loop()
     try:
@@ -125,7 +123,7 @@ async def api_preview_motion(req: MotionPreviewRequest, request: Request) -> Res
     if req.template not in TEMPLATES:
         raise HTTPException(status_code=404, detail=f"unknown template {req.template!r}")
 
-    _check_rate_limit(_client_ip(request))
+    _check_rate_limit(_client_ip(request), _request_log, _RATE_LIMIT_MAX_REQUESTS)
 
     loop = asyncio.get_running_loop()
     try:
@@ -155,7 +153,7 @@ async def api_export_still(req: PreviewRequest, request: Request) -> Response:
     if req.template not in TEMPLATES:
         raise HTTPException(status_code=404, detail=f"unknown template {req.template!r}")
 
-    _check_rate_limit(_client_ip(request))
+    _check_rate_limit(_client_ip(request), _request_log, _RATE_LIMIT_MAX_REQUESTS)
 
     loop = asyncio.get_running_loop()
     try:
@@ -179,20 +177,33 @@ async def api_export_still(req: PreviewRequest, request: Request) -> Response:
 
 @app.post("/api/waitlist")
 async def api_waitlist(req: WaitlistRequest, request: Request) -> dict:
-    email = req.email.strip().lower()
-    if not re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", email):
-        raise HTTPException(status_code=400, detail="Invalid email")
-    _check_rate_limit(_client_ip(request))
+    """Register interest for Maker (full video). Durable on R2 when secrets set."""
+    ip = _client_ip(request)
+    _check_rate_limit(ip, _waitlist_log, _WAITLIST_RATE_MAX)
 
-    _WAITLIST_PATH.parent.mkdir(parents=True, exist_ok=True)
-    entry = {
-        "email": email,
-        "ts": time.time(),
-        "ip": _client_ip(request),
-    }
-    with _WAITLIST_PATH.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(entry) + "\n")
-    return {"ok": True, "message": "joined"}
+    loop = asyncio.get_running_loop()
+    try:
+        result = await loop.run_in_executor(
+            None,
+            lambda: r2.register_waitlist(
+                req.email,
+                ip=ip,
+                source=req.source,
+                name=req.name,
+            ),
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e)) from e
+    except r2.R2NotConfigured:
+        # Should not happen — register_waitlist falls back to local — but be loud.
+        raise HTTPException(
+            status_code=503,
+            detail="Waitlist storage is not configured",
+        ) from None
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=f"Waitlist storage failed: {e}") from e
+
+    return result
 
 
 @app.get("/api/health")
@@ -202,4 +213,6 @@ def health() -> dict:
         "product": "lumen",
         "templates": len(TEMPLATES),
         "cors_origins": _cors_origins,
+        "r2_configured": r2.configured(),
+        "r2_bucket": os.environ.get("R2_BUCKET", "animations"),
     }

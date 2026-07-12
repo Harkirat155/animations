@@ -96,8 +96,26 @@ node frontend/scripts/verify.mjs            # Playwright: needs both servers run
 |-------|--------|
 | Frontend | **GitHub Pages** — `.github/workflows/pages.yml` |
 | Backend | **Fly.io** — `Dockerfile` + `fly.toml` |
-| Blobs (later) | Cloudflare **R2** |
-| DB (later) | Cloudflare **D1** when auth/quota need it |
+| Blobs | Cloudflare **R2** bucket `animations` (waitlist now; renders later) |
+| Payments | Deferred — Maker waitlist only |
+
+#### R2 secrets (Fly)
+
+Bucket endpoint:
+`https://f23d40d6e8e5a8ba907fec5d01d3f37b.r2.cloudflarestorage.com/animations`
+
+```bash
+fly secrets set \
+  R2_ACCOUNT_ID=f23d40d6e8e5a8ba907fec5d01d3f37b \
+  R2_BUCKET=animations \
+  R2_ENDPOINT=https://f23d40d6e8e5a8ba907fec5d01d3f37b.r2.cloudflarestorage.com \
+  R2_ACCESS_KEY_ID=... \
+  R2_SECRET_ACCESS_KEY=... \
+  -a animations-composer
+```
+
+Waitlist objects: `waitlist/entries/YYYY/MM/{ts}-{hash}.json` + dedupe keys under `waitlist/by-email/`.
+Without R2 secrets, signups fall back to local `analytics/waitlist.jsonl` (dev only).
 
 ```bash
 # Backend

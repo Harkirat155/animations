@@ -95,16 +95,33 @@ export async function fetchExportStill(template: string, params: Params): Promis
   return res.blob()
 }
 
-export async function submitWaitlist(email: string): Promise<void> {
+export interface WaitlistResult {
+  ok: boolean
+  status: 'joined' | 'already'
+  email: string
+}
+
+export async function submitWaitlist(
+  email: string,
+  opts?: { name?: string; source?: string },
+): Promise<WaitlistResult> {
   const res = await fetch(apiUrl('/api/waitlist'), {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({
+      email,
+      name: opts?.name || undefined,
+      source: opts?.source || 'composer',
+    }),
   })
   if (!res.ok) {
     const body = await res.json().catch(() => ({ detail: res.statusText }))
-    throw new PreviewApiError(body.detail ?? 'waitlist failed', res.status)
+    throw new PreviewApiError(
+      typeof body.detail === 'string' ? body.detail : 'waitlist failed',
+      res.status,
+    )
   }
+  return res.json()
 }
 
 /** Looks manifest is a static asset next to the SPA (built by scripts/build_looks.py). */

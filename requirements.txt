@@ -5,3 +5,6 @@ pillow>=11.0
 # composer backend (v1: templates/schema/preview API)
 fastapi>=0.115
 uvicorn>=0.32
+
+# Cloudflare R2 (S3-compatible) — waitlist + future render deliverables
+boto3>=1.35

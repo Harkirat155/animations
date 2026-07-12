@@ -6,6 +6,10 @@ output/
 .DS_Store
 scratch_*.json
 screenshot_*.png
+.env
+.env.*
+!.env.example
+analytics/waitlist.jsonl
 
 # composer app (frontend/)
 frontend/node_modules/
