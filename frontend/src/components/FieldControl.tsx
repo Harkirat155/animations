@@ -26,7 +26,7 @@ export default function FieldControl({ field, value, onChange }: Props) {
               onChange(field.kind === 'int' ? parseInt(e.target.value) : parseFloat(e.target.value))
             }
           />
-          <span className="font-label w-16 shrink-0 text-right text-xs text-[var(--fg-muted)]">
+          <span className="font-label w-16 shrink-0 text-right text-xs tabular-nums text-[var(--fg-muted)]">
             {field.kind === 'int' ? num : Number(num).toFixed(3)}
           </span>
         </div>
@@ -40,7 +40,7 @@ export default function FieldControl({ field, value, onChange }: Props) {
           aria-checked={value as boolean}
           onClick={() => onChange(!value)}
           className={`h-7 w-12 rounded-full transition-colors ${
-            value ? 'bg-[var(--accent)]' : 'bg-white/15'
+            value ? 'bg-[var(--art-a)]' : 'bg-white/12'
           }`}
         >
           <span
@@ -55,10 +55,10 @@ export default function FieldControl({ field, value, onChange }: Props) {
         <select
           value={value as string}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full rounded-xl border border-[var(--border)] bg-black/30 px-3 py-2 text-sm text-[var(--fg)] focus:border-[var(--accent)] focus:outline-none"
+          className="w-full rounded-xl border border-[var(--border)] bg-black/40 px-3 py-2.5 text-sm text-[var(--fg)] focus:border-[var(--art-a)] focus:outline-none"
         >
           {field.choices?.map((choice) => (
-            <option key={choice} value={choice} className="bg-[#120a18]">
+            <option key={choice} value={choice} className="bg-[#0a0a0e]">
               {choice}
             </option>
           ))}

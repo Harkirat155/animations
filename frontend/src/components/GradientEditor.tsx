@@ -59,7 +59,7 @@ export default function GradientEditor({ stops, onChange }: Props) {
     <div className="space-y-2">
       <div
         ref={trackRef}
-        className="relative h-8 rounded-md border border-white/10 cursor-copy"
+        className="relative h-9 cursor-copy rounded-xl border border-[var(--border)] shadow-[inset_0_0_20px_rgb(0_0_0/0.35)]"
         style={{ background: css }}
         onDoubleClick={(e) => addStopAt(positionFromEvent(e))}
         onMouseMove={(e) => {
@@ -77,33 +77,37 @@ export default function GradientEditor({ stops, onChange }: Props) {
               setDragging(i)
               setSelected(i)
             }}
-            className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow"
+            className="absolute top-1/2 size-4 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 shadow-md"
             style={{
               left: `${stop[0] * 100}%`,
               background: rgbCss(stop[1]),
-              borderColor: i === selected ? '#fff' : 'rgba(255,255,255,0.4)',
+              borderColor: i === selected ? 'var(--fg)' : 'rgba(255,255,255,0.35)',
             }}
           />
         ))}
       </div>
-      <div className="flex items-center gap-2 text-xs text-white/60">
+      <div className="flex items-center gap-2 text-xs text-[var(--fg-muted)]">
         <input
           type="color"
           value={rgbToHex(stops[selected][1])}
           onChange={(e) => updateStop(selected, { rgb: hexToRgb(e.target.value) })}
           className="h-6 w-8 cursor-pointer rounded border-0 bg-transparent"
         />
-        <span>stop {selected + 1}/{stops.length} at {(stops[selected][0] * 100).toFixed(0)}%</span>
+        <span className="font-label">
+          stop {selected + 1}/{stops.length} · {(stops[selected][0] * 100).toFixed(0)}%
+        </span>
         <button
           type="button"
           onClick={() => removeStop(selected)}
           disabled={stops.length <= 2}
-          className="ml-auto rounded px-2 py-0.5 hover:bg-white/10 disabled:opacity-30"
+          className="ml-auto rounded-pill px-2 py-0.5 hover:bg-white/10 disabled:opacity-30"
         >
           remove
         </button>
       </div>
-      <p className="text-[11px] text-white/35">double-click the bar to add a stop, drag a dot to move it</p>
+      <p className="text-[11px] text-[var(--fg-muted)] opacity-70">
+        Double-click the bar to add a stop · drag a bead to move it
+      </p>
     </div>
   )
 }

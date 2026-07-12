@@ -40,15 +40,7 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
   const groups: Field['group'][] = ['shape', 'color', 'advanced']
 
   return (
-    <div className="space-y-6">
-      <div>
-        <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">Craft mode</p>
-        <h3 className="font-display mt-1 text-xl font-semibold tracking-tight">Every dial, honestly.</h3>
-        <p className="mt-2 text-sm text-[var(--fg-muted)]">
-          Schema-true controls for this system — no fake universal physics.
-        </p>
-      </div>
-
+    <div className="space-y-5">
       {groups.map((group) => {
         const fields = schema.fields
           .filter((f) => f.group === group)
@@ -62,13 +54,13 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
               <button
                 type="button"
                 onClick={() => setAdvancedOpen((v) => !v)}
-                className="font-label flex w-full items-center justify-between text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)] hover:text-[var(--fg)]"
+                className="font-label sticky top-0 z-[1] flex w-full items-center justify-between bg-[rgb(12_12_16/0.85)] py-2 text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)] backdrop-blur-sm hover:text-[var(--fg)]"
               >
                 {GROUP_LABEL[group]}
-                <span>{advancedOpen ? '−' : '+'}</span>
+                <span className="text-sm">{advancedOpen ? '−' : '+'}</span>
               </button>
               {advancedOpen && (
-                <div className="mt-4 space-y-4">
+                <div className="mt-3 space-y-4">
                   {fields.map((f) => (
                     <FieldRow key={f.key} field={f} value={params[f.key]} onChange={(v) => setField(f, v)} />
                   ))}
@@ -80,7 +72,7 @@ export default function ParamPanel({ schema, params, onChange }: Props) {
 
         return (
           <div key={group}>
-            <h3 className="font-label mb-3 text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
+            <h3 className="font-label sticky top-0 z-[1] mb-3 bg-[rgb(12_12_16/0.85)] py-1 text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)] backdrop-blur-sm">
               {GROUP_LABEL[group]}
             </h3>
             <div className="space-y-4">
@@ -110,7 +102,9 @@ function FieldRow({
         <label className="text-sm text-[var(--fg)]">{field.label}</label>
       </div>
       <FieldControl field={field} value={value} onChange={onChange} />
-      {field.help && <p className="mt-1.5 text-[11px] leading-relaxed text-[var(--fg-muted)]">{field.help}</p>}
+      {field.help && (
+        <p className="mt-1.5 text-[11px] leading-relaxed text-[var(--fg-muted)]">{field.help}</p>
+      )}
     </div>
   )
 }

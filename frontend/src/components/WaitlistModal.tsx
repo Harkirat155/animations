@@ -63,29 +63,28 @@ export default function WaitlistModal({ open, onClose }: Props) {
       <button
         type="button"
         aria-label="Close"
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/60 backdrop-blur-md"
         onClick={onClose}
       />
-      <div className="glass-strong relative z-10 w-full max-w-md p-6 sm:p-8">
-        <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--accent)]">
+      <div className="dock-glass relative z-10 w-full max-w-md p-7 sm:p-9">
+        <p className="font-label text-[10px] uppercase tracking-[0.2em] text-[var(--accent)]">
           Maker waitlist
         </p>
         <h2 className="font-display mt-2 text-2xl font-bold tracking-tight">
-          {done ? 'You\'re on the list' : 'Get early Maker access'}
+          {done ? "You're on the list" : 'Reserve Maker access'}
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-[var(--fg-muted)]">
-          Free forever: compose, motion preview, share links, download previews.
-          Maker unlocks film-quality 9:16 / 1:1 packs with generative audio — no payment yet,
-          just reserve your spot.
+          Free forever: compose, motion preview, share, download previews. Maker unlocks
+          film-quality packs — no payment yet.
         </p>
 
         {done ? (
-          <div className="mt-6 space-y-3">
+          <div className="mt-7 space-y-2">
             <p className="text-sm text-[var(--accent)]">{message}</p>
             <p className="font-label text-[11px] text-[var(--fg-muted)]">{email}</p>
           </div>
         ) : (
-          <form onSubmit={submit} className="mt-6 space-y-3">
+          <form onSubmit={submit} className="mt-7 space-y-3">
             <div>
               <label className="font-label mb-1.5 block text-[10px] uppercase tracking-[0.14em] text-[var(--fg-muted)]">
                 Email
@@ -117,7 +116,8 @@ export default function WaitlistModal({ open, onClose }: Props) {
             <button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full rounded-xl bg-[var(--fg)] px-4 py-3 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-0.5 disabled:opacity-60"
+              data-magnetic
+              className="w-full rounded-xl bg-[var(--fg)] px-4 py-3.5 text-sm font-semibold text-[var(--bg)] transition hover:opacity-90 disabled:opacity-60"
             >
               {status === 'loading' ? 'Joining…' : 'Join waitlist'}
             </button>
@@ -130,7 +130,7 @@ export default function WaitlistModal({ open, onClose }: Props) {
         <button
           type="button"
           onClick={onClose}
-          className="mt-4 w-full text-center text-xs text-[var(--fg-muted)] hover:text-[var(--fg)]"
+          className="mt-5 w-full text-center text-xs text-[var(--fg-muted)] hover:text-[var(--fg)]"
         >
           Keep composing
         </button>

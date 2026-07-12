@@ -1,4 +1,4 @@
-/* Design DNA from harkirat155.github.io aurora — adapted for a generative studio. */
+/* Lumen — ink + light. Darkroom for living mathematics. */
 
 @theme inline {
   --color-bg: var(--bg);
@@ -17,25 +17,43 @@
 
   --radius-card: var(--radius-card);
   --radius-pill: 999px;
+  --radius-chip: var(--radius-chip);
+  --radius-lens: var(--radius-lens);
 }
 
 :root {
-  --bg: #0b0710;
-  --bg-elevated: rgb(255 255 255 / 5%);
+  --bg: #050508;
+  --bg-elevated: rgb(255 255 255 / 4%);
   --border: rgb(255 255 255 / 8%);
-  --border-strong: rgb(255 255 255 / 22%);
-  --fg: #f5f3ff;
-  --fg-muted: #a9a3c2;
-  --accent: #d7ff3d;
-  --accent-ink: #d7ff3d;
-  --accent-2: #ff2e92;
+  --border-strong: rgb(255 255 255 / 18%);
+  --fg: #f4f1ea;
+  --fg-muted: #8b8798;
+  --accent: #e8ff9a;
+  --accent-ink: #e8ff9a;
+  --accent-2: #ff6b9d;
+  /* Sampled from active art when available */
+  --art-a: #e8ff9a;
+  --art-b: #7aa2ff;
 
   --font-body: "Inter", system-ui, sans-serif;
   --font-display: "Bricolage Grotesque", "Inter", sans-serif;
   --font-label: "JetBrains Mono", ui-monospace, monospace;
 
-  --radius-card: 24px;
-  --ease-signature: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --radius-card: 22px;
+  --radius-chip: 12px;
+  --radius-lens: 28px;
+
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-base: 0.55s;
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+  --duration-base: 0.5s;
+  --duration-slow: 0.85s;
+
+  --cursor-size: 10px;
+  --veil-strength: 0.72;
+
+  --glass-fill-top: rgb(255 255 255 / 16%);
+  --glass-fill-bot: rgb(255 255 255 / 7%);
+  --glass-border: rgb(255 255 255 / 24%);
+  --glass-inset: rgb(255 255 255 / 10%);
 }

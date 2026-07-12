@@ -1,11 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { motion } from 'motion/react'
+import { useCallback, useEffect, useState } from 'react'
 import {
   downloadBlob,
   fetchExportStill,
   fetchLooks,
-  fetchMotionPreview,
-  fetchPreview,
   fetchSchema,
   fetchTemplates,
   PreviewApiError,
@@ -19,11 +16,13 @@ import {
   DEFAULT_SEMANTIC,
   type SemanticState,
 } from './semantic'
-import TemplateGallery from './components/TemplateGallery'
-import LooksGallery from './components/LooksGallery'
-import ParamPanel from './components/ParamPanel'
-import PlayPanel from './components/PlayPanel'
-import PreviewPane from './components/PreviewPane'
+import { usePreview } from './hooks/usePreview'
+import { usePaletteFromImage } from './hooks/usePaletteFromImage'
+import LivingBackdrop from './components/LivingBackdrop'
+import TopBar from './components/shell/TopBar'
+import LooksPage from './components/shell/LooksPage'
+import SystemsPage from './components/shell/SystemsPage'
+import FocusView from './components/shell/FocusView'
 import WaitlistModal from './components/WaitlistModal'
 
 function defaultParams(schema: TemplateSchema): Params {
@@ -36,6 +35,8 @@ interface View {
   lookId: string | null
 }
 
+/** Primary nav pages (+ focus overlay). */
+type AppPage = 'looks' | 'systems' | 'focus'
 type CraftMode = 'play' | 'craft'
 
 export default function App() {
@@ -43,30 +44,38 @@ export default function App() {
   const [looks, setLooks] = useState<Look[]>([])
   const [selected, setSelected] = useState<string | null>(null)
   const [view, setView] = useState<View | null>(null)
-  const [mode, setMode] = useState<CraftMode>('play')
+  const [page, setPage] = useState<AppPage>('looks')
+  const [craftMode, setCraftMode] = useState<CraftMode>('play')
   const [motionOn, setMotionOn] = useState(true)
   const [semantic, setSemantic] = useState<SemanticState>(DEFAULT_SEMANTIC)
   const [seriesFilter, setSeriesFilter] = useState<string | null>(null)
   const [waitlistOpen, setWaitlistOpen] = useState(false)
+  const [hoverDiscoverUrl, setHoverDiscoverUrl] = useState<string | null>(null)
+  const [featuredUrl, setFeaturedUrl] = useState<string | null>(null)
 
-  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
-  const [previewBlob, setPreviewBlob] = useState<Blob | null>(null)
-  const [renderSeconds, setRenderSeconds] = useState<number | null>(null)
-  const [nFrames, setNFrames] = useState<number | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
   const [copied, setCopied] = useState<'json' | 'share' | null>(null)
   const [shareError, setShareError] = useState<string | null>(null)
   const [exporting, setExporting] = useState(false)
   const [bootstrapped, setBootstrapped] = useState(false)
+  const [helpOpen, setHelpOpen] = useState(false)
+  const [loadError, setLoadError] = useState<string | null>(null)
+
+  const preview = usePreview(selected, view?.params ?? null, motionOn)
+  usePaletteFromImage(preview.previewUrl)
 
   useEffect(() => {
     Promise.all([fetchTemplates(), fetchLooks()])
       .then(([t, l]) => {
         setTemplates(t)
         setLooks(l)
+        const withThumb = l.find((x) => x.thumb)
+        if (withThumb?.thumb) {
+          setFeaturedUrl(
+            new URL(withThumb.thumb, window.location.origin + import.meta.env.BASE_URL).href,
+          )
+        }
       })
-      .catch((e) => setError(String(e)))
+      .catch((e) => setLoadError(String(e)))
   }, [])
 
   useEffect(() => {
@@ -92,9 +101,10 @@ export default function App() {
           params: mergeParams(schema, state.p),
           lookId: state.look ?? null,
         })
-        setMode('craft')
+        setCraftMode('craft')
+        setPage('systems')
       } catch (e) {
-        if (!cancelled) setError(String(e))
+        if (!cancelled) setLoadError(String(e))
       } finally {
         if (!cancelled) setBootstrapped(true)
       }
@@ -104,79 +114,71 @@ export default function App() {
     }
   }, [templates, bootstrapped])
 
-  const loadTemplate = useCallback(async (name: string, partial?: Params, lookId: string | null = null) => {
-    setSelected(name)
-    setView(null)
-    setError(null)
-    try {
-      const schema = await fetchSchema(name)
-      const base = partial ? mergeParams(schema, partial) : defaultParams(schema)
-      setView({ schema, params: base, lookId })
-      setSemantic(DEFAULT_SEMANTIC)
-    } catch (e) {
-      setError(String(e))
-    }
-  }, [])
+  const loadTemplate = useCallback(
+    async (
+      name: string,
+      partial?: Params,
+      lookId: string | null = null,
+      opts?: { navigate?: boolean },
+    ) => {
+      setSelected(name)
+      setLoadError(null)
+      try {
+        const schema = await fetchSchema(name)
+        const base = partial ? mergeParams(schema, partial) : defaultParams(schema)
+        setView({ schema, params: base, lookId })
+        setSemantic(DEFAULT_SEMANTIC)
+        if (opts?.navigate !== false) {
+          setPage((p) => (p === 'focus' ? 'focus' : 'systems'))
+        }
+      } catch (e) {
+        setLoadError(String(e))
+      }
+    },
+    [],
+  )
+
+  // Seed Systems with a random instrument so the page is never empty.
+  // Runs after share bootstrap; does not leave Looks.
+  useEffect(() => {
+    if (!bootstrapped || templates.length === 0 || selected) return
+    const pick = templates[Math.floor(Math.random() * templates.length)]
+    void loadTemplate(pick.name, undefined, null, { navigate: false })
+  }, [bootstrapped, templates, selected, loadTemplate])
 
   const onSelectTemplate = useCallback(
     (name: string) => {
-      void loadTemplate(name, undefined, null)
+      void loadTemplate(name, undefined, null, { navigate: true })
     },
     [loadTemplate],
   )
 
   const onSelectLook = useCallback(
     (look: Look) => {
-      void loadTemplate(look.template, look.params, look.id)
+      void loadTemplate(look.template, look.params, look.id, { navigate: true })
     },
     [loadTemplate],
   )
 
-  const onSemanticChange = useCallback(
-    (next: SemanticState) => {
-      setSemantic(next)
-      setView((current) => {
-        if (!current) return current
-        // Foundation: schema defaults, then any look/share params that were loaded
-        // (we keep lookId so UI can show selection, but semantic rewrites dials).
-        const foundation = defaultParams(current.schema)
-        return {
-          schema: current.schema,
-          params: applySemantic(current.schema, foundation, next),
-          lookId: current.lookId,
-        }
-      })
-    },
-    [],
-  )
+  const onSurpriseLook = useCallback(() => {
+    const pool = looks.filter((l) => Boolean(l.thumb))
+    if (pool.length === 0) return
+    const look = pool[Math.floor(Math.random() * pool.length)]
+    onSelectLook(look)
+  }, [looks, onSelectLook])
 
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  useEffect(() => {
-    if (!selected || !view) return
-    if (debounceRef.current) clearTimeout(debounceRef.current)
-    debounceRef.current = setTimeout(() => {
-      setLoading(true)
-      setError(null)
-      const fetcher = motionOn
-        ? fetchMotionPreview(selected, view.params, 6)
-        : fetchPreview(selected, view.params)
-      fetcher
-        .then((result) => {
-          setPreviewUrl((prev) => {
-            if (prev) URL.revokeObjectURL(prev)
-            return result.url
-          })
-          setPreviewBlob(result.blob ?? null)
-          setRenderSeconds(result.renderSeconds)
-          setNFrames(result.nFrames ?? 1)
-        })
-        .catch((e) => setError(e instanceof PreviewApiError ? e.message : String(e)))
-        .finally(() => setLoading(false))
-    }, motionOn ? 600 : 350)
-    return () => {
-      if (debounceRef.current) clearTimeout(debounceRef.current)
-    }
-  }, [selected, view, motionOn])
+  const onSemanticChange = useCallback((next: SemanticState) => {
+    setSemantic(next)
+    setView((current) => {
+      if (!current) return current
+      const foundation = defaultParams(current.schema)
+      return {
+        schema: current.schema,
+        params: applySemantic(current.schema, foundation, next),
+        lookId: current.lookId,
+      }
+    })
+  }, [])
 
   async function handleShare() {
     if (!selected || !view) return
@@ -196,274 +198,209 @@ export default function App() {
     if (!selected || !view) return
     setExporting(true)
     try {
-      if (motionOn && previewBlob) {
-        const ext = previewBlob.type.includes('webp') ? 'webp' : 'png'
-        downloadBlob(previewBlob, `lumen-${selected}-motion.${ext}`)
+      if (motionOn && preview.previewBlob) {
+        const ext = preview.previewBlob.type.includes('webp') ? 'webp' : 'png'
+        downloadBlob(preview.previewBlob, `lumen-${selected}-motion.${ext}`)
       } else {
         const blob = await fetchExportStill(selected, view.params)
         downloadBlob(blob, `lumen-${selected}.png`)
       }
     } catch (e) {
-      setError(e instanceof PreviewApiError ? e.message : String(e))
+      setLoadError(e instanceof PreviewApiError ? e.message : String(e))
     } finally {
       setExporting(false)
     }
   }
 
-  const hasStudio = Boolean(view)
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      const tag = (e.target as HTMLElement)?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return
+
+      if (e.key === '?' || (e.key === '/' && e.shiftKey)) {
+        e.preventDefault()
+        setHelpOpen((v) => !v)
+        return
+      }
+      if (e.key === 'Escape') {
+        if (helpOpen) setHelpOpen(false)
+        else if (waitlistOpen) setWaitlistOpen(false)
+        else if (page === 'focus') setPage('systems')
+        else if (page === 'systems') setPage('looks')
+        return
+      }
+      if (e.key === ' ' && page === 'systems' && view) {
+        e.preventDefault()
+        setPage('focus')
+        return
+      }
+      if (e.key === '1' && page === 'systems') setCraftMode('play')
+      if (e.key === '2' && page === 'systems') setCraftMode('craft')
+      if ((e.key === 'm' || e.key === 'M') && view) setMotionOn((m) => !m)
+      if ((e.key === 's' || e.key === 'S') && view && page === 'systems' && !e.metaKey && !e.ctrlKey) {
+        setView({
+          schema: view.schema,
+          params: randomizeAll(view.schema, view.params),
+          lookId: null,
+        })
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [page, view, helpOpen, waitlistOpen])
+
+  const discoverBg = hoverDiscoverUrl ?? featuredUrl
+  const error = loadError ?? preview.error
+  const backdropMode = page === 'looks' ? 'looks' : page === 'focus' ? 'focus' : 'systems'
 
   return (
     <div className="relative min-h-dvh text-[var(--fg)]">
-      <div aria-hidden className="aurora-field">
-        <div className="aurora-blob" />
-        <div className="aurora-blob" />
-        <div className="aurora-blob" />
-      </div>
+      <LivingBackdrop
+        imageUrl={preview.previewUrl}
+        discoverUrl={discoverBg}
+        mode={backdropMode}
+        intensity={page === 'focus' ? 0.5 : 0.4}
+      />
 
       <div className="relative z-10">
-        <header className="border-b border-[var(--border)]/80 bg-black/20 backdrop-blur-xl">
-          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4 sm:px-8">
-            <div className="flex items-center gap-3">
-              <span className="live-dot size-2 rounded-full bg-[var(--accent)]" />
-              <div>
-                <div className="font-display text-lg font-bold tracking-tight">Lumen</div>
-                <div className="font-label text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
-                  Compose living math
-                </div>
-              </div>
-            </div>
+        <TopBar
+          page={page}
+          systemLabel={view?.schema.label}
+          onNavigate={(p) => setPage(p)}
+          onMaker={() => setWaitlistOpen(true)}
+          onExitFocus={() => setPage('systems')}
+        />
 
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="flex rounded-pill border border-[var(--border)] bg-black/30 p-1">
-                <button
-                  type="button"
-                  onClick={() => setMode('play')}
-                  className={`rounded-pill px-3.5 py-1.5 text-xs font-semibold transition ${
-                    mode === 'play' ? 'bg-[var(--fg)] text-[var(--bg)]' : 'text-[var(--fg-muted)]'
-                  }`}
-                >
-                  Play
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setMode('craft')}
-                  className={`rounded-pill px-3.5 py-1.5 text-xs font-semibold transition ${
-                    mode === 'craft' ? 'bg-[var(--fg)] text-[var(--bg)]' : 'text-[var(--fg-muted)]'
-                  }`}
-                >
-                  Craft
-                </button>
-              </div>
-              <button
-                type="button"
-                onClick={() => setWaitlistOpen(true)}
-                className="rounded-pill bg-[var(--accent)] px-4 py-2 text-xs font-bold text-[#0b0710] transition hover:-translate-y-0.5"
-              >
-                Maker access
-              </button>
-            </div>
-          </div>
-        </header>
-
-        {!hasStudio && (
-          <section className="mx-auto max-w-7xl px-5 pb-10 pt-14 sm:px-8 sm:pt-20">
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-3xl"
-            >
-              <p className="font-label inline-flex items-center gap-2 rounded-pill border border-[var(--border)] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
-                <span className="size-1.5 rounded-full bg-[var(--accent)]" />
-                Living systems studio
-              </p>
-              <h1
-                className="font-display mt-6 font-extrabold tracking-tight"
-                style={{ fontSize: 'clamp(2.6rem, 7vw, 5.5rem)', lineHeight: 0.98 }}
-              >
-                Compose organisms
-                <br />
-                <span className="text-[var(--accent)]">that move &amp; breathe.</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--fg-muted)]">
-                Not AI mush — deterministic mathematical systems. Pick a Look, feel the dials,
-                share a living link. Full film packs when Maker opens.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (looks[0]) onSelectLook(looks[0])
-                  }}
-                  className="rounded-xl bg-[var(--fg)] px-6 py-3 text-sm font-semibold text-[var(--bg)] transition hover:-translate-y-0.5"
-                >
-                  Start with a Look
-                </button>
-                <button
-                  type="button"
-                  onClick={() => document.getElementById('looks')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="rounded-xl border border-[var(--border-strong)] px-6 py-3 text-sm font-semibold transition hover:border-[var(--accent)]"
-                >
-                  Browse gallery
-                </button>
-              </div>
-            </motion.div>
-          </section>
+        {page === 'looks' && (
+          <LooksPage
+            looks={looks}
+            selectedLookId={view?.lookId ?? null}
+            seriesFilter={seriesFilter}
+            onSeriesFilter={setSeriesFilter}
+            onSelectLook={onSelectLook}
+            onSurpriseLook={onSurpriseLook}
+            onHoverLook={(look) => {
+              if (!look?.thumb) {
+                setHoverDiscoverUrl(null)
+                return
+              }
+              setHoverDiscoverUrl(
+                new URL(look.thumb, window.location.origin + import.meta.env.BASE_URL).href,
+              )
+            }}
+          />
         )}
 
-        <main className="mx-auto max-w-7xl space-y-10 px-5 py-8 sm:px-8">
-          <section id="looks" className="glass p-5 sm:p-7">
-            <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-              <div>
-                <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">Gallery</p>
-                <h2 className="font-display text-2xl font-semibold tracking-tight">Looks</h2>
-              </div>
-              <p className="text-xs text-[var(--fg-muted)]">{looks.length} curated starting points</p>
-            </div>
-            <LooksGallery
-              looks={looks}
-              selectedId={view?.lookId ?? null}
-              seriesFilter={seriesFilter}
-              onSeriesFilter={setSeriesFilter}
-              onSelect={onSelectLook}
-            />
-          </section>
+        {page === 'systems' && (
+          <SystemsPage
+            templates={templates}
+            selectedTemplate={selected}
+            schema={view?.schema ?? null}
+            params={view?.params ?? null}
+            craftMode={craftMode}
+            semantic={semantic}
+            previewUrl={preview.previewUrl}
+            loading={preview.loading}
+            error={error}
+            renderSeconds={preview.renderSeconds}
+            nFrames={preview.nFrames}
+            motionOn={motionOn}
+            copied={copied}
+            exporting={exporting}
+            shareError={shareError}
+            onCraftMode={setCraftMode}
+            onSemanticChange={onSemanticChange}
+            onParamsChange={(params) => {
+              if (!view) return
+              setView({ schema: view.schema, params, lookId: null })
+            }}
+            onSelectTemplate={onSelectTemplate}
+            onToggleMotion={() => setMotionOn((m) => !m)}
+            onSurprise={() => {
+              if (!view) return
+              setView({
+                schema: view.schema,
+                params: randomizeAll(view.schema, view.params),
+                lookId: null,
+              })
+            }}
+            onReset={() => {
+              if (!view) return
+              setView({
+                schema: view.schema,
+                params: defaultParams(view.schema),
+                lookId: null,
+              })
+            }}
+            onShare={() => void handleShare()}
+            onDownload={() => void handleDownloadPreview()}
+            onJson={() => {
+              if (!view) return
+              void navigator.clipboard.writeText(toPresetJson(view.params))
+              setCopied('json')
+              setTimeout(() => setCopied(null), 1500)
+            }}
+            onFullVideo={() => setWaitlistOpen(true)}
+            onFocus={() => setPage('focus')}
+          />
+        )}
 
-          <section className="space-y-3">
-            <div className="flex items-end justify-between gap-3">
-              <div>
-                <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">Systems</p>
-                <h2 className="font-display text-xl font-semibold">Templates</h2>
-              </div>
-            </div>
-            <TemplateGallery templates={templates} selected={selected} onSelect={onSelectTemplate} />
-          </section>
-
-          {view && (
-            <section className="grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_380px]">
-              <div className="order-1 space-y-4">
-                <PreviewPane
-                  imageUrl={previewUrl}
-                  loading={loading}
-                  error={error}
-                  renderSeconds={renderSeconds}
-                  nFrames={nFrames}
-                  motionMode={motionOn}
-                  templateLabel={view.schema.label}
-                />
-
-                <div className="glass flex flex-wrap items-center justify-center gap-2 p-3">
-                  <button
-                    type="button"
-                    onClick={() => setMotionOn((m) => !m)}
-                    className={`rounded-pill border px-3.5 py-2 text-xs font-semibold transition ${
-                      motionOn
-                        ? 'border-[var(--accent)]/40 bg-[var(--accent)]/10 text-[var(--accent)]'
-                        : 'border-[var(--border)] text-[var(--fg-muted)]'
-                    }`}
-                  >
-                    {motionOn ? '▶ Motion' : '■ Still'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setView({
-                        schema: view.schema,
-                        params: randomizeAll(view.schema, view.params),
-                        lookId: null,
-                      })
-                    }
-                    className="rounded-pill border border-[var(--border)] px-3.5 py-2 text-xs font-semibold text-[var(--fg)] hover:border-[var(--border-strong)]"
-                  >
-                    🎲 Surprise
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setView({
-                        schema: view.schema,
-                        params: defaultParams(view.schema),
-                        lookId: null,
-                      })
-                    }
-                    className="rounded-pill border border-[var(--border)] px-3.5 py-2 text-xs font-semibold text-[var(--fg-muted)]"
-                  >
-                    Reset
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      void navigator.clipboard.writeText(toPresetJson(view.params))
-                      setCopied('json')
-                      setTimeout(() => setCopied(null), 1500)
-                    }}
-                    className="rounded-pill border border-[var(--border)] px-3.5 py-2 text-xs font-semibold text-[var(--fg-muted)]"
-                  >
-                    {copied === 'json' ? '✓ JSON' : 'JSON'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => void handleShare()}
-                    className="rounded-pill border border-[var(--accent)]/35 bg-[var(--accent)]/10 px-3.5 py-2 text-xs font-bold text-[var(--accent)]"
-                  >
-                    {copied === 'share' ? '✓ Link copied' : '↗ Share'}
-                  </button>
-                  <button
-                    type="button"
-                    disabled={exporting || !previewUrl}
-                    onClick={() => void handleDownloadPreview()}
-                    className="rounded-pill border border-[var(--border-strong)] px-3.5 py-2 text-xs font-semibold text-[var(--fg)] disabled:opacity-40"
-                  >
-                    {exporting ? '…' : '↓ Download preview'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setWaitlistOpen(true)}
-                    className="rounded-pill bg-[var(--fg)] px-3.5 py-2 text-xs font-bold text-[var(--bg)]"
-                  >
-                    🔒 Full video
-                  </button>
-                </div>
-                {shareError && <p className="text-center text-xs text-amber-200">{shareError}</p>}
-              </div>
-
-              <div className="order-2">
-                <div className="glass scroll-thin max-h-[min(80dvh,900px)] overflow-y-auto p-5 sm:p-6">
-                  <div className="mb-5 border-b border-[var(--border)] pb-4">
-                    <h2 className="font-display text-lg font-semibold">{view.schema.label}</h2>
-                    <p className="mt-1 text-xs leading-relaxed text-[var(--fg-muted)]">{view.schema.blurb}</p>
-                  </div>
-                  {mode === 'play' ? (
-                    <PlayPanel
-                      state={semantic}
-                      onChange={onSemanticChange}
-                      onOpenCraft={() => setMode('craft')}
-                    />
-                  ) : (
-                    <ParamPanel
-                      schema={view.schema}
-                      params={view.params}
-                      onChange={(params) => setView({ schema: view.schema, params, lookId: null })}
-                    />
-                  )}
-                </div>
-              </div>
-            </section>
-          )}
-
-          <footer className="border-t border-[var(--border)] py-10 text-center">
-            <p className="font-display text-lg font-semibold">Lumen</p>
-            <p className="mt-2 text-sm text-[var(--fg-muted)]">
-              Deterministic generative systems · free to compose · Maker for film packs
-            </p>
-            <p className="font-label mt-4 text-[10px] uppercase tracking-[0.16em] text-[var(--fg-muted)]">
-              Built for the scroll — meant for craft
-            </p>
-          </footer>
-        </main>
+        {page === 'focus' && view && (
+          <FocusView
+            imageUrl={preview.previewUrl}
+            loading={preview.loading}
+            error={error}
+            templateLabel={view.schema.label}
+            motionOn={motionOn}
+            nFrames={preview.nFrames}
+            onExit={() => setPage('systems')}
+            onShare={() => void handleShare()}
+            onToggleMotion={() => setMotionOn((m) => !m)}
+          />
+        )}
       </div>
 
       <WaitlistModal open={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
+
+      {helpOpen && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
+          <button
+            type="button"
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            aria-label="Close help"
+            onClick={() => setHelpOpen(false)}
+          />
+          <div className="dock-glass relative z-10 w-full max-w-sm p-6">
+            <p className="font-label text-[10px] uppercase tracking-[0.18em] text-[var(--fg-muted)]">
+              Shortcuts
+            </p>
+            <ul className="mt-4 space-y-2 font-label text-xs text-[var(--fg-muted)]">
+              <li>
+                <kbd className="text-[var(--fg)]">Esc</kbd> — back
+              </li>
+              <li>
+                <kbd className="text-[var(--fg)]">Space</kbd> — focus mode
+              </li>
+              <li>
+                <kbd className="text-[var(--fg)]">1</kbd> / <kbd className="text-[var(--fg)]">2</kbd> — simple / craft dials
+              </li>
+              <li>
+                <kbd className="text-[var(--fg)]">M</kbd> — motion / still
+              </li>
+              <li>
+                <kbd className="text-[var(--fg)]">S</kbd> — surprise
+              </li>
+            </ul>
+            <button
+              type="button"
+              onClick={() => setHelpOpen(false)}
+              className="mt-5 w-full text-center text-xs text-[var(--fg-muted)] hover:text-[var(--fg)]"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
