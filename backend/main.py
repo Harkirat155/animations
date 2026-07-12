@@ -18,7 +18,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel, Field
 
-from backend import r2
+from backend import waitlist as waitlist_store
 from pipeline.preview import PreviewError, render_export_still, render_preview_motion, render_preview_still
 from pipeline.schema import TEMPLATES, get, list_templates, to_json
 
@@ -177,7 +177,10 @@ async def api_export_still(req: PreviewRequest, request: Request) -> Response:
 
 @app.post("/api/waitlist")
 async def api_waitlist(req: WaitlistRequest, request: Request) -> dict:
-    """Register interest for Maker (full video). Durable on R2 when secrets set."""
+    """Register interest for Maker (full video).
+
+    Persistence order: Cloudflare D1 → R2 → local JSONL (dev).
+    """
     ip = _client_ip(request)
     _check_rate_limit(ip, _waitlist_log, _WAITLIST_RATE_MAX)
 
@@ -185,7 +188,7 @@ async def api_waitlist(req: WaitlistRequest, request: Request) -> dict:
     try:
         result = await loop.run_in_executor(
             None,
-            lambda: r2.register_waitlist(
+            lambda: waitlist_store.register(
                 req.email,
                 ip=ip,
                 source=req.source,
@@ -194,12 +197,6 @@ async def api_waitlist(req: WaitlistRequest, request: Request) -> dict:
         )
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e)) from e
-    except r2.R2NotConfigured:
-        # Should not happen — register_waitlist falls back to local — but be loud.
-        raise HTTPException(
-            status_code=503,
-            detail="Waitlist storage is not configured",
-        ) from None
     except Exception as e:
         raise HTTPException(status_code=502, detail=f"Waitlist storage failed: {e}") from e
 
@@ -213,6 +210,5 @@ def health() -> dict:
         "product": "lumen",
         "templates": len(TEMPLATES),
         "cors_origins": _cors_origins,
-        "r2_configured": r2.configured(),
-        "r2_bucket": os.environ.get("R2_BUCKET", "animations"),
+        **waitlist_store.storage_status(),
     }

@@ -99,12 +99,22 @@ node frontend/scripts/verify.mjs            # Playwright: needs both servers run
 | Blobs | Cloudflare **R2** bucket `animations` (waitlist now; renders later) |
 | Payments | Deferred — Maker waitlist only |
 
-#### R2 secrets (Fly)
+#### Durable storage
 
-Bucket endpoint:
-`https://f23d40d6e8e5a8ba907fec5d01d3f37b.r2.cloudflarestorage.com/animations`
+| Store | ID / endpoint | Used for |
+|-------|----------------|----------|
+| **D1** (primary) | `f7c44f86-9b4c-4e5e-9033-00fb12c44587` | Waitlist, future users / render jobs |
+| **R2** | `…r2.cloudflarestorage.com/animations` | Future video packs; optional waitlist fallback |
 
 ```bash
+# Required for production waitlist → D1
+fly secrets set \
+  CLOUDFLARE_ACCOUNT_ID=f23d40d6e8e5a8ba907fec5d01d3f37b \
+  D1_DATABASE_ID=f7c44f86-9b4c-4e5e-9033-00fb12c44587 \
+  CLOUDFLARE_API_TOKEN=<account-token-with-D1-Edit> \
+  -a animations-composer
+
+# Optional later — R2 S3 keys for render deliverables
 fly secrets set \
   R2_ACCOUNT_ID=f23d40d6e8e5a8ba907fec5d01d3f37b \
   R2_BUCKET=animations \
@@ -114,8 +124,8 @@ fly secrets set \
   -a animations-composer
 ```
 
-Waitlist objects: `waitlist/entries/YYYY/MM/{ts}-{hash}.json` + dedupe keys under `waitlist/by-email/`.
-Without R2 secrets, signups fall back to local `analytics/waitlist.jsonl` (dev only).
+Schema auto-migrates on first waitlist hit (`scripts/init_d1.sql`). Without
+`CLOUDFLARE_API_TOKEN`, signups fall back to local `analytics/waitlist.jsonl` (dev only).
 
 ```bash
 # Backend
