@@ -14,3 +14,4 @@ analytics/waitlist.jsonl
 # composer app (frontend/)
 frontend/node_modules/
 frontend/dist/
+.venv/
